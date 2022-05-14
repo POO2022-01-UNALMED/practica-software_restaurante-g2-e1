@@ -1,6 +1,8 @@
 package restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
+import gente.Empleado;
+
 public class Turno {
 	private Empleado empleado;
 	private Caja caja;
