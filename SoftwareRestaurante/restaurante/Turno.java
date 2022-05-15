@@ -1,12 +1,45 @@
 package restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
-import gente.Empleado;
+import gente.*;
 
 public class Turno {
 	private Empleado empleado;
 	private Caja caja;
-	private String horario; //se podria crear un enum para los horarios? ejemplo lunes a viernes 8-5 y asi 
-	/*static registro clase*/ //preguntar por este atributo
-
+	private String horario;
+	public static ArrayList<Orden> lista_empleados = new ArrayList<Orden>();
+	
+	//constructor
+	public Turno(Empleado empleado,Caja caja,String horario) {
+		this.empleado=empleado;
+		this.caja=caja;
+		this.horario=horario;
+	}
+	
+	//metodos get y set
+	
+	public Empleado getEmpleado(){
+		return empleado;
+	}
+	
+	public void setEmpleado(Empleado empleado) {
+		this.empleado=empleado;
+	}
+	
+	public Caja getCaja() {
+		return caja;
+	}
+	
+	public void setCaja(Caja caja) {
+		this.caja=caja;
+	}
+	
+	public String getHorario() {
+		return horario;
+	}
+	
+	public void setHorario(String horario) {
+		this.horario=horario;
+	}
+	
 }
