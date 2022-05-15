@@ -4,7 +4,7 @@ import restaurante.*;
 import java.util.ArrayList; 
 import java.util.Collections;
 
-class Cliente extends Persona {
+public class Cliente extends Persona {
 	
 	//constructor
 	public Cliente(int cedula,String nombre,int telefono) {

@@ -36,25 +36,5 @@ public void contratar_empleado(int cedula,String nombre,int telefono) {
 public void despedir_empleado(Empleado empleado) {
 	empleado=null;
 }
-///////pruebas///////
-public static void main(String args[]) {
-	Gerente g=new Gerente(1,"demetrio",2);
-	g.contratar_empleado(1,"pan",22);
-	g.contratar_empleado(2,"pin",23);
-	g.contratar_empleado(3,"pen",24);
-	Empleado.lista_empleados.get(1).nuevaVenta();
-	Empleado.lista_empleados.get(1).nuevaVenta();
-	Empleado.lista_empleados.get(2).nuevaVenta();
-	Empleado.lista_empleados.get(2).nuevaVenta();
-	Empleado.lista_empleados.get(2).nuevaVenta();
-	Empleado.lista_empleados.get(2).nuevaVenta();
-	String a=Empleado.empleado_mas_eficiente().getNombre();
-	String b=Empleado.empleado_menos_eficiente().getNombre();
-	System.out.print("el empleado mas eficiente es: "+a+" y el menos eficiente es: "+b);
-}
-
-
-
-
 
 }
