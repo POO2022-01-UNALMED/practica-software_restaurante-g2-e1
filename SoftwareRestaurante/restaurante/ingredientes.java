@@ -1,48 +1,19 @@
 package restaurante;
 
-public enum ingredientes {
-	//ingredientes
-	carne_hamburguesa(2000, 0), salchicha(1000, 0), pan_hamburguesa(500, 0), pan_perro(400, 0);
-	
-	
-	//atributos
-	private int precio;
-	private int cantidad;
-	
-	
-	//constructor
-	private ingredientes(int precio, int cantidad) {
-		this.precio = precio;
-		this.cantidad = cantidad;
-	}
-	
-	
-	//metodos get
-	public int getPrecio() {
-		return precio;
-	}
-	public int getCantidad() {
-		return cantidad;
-	}
-	
-	
-	//metodos set
-	public void setPrecio(int precio) {
-		this.precio = precio;
-	}
-	public void anadircantidad(int cantidad) {
-		this.cantidad += cantidad;
-	}
-	
-	
-	
-	//metodos 
-	public boolean verificar_inventario() {
-		if (cantidad > 0) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+public abstract class ingredientes {
+    //Clase para reformular ingredientes, se puede formular como una clase abstracta
+    //Con los metodos get set precio de cada ingrediente
+    //de esta forma es posible crear una lista de ingredientes tanto para los platillos como
+    //para  los proveedores
+    public abstract void setPrecio(int precio);
+    public abstract int getPrecio();
+    public abstract void setCantidad(int cantidad); // Probablemente no se use pero la pongo de igual froma
+    public abstract int getCantidad(String tipo); 
+    public abstract String anadirCantidad(int cantidad, String tipo);
+    public abstract void setTipo(String type);
+    public abstract String getTipo();
+	public abstract boolean verificar_inventario();
+    
+
+
 }

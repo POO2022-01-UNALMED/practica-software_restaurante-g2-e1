@@ -29,12 +29,12 @@ public class Platillo {
 	
 	
 	//metodos set
-	public String anadirIngrediente(ingredientes ingrediente) {
+	public String anadirIngrediente(ingredientes ingrediente,String tipo) {
 		if (ingrediente.verificar_inventario() == true) {
-			ingrediente.anadircantidad(-1);      // resto al inventario
-			ingredientes.add(ingrediente);		 //añado a la lista de ingredientes
+			ingrediente.anadirCantidad(-1,tipo);      // resto al inventario
+			ingredientes.add(ingrediente);		 //aï¿½ado a la lista de ingredientes
 			precio += ingrediente.getPrecio();     // aumento el precio del platillo
-			return "añadido con exito";
+			return "aï¿½adido con exito";
 		}
 		else {
 			return "no hay existencias de este producto";
@@ -44,7 +44,7 @@ public class Platillo {
 		for (int i = 0; i < ingredientes.size(); i++) {
 			if (ingredientes.get(i) == ingrediente) {          //compruebo si existe ese elemento en la lista
 				ingredientes.remove(i);
-				ingrediente.anadircantidad(1);
+				ingrediente.anadirCantidad(1,ingredientes.get(i).getTipo());
 				precio -= ingrediente.getPrecio();
 				return "ingredeinte eliminado";
 			}	

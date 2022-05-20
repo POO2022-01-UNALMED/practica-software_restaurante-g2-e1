@@ -11,6 +11,7 @@ public class Orden {
 	private Cliente cliente;
 	private int propina;
 	private static int cantidad_orden = 0;
+	private boolean estado_pedido;
 	
 	
 	//constructor 
