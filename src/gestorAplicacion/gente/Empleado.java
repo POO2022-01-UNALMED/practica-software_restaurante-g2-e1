@@ -1,5 +1,5 @@
 package gestorAplicacion.gente;
-import restaurante.*;
+import gestorAplicacion.restaurante.*;
 import java.util.ArrayList; 
 import java.util.Collections;
 
@@ -86,7 +86,12 @@ public void crear_nueva_orden(ArrayList<Platillo> platillos,Cliente cliente,int 
 }
 
 public void Orden_completada(Orden N) {
-	Orden N = new Orden(platillos,cliente,propina);
+	//se cambia el estado de la orden a true
 }
+
+public String informacion() {
+	return "nombre del Empleado: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono()+" \nnumero asignado: "+numero_asignado+" \nnumero de ventas: ";
+}
+
 
 }

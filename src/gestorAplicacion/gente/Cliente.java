@@ -10,4 +10,8 @@ public class Cliente extends Persona {
 		super(cedula,nombre,telefono);
 	}
 	
+	public String informacion() {
+		return "nombre del cliente: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono();
+	}
+	
 }

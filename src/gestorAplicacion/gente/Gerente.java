@@ -53,4 +53,8 @@ public void despido_inteligente() { //este metodo despide al empleado menos efic
 	
 }
 
+public String informacion() {
+	return "nombre del Gerente: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono();
+}
+
 }

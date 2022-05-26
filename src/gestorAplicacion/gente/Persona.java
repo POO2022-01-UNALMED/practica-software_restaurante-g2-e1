@@ -7,6 +7,8 @@ private int telefono;
 
 //constructor
 
+public abstract String informacion();
+
 public Persona(int cedula,String nombre,int telefono) {
 	this.cedula=cedula;
 	this.nombre=nombre;
