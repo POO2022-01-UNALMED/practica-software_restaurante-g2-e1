@@ -4,11 +4,11 @@ import java.util.Collections;
 public class Caja {
 	private int efectivo;
 	private int numero_caja;
-	private ArrayList<Integer> ingresos; 
+	public ArrayList<Integer> ingresos;
 	private ArrayList<Integer>  egresos;    
 	static private ArrayList<Integer>  totalingresos;
 	static private ArrayList<Integer>  totalegresos;
-	static private int cantidad_cajas;
+	static public int cantidad_cajas;
 	
 	
 	//contructores

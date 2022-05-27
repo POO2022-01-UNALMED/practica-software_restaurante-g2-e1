@@ -1,7 +1,6 @@
 package gestorAplicacion.gente;
 
-import java.util.ArrayList; 
-import java.util.Collections;
+import static gestorAplicacion.restaurante.Caja.cantidad_cajas;
 
 public class Gerente extends Persona {
 	
@@ -13,11 +12,20 @@ public class Gerente extends Persona {
 	
 	//metodos
 	
-public void arqueo_de_caja_global() {
-	//realiza un arqueo de caja de forma global,
-	//es decir, realiza el arqueo de caja para todas las cajas
-	//y al final suma los resultados
-	
+public int arqueo_de_caja_global() {
+	int res = 0;
+	for (int i = 0; i < cantidad_cajas; i++) {
+		int x = 0;
+		int[] ingresos = new int[0];
+		for (int n : ingresos) {
+			x += n;
+		}
+		//realiza un arqueo de caja de forma global,
+		//es decir, realiza el arqueo de caja para todas las cajas
+		//y al final suma los resultados
+
+	}
+	return res;
 }
 
 public void ventas_global() {
