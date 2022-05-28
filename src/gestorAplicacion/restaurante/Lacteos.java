@@ -1,6 +1,6 @@
 package gestorAplicacion.restaurante;
 
-public class Lacteos extends ingredientes {
+public class Lacteos implements ingredientes {
 
     private int precio;
     private int cantidad;
