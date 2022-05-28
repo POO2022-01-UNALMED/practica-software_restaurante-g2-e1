@@ -1,6 +1,6 @@
 package gestorAplicacion.restaurante;
 
-public abstract class ingredientes {
+public interface ingredientes {
     //Clase para reformular ingredientes, se puede formular como una clase abstracta
     //Con los metodos get set precio de cada ingrediente
     //de esta forma es posible crear una lista de ingredientes tanto para los platillos como
