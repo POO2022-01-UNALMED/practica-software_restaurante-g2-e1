@@ -1,6 +1,6 @@
 package gestorAplicacion.restaurante;
 
-public class Carne extends ingredientes {
+public class Carne implements ingredientes {
     private int precio;
     private int cantidad;
     private String tipo;
