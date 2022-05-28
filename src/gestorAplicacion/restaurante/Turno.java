@@ -1,8 +1,7 @@
 package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
-import gente.*;
-import gestorAplicacion.gente.Empleado;
+import gestorAplicacion.gente.*;
 
 public class Turno {
 	private Empleado empleado;
