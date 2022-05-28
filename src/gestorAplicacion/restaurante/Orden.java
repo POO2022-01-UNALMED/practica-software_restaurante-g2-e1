@@ -1,8 +1,7 @@
 package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
-import gente.*;
-import gestorAplicacion.gente.Cliente;
+import gestorAplicacion.gente.*;
 
 import java.lang.Math;
 
