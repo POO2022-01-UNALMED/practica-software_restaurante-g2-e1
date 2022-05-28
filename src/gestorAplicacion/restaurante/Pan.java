@@ -1,6 +1,6 @@
 package gestorAplicacion.restaurante;
 
-public class Pan extends ingredientes {
+public class Pan implements ingredientes {
     private int precio;
     private int cantidad;
     private String tipo;
