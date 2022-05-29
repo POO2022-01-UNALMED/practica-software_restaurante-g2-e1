@@ -2,6 +2,10 @@ package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
 import gestorAplicacion.gente.*;
+import java.time.LocalTime;
+import java.lang.String;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 
 import java.lang.Math;
 
@@ -101,6 +105,30 @@ public class Orden {
 					anadirPlatillos(x);
 				}
 			}
+		}
+	}
+	public String comprobar() {
+		LocalDate date = LocalDate.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
+		String text = date.format(formatter);
+		LocalDate parsedDate = LocalDate.parse(text, formatter);
+		String dia = parsedDate.getDayOfWeek().toString();
+
+		if (dia == "SATURDAY" || dia == "SUNDAY") {
+			if(horarios.horario2.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0,2)) && 
+					Integer.valueOf(LocalTime.now().toString().substring(0,2)) < horarios.horario2.getFinal()) {
+				estado_pedido = true;
+				return "Pedido confirmado";
+			}
+			return "Pedido rechazado";
+		}
+		else {
+			if(horarios.horario1.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0,2)) && 
+					Integer.valueOf(LocalTime.now().toString().substring(0,2)) < horarios.horario1.getFinal()) {
+				estado_pedido = true;
+				return "Pedido confirmado";
+			}
+			return "Pedido rechazado";
 		}
 	}
 }
