@@ -1,36 +1,37 @@
 package gestorAplicacion.gente;
 
-import static gestorAplicacion.restaurante.Caja.cantidad_cajas;
+import java.util.ArrayList; 
+import java.util.Collections;
 
-public class Gerente extends Persona {
+public class Gerente extends Persona implements gerente_por_defecto {
+	private String contraseña_gerente;
+	public static Gerente[] arr=new Gerente[1];
 	
 	//constructor
 	
-	public Gerente(int cedula,String nombre,int telefono) {
+	public Gerente(int cedula,String nombre,int telefono,String contraseña_gerente) {
 		super(cedula,nombre,telefono);
+		this.contraseña_gerente=contraseña_gerente;
+		arr[0]=null;
+		arr[0]=this;
 	}
 	
+	public Gerente() {
+		super(CEDULA,NOMBRE,TELEFONO);
+		contraseña_gerente=CONTRASEÑA;
+		arr[0]=this;
+	}
+	
+	//metodos get y set
+	
+	public int getConstraseña_gerente() {
+		return contraseña_gerente;
+	}
+	
+	public void setContraseña_gerente(int contraseña_gerente) {
+		this.contraseña_gerente=contraseña_gerente;
+	}
 	//metodos
-	
-public int arqueo_de_caja_global() {
-	int res = 0;
-	for (int i = 0; i < cantidad_cajas; i++) {
-		int x = 0;
-		int[] ingresos = new int[0];
-		for (int n : ingresos) {
-			x += n;
-		}
-		//realiza un arqueo de caja de forma global,
-		//es decir, realiza el arqueo de caja para todas las cajas
-		//y al final suma los resultados
-
-	}
-	return res;
-}
-
-public void ventas_global() {
-	//devuelve el total de ventas realizado por todas las cajas
-}
 
 public void comprar_ingredientes() {
 	//actualiza el numero de ingredientes y resta de el total de efectivo
