@@ -7,7 +7,9 @@ private int telefono;
 
 //constructor
 
-public abstract String informacion();
+public String informacion() {
+	return "cedula: "+cedula+" nombre: "+nombre+" telefono: "+telefono;
+}
 
 public Persona(int cedula,String nombre,int telefono) {
 	this.cedula=cedula;

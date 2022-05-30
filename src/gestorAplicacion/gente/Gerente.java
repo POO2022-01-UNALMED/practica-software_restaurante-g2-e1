@@ -24,11 +24,11 @@ public class Gerente extends Persona implements gerente_por_defecto {
 	
 	//metodos get y set
 	
-	public int getConstraseña_gerente() {
+	public String getConstraseña_gerente() {
 		return contraseña_gerente;
 	}
 	
-	public void setContraseña_gerente(int contraseña_gerente) {
+	public void setContraseña_gerente(String contraseña_gerente) {
 		this.contraseña_gerente=contraseña_gerente;
 	}
 	//metodos

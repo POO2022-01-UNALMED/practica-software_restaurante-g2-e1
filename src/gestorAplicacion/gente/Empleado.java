@@ -80,15 +80,6 @@ public static Empleado empleado_menos_eficiente() { //este metodo compara la can
 	return null;	
 }
 
-
-public void crear_nueva_orden(ArrayList<Platillo> platillos,Cliente cliente,int propina) {
-	Orden N = new Orden(platillos,cliente,propina);
-}
-
-public void Orden_completada(Orden N) {
-	//se cambia el estado de la orden a true
-}
-
 public String informacion() {
 	return "nombre del Empleado: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono()+" \nnumero asignado: "+numero_asignado+" \nnumero de ventas: "+numero_ventas;
 }
