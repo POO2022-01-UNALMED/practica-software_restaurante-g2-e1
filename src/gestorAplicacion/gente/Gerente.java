@@ -2,8 +2,9 @@ package gestorAplicacion.gente;
 
 import java.util.ArrayList; 
 import java.util.Collections;
+import java.io.Serializable;
 
-public class Gerente extends Persona implements gerente_por_defecto {
+public class Gerente extends Persona implements gerente_por_defecto,Serializable {
 	private String contraseña_gerente;
 	public static Gerente[] arr=new Gerente[1];
 	
