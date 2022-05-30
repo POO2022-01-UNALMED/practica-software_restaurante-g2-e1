@@ -1,10 +1,10 @@
 package gestorAplicacion.restaurante;
 
 import java.util.ArrayList;
-
+import java.io.Serializable;
 import gestorAplicacion.gente.Empleado;
 
-public class ingredientes {
+public class ingredientes implements Serializable{
 	private int precio_compra; // precio al cual el proveedor vende los articulos
 	private int cantidad;
 	private String tipo;
