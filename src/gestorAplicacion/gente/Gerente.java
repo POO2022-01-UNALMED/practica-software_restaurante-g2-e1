@@ -5,32 +5,32 @@ import java.util.Collections;
 import java.io.Serializable;
 
 public class Gerente extends Persona implements gerente_por_defecto,Serializable {
-	private String contraseña_gerente;
+	private String contrasena_gerente;
 	public static Gerente[] arr=new Gerente[1];
 	
 	//constructor
 	
-	public Gerente(int cedula,String nombre,int telefono,String contraseña_gerente) {
+	public Gerente(int cedula,String nombre,int telefono,String contrasena_gerente) {
 		super(cedula,nombre,telefono);
-		this.contraseña_gerente=contraseña_gerente;
+		this.contrasena_gerente=contrasena_gerente;
 		arr[0]=null;
 		arr[0]=this;
 	}
 	
 	public Gerente() {
 		super(CEDULA,NOMBRE,TELEFONO);
-		contraseña_gerente=CONTRASEÑA;
+		contrasena_gerente=CONTRASENA;
 		arr[0]=this;
 	}
 	
 	//metodos get y set
 	
-	public String getConstraseña_gerente() {
-		return contraseña_gerente;
+	public String getConstrasena_gerente() {
+		return contrasena_gerente;
 	}
 	
-	public void setContraseña_gerente(String contraseña_gerente) {
-		this.contraseña_gerente=contraseña_gerente;
+	public void setContrasena_gerente(String contrasena_gerente) {
+		this.contrasena_gerente=contrasena_gerente;
 	}
 	//metodos
 
