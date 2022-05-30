@@ -29,13 +29,8 @@ public class ingredientes {
 	public String getTipo() {
 		return this.tipo;
 	}
-	public int getCantidad(String tipo) {// Aqui directamente escogemos cual tipo de carne queremos saber la cantidad
-		if (this.tipo.equals(tipo)) {
-			this.cantidad = +cantidad;
-			return this.cantidad;
-		} else {
-			return 0;
-		}
+	public int getCantidad() {// Aqui directamente escogemos cual tipo de carne queremos saber la cantidad
+		return cantidad;
 	}
 	
 	public int getPrecio_compra() {
