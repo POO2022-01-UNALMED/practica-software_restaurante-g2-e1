@@ -75,6 +75,9 @@ public class Orden implements Serializable {
 	public static int getCantidad_orden() {
 		return cantidad_orden;
 	}
+	public static Caja getCaja() {
+		return caja;
+	}
 
 	// metodos set
 	public void anadirPlatillos(Platillo platillo) {
