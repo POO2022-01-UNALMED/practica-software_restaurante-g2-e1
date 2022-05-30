@@ -64,6 +64,9 @@ public class Caja implements Serializable{
 		for (int n: ingresos) {
 			x += n;
 		}
+		for (int i: egresos) {
+			x += i;
+		}
 		return x;
 	}
 
