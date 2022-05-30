@@ -116,16 +116,20 @@ public class Orden implements Serializable {
 		return "orden cancelada";
 	}
 
-	public void duplicar(Platillo platillo) {
+	public String duplicar(Platillo platillo) {
 
 		for (int i = 0; i < platillo.getIngredientes().size(); i++) {
 			if (platillo.getIngredientes().get(i).verificar_inventario()) {
 				if (i == platillo.getIngredientes().size() - 1) {
 					Platillo x = new Platillo(platillo.getIngredientes());
 					anadirPlatillos(x);
+					return "platillo duplicado";
 				}
+				return "no se pudo duplicar";
 			}
+			return "no se pudo duplicar";
 		}
+		return "no se pudo duplicar";
 	}
 
 	public String comprobar(int n) {
