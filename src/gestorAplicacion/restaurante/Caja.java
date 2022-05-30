@@ -6,8 +6,6 @@ public class Caja implements Serializable{
 	private int efectivo;
 	public ArrayList<Integer> ingresos;
 	private ArrayList<Integer>  egresos;    
-	static private ArrayList<Integer>  totalingresos = new ArrayList<Integer>();
-	static private ArrayList<Integer>  totalegresos = new ArrayList<Integer>();
 	
 	
 	//contructores
@@ -32,13 +30,7 @@ public class Caja implements Serializable{
 	public ArrayList<Integer> getEgresos(){
 		return egresos;
 	}
-	public static ArrayList<Integer> getTotalIngresos(){
-		return totalingresos;
-	}
-	
-	public static ArrayList<Integer> getTotalEgresos(){
-		return totalegresos;
-	}
+
 
 	
 	
@@ -49,11 +41,9 @@ public class Caja implements Serializable{
 
 	public void nuevoIngreso(int n) {
 		ingresos.add(n);
-		totalingresos.add(n);
 	}
 	public void nuevoEgreso(int n) {
 		egresos.add(n);
-		totalegresos.add(n);
 	}
 	
 	
@@ -76,12 +66,5 @@ public class Caja implements Serializable{
 		}
 		return x;
 	}
-	
-	public int arqueoTotal() {
-		int x = 0;
-		for (int n: totalingresos) {
-			x += n;
-		}
-		return x;
-	}
+
 }
