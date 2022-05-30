@@ -261,8 +261,10 @@ public class ClaseUi {
 			switch (Respuesta) {
 			case 1:
 				Platillo a = crear_platillo();
-				lista_platillos.add(a);
-				o.anadirPlatillos(a);
+				if (a != null) {
+					lista_platillos.add(a);
+					o.anadirPlatillos(a);
+				}
 				break;
 			case 2:
 				System.out.print("");
