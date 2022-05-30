@@ -13,17 +13,14 @@ public class ingredientes {
 	public ingredientes(int precio_compra, int cant, String tipo) {
 		if(lista_ingredientes.size()==0) {
 			this.precio_compra=precio_compra;
-			this.cantidad=cantidad;
+			this.cantidad = cant;
 			this.tipo=tipo;
 			lista_ingredientes.add(this);
 		}
 		else {
-			for (ingredientes i: lista_ingredientes) {
-				if(tipo == i.tipo) {
-					nosepuede();
-				}
-				else {
-					if (i == lista_ingredientes.get(lista_ingredientes.size()-1)) {
+			for (int i = 0 ;i < lista_ingredientes.size(); i++) {
+				if (!(tipo == lista_ingredientes.get(i).tipo)) {
+					if (lista_ingredientes.get(i) == lista_ingredientes.get(lista_ingredientes.size()-1)) {
 						this.precio_compra = precio_compra;
 						this.cantidad = cant;
 						this.tipo = tipo;
