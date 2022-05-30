@@ -6,7 +6,6 @@ import java.io.Serializable;
 
 public class Empleado extends Persona implements Serializable {
 private int numero_ventas;
-private Turno turno;
 private int numero_asignado; //el numero asignado al empleado
 public static ArrayList<Empleado> lista_empleados = new ArrayList<Empleado>();
 public static int numero_empleados;
@@ -38,13 +37,6 @@ public int getNumero_ventas() {
 	return numero_ventas;
 }
 
-public Turno getTurno() {
-	return turno;
-}
-
-public void setTurno(Turno turno) {
-	this.turno=turno;
-}
 
 // otros metodos
 
