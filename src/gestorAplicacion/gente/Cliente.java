@@ -2,8 +2,9 @@ package gestorAplicacion.gente;
 
 import java.util.ArrayList; 
 import java.util.Collections;
+import java.io.Serializable;
 
-public class Cliente extends Persona {
+public class Cliente extends Persona implements Serializable{
 	
 	//constructor
 	public Cliente(int cedula,String nombre,int telefono) {
