@@ -1,7 +1,8 @@
 package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
-public class Platillo {
+import java.io.Serializable;
+public class Platillo implements Serializable{
 	private ArrayList<ingredientes> ingredientes = new ArrayList<ingredientes>(); //ingredientes es un enum, agragar despues
 	private int precio = 0;
 	

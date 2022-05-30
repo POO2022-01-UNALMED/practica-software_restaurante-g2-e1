@@ -1,15 +1,13 @@
 package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
-public class Caja {
+import java.io.Serializable;
+public class Caja implements Serializable{
 	private int efectivo;
-	private int numero_caja;
 	public ArrayList<Integer> ingresos;
 	private ArrayList<Integer>  egresos;    
-	static private ArrayList<Integer>  totalingresos;
-	static private ArrayList<Integer>  totalegresos;
-	public static ArrayList<Caja> lista_cajas = new ArrayList<Caja>();
-	static public int cantidad_cajas;
+	static private ArrayList<Integer>  totalingresos = new ArrayList<Integer>();
+	static private ArrayList<Integer>  totalegresos = new ArrayList<Integer>();
 	
 	
 	//contructores
@@ -18,12 +16,8 @@ public class Caja {
 	}
 	public Caja(int efectivo, ArrayList<Integer> ingresos, ArrayList<Integer> egresos) {
 		this.efectivo = efectivo;
-		this.numero_caja = cantidad_cajas;       // se cambio el numero de caja para que ahora sea correspondiente con el numero de cajas 
 		this.ingresos = ingresos;
 		this.egresos = egresos;	
-		cantidad_cajas ++;
-		lista_cajas.add(this);
-		
 	}
 
 	
@@ -31,9 +25,6 @@ public class Caja {
 	//metodos get
 	public int getEfectivo() {
 		return efectivo;
-	}
-	public int getNumeroCaja() {
-		return numero_caja;
 	}
 	public ArrayList<Integer> getIngresos(){
 		return ingresos;
@@ -48,18 +39,14 @@ public class Caja {
 	public static ArrayList<Integer> getTotalEgresos(){
 		return totalegresos;
 	}
-	public static int getCantidadCajas() {
-		return cantidad_cajas;
-	}
+
 	
 	
 	//metodos set 
 	public void setEfectivo(int n) {
 		efectivo = n;
 	}
-	public void setNumeroCaja(int n) {
-		numero_caja = n;
-	}
+
 	public void nuevoIngreso(int n) {
 		ingresos.add(n);
 		totalingresos.add(n);
