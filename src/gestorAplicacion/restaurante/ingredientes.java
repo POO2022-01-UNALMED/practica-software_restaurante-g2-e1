@@ -6,19 +6,22 @@ import gestorAplicacion.gente.Empleado;
 
 public class ingredientes{
     private int precio_compra; //precio al cual el proveedor vende los articulos
-    private int precio_venta=getPrecio_compra()*2; //precio al cual vendemos los articulos 
+    private int precio_venta; //precio al cual vendemos los articulos 
     private int cantidad; 
     private String tipo;
-    public static ArrayList<String> lista_ingredientes = new ArrayList<String>();
+    public static ArrayList<ingredientes> lista_ingredientes = new ArrayList<ingredientes>();
+    public static ArrayList<String> lista_tipos_ingredientes = new ArrayList<String>();
     public static ArrayList<Integer> lista_precios = new ArrayList<Integer>();
     
     public ingredientes(int precio_compra,int cant, String tipo){ // Constructor 
-    	if (!lista_ingredientes.contains(tipo)){
+    	if (!lista_tipos_ingredientes.contains(tipo)){
     		this.precio_compra=precio_compra;
             this.cantidad=cant;
             this.tipo=tipo;
-            lista_ingredientes.add(tipo);
-            lista_precios.add(precio_compra);
+            precio_venta=precio_compra*2;
+            lista_tipos_ingredientes.add(tipo);
+            lista_precios.add(precio_venta);
+            lista_ingredientes.add(this);
     	}
     	else {
     		nosepuede();

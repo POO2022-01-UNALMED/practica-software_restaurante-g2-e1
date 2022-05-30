@@ -8,6 +8,7 @@ public class Caja {
 	private ArrayList<Integer>  egresos;    
 	static private ArrayList<Integer>  totalingresos;
 	static private ArrayList<Integer>  totalegresos;
+	public static ArrayList<Caja> lista_cajas = new ArrayList<Caja>();
 	static public int cantidad_cajas;
 	
 	
@@ -17,10 +18,12 @@ public class Caja {
 	}
 	public Caja(int efectivo, ArrayList<Integer> ingresos, ArrayList<Integer> egresos) {
 		this.efectivo = efectivo;
-		this.numero_caja = cantidad_cajas + 1;       // el numero de la caja no esta en el constructor porque se le asigna la cantidad siguiente a la hora de crear la instancia 
+		this.numero_caja = cantidad_cajas;       // se cambio el numero de caja para que ahora sea correspondiente con el numero de cajas 
 		this.ingresos = ingresos;
 		this.egresos = egresos;	
-		this.cantidad_cajas ++;
+		cantidad_cajas ++;
+		lista_cajas.add(this);
+		
 	}
 
 	
