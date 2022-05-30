@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import gestorAplicacion.gente.Empleado;
 import gestorAplicacion.gente.Gerente;
+import gestorAplicacion.restaurante.Orden;
 import gestorAplicacion.restaurante.Platillo;
 import gestorAplicacion.restaurante.ingredientes;
 
@@ -108,7 +109,7 @@ public class ClaseUi {
 					for (int l=0;l<ingredientes_platillo.size();l++) {
 						System.out.println(l+1+") "+ingredientes_platillo.get(l).getTipo());
 					}
-					System.out.println("\nnumero de ingrediente");
+					System.out.print("\ndigite el numero del ingrediente que desea retirar: ");
 				    int ingre_ret=R.nextInt();
 				    
 				    if(0<ingre_ret && ingre_ret<=ingredientes_platillo.size()) {
@@ -130,7 +131,7 @@ public class ClaseUi {
 					x=false;
 				}
 				else {
-					System.out.println("platillo terminado");
+					System.out.println("\nplatillo terminado");
 					x=false;
 				}
 			    break;
@@ -139,8 +140,7 @@ public class ClaseUi {
 		}
 		while(x==true);
 		
-		if (ingredientes_platillo.size()>1) {                       //aqui se crea el platillo con los ingredientes que añadimos anteriormente
-			
+		if (ingredientes_platillo.size()>=1) {                       //aqui se crea el platillo con los ingredientes que añadimos anteriormente  
 			return platillo;
 		}
 		else {
@@ -231,7 +231,7 @@ public class ClaseUi {
 		
 		switch(opcion) {
 		case 1:
-			System.out.println("seleccione una opcion: \n\n(1)añadir platillo \n(2)retirar platillo \n(3)cancelar orden\n");
+			tomar_orden();
 			return true;
 		case 2:
 			System.out.println("\narqueo de caja");
@@ -245,23 +245,69 @@ public class ClaseUi {
 	
 ///////////////////////////////////////////////////////////////////////////////////	
 	
+//tomar orden
+	public static void tomar_orden() {
+		Orden o=new Orden();
+		ArrayList<Platillo> lista_platillos = new ArrayList<Platillo>();
+		boolean estado_orden=true;
+		do {
+			System.out.print("\nseleccione una opcion: \n\n(1)añadir platillo \n(2)retirar platillo \n(3)terminar orden\n(4)cancelar orden\n\n respuesta: ");
+			int Respuesta = R.nextInt();
+			switch(Respuesta) {
+			case 1:
+				Platillo a=crear_platillo();
+				lista_platillos.add(a);
+				o.anadirPlatillos(a);
+				break;
+			case 2:
+				System.out.print("");
+				if(lista_platillos.size()>=1) {
+					int num=0;
+					for (int l=0;l<lista_platillos.size();l++) {
+						num+=1;
+						System.out.print("platillo numero: "+num+" ingredientes: ");
+						Platillo plato=lista_platillos.get(l);
+						for(int j=0;j<plato.getIngredientes().size();j++) {
+							System.out.print(" "+plato.getIngredientes().get(j).getTipo()+" ");
+							if(j==plato.getIngredientes().size()-1) {
+								System.out.println("");
+								
+							}
+						}
+					}
+					System.out.print("seleccione el platillo que desea retirar: \n\nrespuesta: ");
+					int platillo_ret = R.nextInt();
+					if (platillo_ret<lista_platillos.size()) {
+						o.retirarPlatillo(lista_platillos.get(platillo_ret));
+						lista_platillos.remove(platillo_ret);
+						System.out.println("");
+					}
+					else {
+						System.out.println("\nEste paltillo no esta en la lista de platillos en la orden");
+					}
+				}
+				else {
+					System.out.println("\ntodavia no hay platillos en esta orden\n");
+				}
+				break;
+				
+			case 3:
+			}
+		}
+		while(estado_orden==true);
+		//Switch()
+	}
+	
 //en esta clase se implementa lo necesario para la interfaz generica por consola
 	
 	public static void main (String[] args) {
 		ingredientes ing1=new ingredientes(1,0,"chococola");
 		ingredientes ing2=new ingredientes(1,44,"papa");
 		ingredientes ing3=new ingredientes(1,44,"jd");
-		System.out.print(ingredientes.lista_ingredientes.size());
-		//System.out.println(ing1.verificar_inventario());
-		//Platillo a=new Platillo();
-		//System.out.println(a.anadirIngrediente(ing1));
 		Empleado e=new Empleado(1,"juan",1);
 		Gerente g=new Gerente();
 		
-		lista_ingredientes();
-		//crear_platillo();*/
-		
-		/*boolean estado_programa=true;
+		boolean estado_programa=true;
 		do {
 		System.out.print("Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) cerrar programa \n\n Respuesta: ");
 
@@ -317,7 +363,7 @@ public class ClaseUi {
           }
 		
 		while(estado_programa==true);
-		*/
+		
         }
         
 }
