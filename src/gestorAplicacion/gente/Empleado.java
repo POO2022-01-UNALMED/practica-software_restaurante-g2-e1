@@ -2,8 +2,9 @@ package gestorAplicacion.gente;
 import gestorAplicacion.restaurante.*;
 import java.util.ArrayList; 
 import java.util.Collections;
+import java.io.Serializable;
 
-public class Empleado extends Persona {
+public class Empleado extends Persona implements Serializable {
 private int numero_ventas;
 private Turno turno;
 private int numero_asignado; //el numero asignado al empleado
