@@ -6,19 +6,19 @@ import gestorAplicacion.gente.Gerente;
 
 public class ClaseUi {
 	
-	static Scanner R = new Scanner(System.in);
+	static Scanner R = new Scanner(System.in); //para los int
+	static Scanner N = new Scanner(System.in); //para los String
 	
-	//nombrar gerente
-	
+	//Nombrar gerente, este metodo se encarga de ingresar la informacion del nuevo gerente y eliminar la del anterior
 	public static boolean nombrar_gerente() {
 		System.out.print("\n\ncedula: ");
 		int cedula= R.nextInt();
 		System.out.print("\nnombre: ");
-		String nombre= R.nextLine();
+		String nombre= N.nextLine();
 		System.out.print("\ntelefono: ");
 		int telefono= R.nextInt();
 		System.out.print("\ncontraseña: ");
-		String contraseña= R.nextLine();
+		String contraseña= N.nextLine();
 		Gerente gerente=new Gerente(cedula,nombre,telefono,contraseña);
 		return false;
 	}
@@ -38,9 +38,10 @@ public class ClaseUi {
 		
 	}
 	
-	//inicio de sesion gerente
-	public static boolean inicio_Sesion_gerente(int contraseña) { //recibe el numero de empleado, para verificar que si sea un nunmero de empleado
-		if(contraseña==Gerente.arr[0].getConstraseña_gerente()) {
+	//inicio de sesion gerente, recibe una contraseña para verificar que se trate del mismisimo gerente en persona
+	
+	public static boolean inicio_Sesion_gerente(String contraseña) { 
+		if(contraseña.equals(Gerente.arr[0].getConstraseña_gerente())) {
 			return opciones_gerente();	
 		}
 		else {
@@ -82,19 +83,51 @@ public class ClaseUi {
 		
 		switch(ob) {
 		case 1:
-			System.out.println("tomando orden");
+			System.out.println("arqueo de caja global");
 			return true;
 		case 2:
 			System.out.println("arqueo de caja");
 			return true;
 		case 3:
-			System.out.println("arqueo de caja global");
+			System.out.println("ingrese los datos del empleado que desea contratar ");
+			System.out.print("\n\ncedula: ");
+			int cedula_e= R.nextInt();
+			System.out.print("\nnombre: ");
+			String nombre_e= N.nextLine();
+			System.out.print("\ntelefono: ");
+			int telefono_e= R.nextInt();
+			Empleado e=new Empleado(cedula_e,nombre_e,telefono_e);
 			return true;
 		case 4:
-			System.out.println("despidiendo empleado");
+			System.out.println("\nverificando lista de empleados..");
+			if(Empleado.lista_empleados.size()>0) {
+				System.out.print("\ndigite el numero del empleado al que quiere despedir: ");
+				int nu_e= R.nextInt(); //numero de empleado que se piensa despedir
+				if(nu_e>0 && nu_e<=Empleado.lista_empleados.size()) {
+					Gerente.arr[0].despedir_empleado(Empleado.lista_empleados.get(nu_e-1));
+				}
+				else {
+					System.out.println("\nerror, ese numero de empleado no existe \n");
+				}
+			}
+			else {
+				System.out.println("\nerror la lista de empleados se encuentra vacia, para poder despedir empleados primero debe contratar empleados\n");
+			}
+			
 			return true;
 		case 5:
-			System.out.println("arqueo de caja global");
+			System.out.print("\nel despido inteligente se encarga de despedir al empleado con peor rendimiento, seguro que quiere continuar?: \n\n(1)si\n(2)no \n\nRespuesta: ");
+			int confirmacion= R.nextInt();
+			switch(confirmacion) {
+			case 1:
+				System.out.println("\nrealizando despido inteligente");
+				Gerente.arr[0].despido_inteligente();
+				break;
+			case 2:
+				System.out.println("\nvolviendo al menu principal\n");
+				break;
+		     }
+			
 			return true;
 		case 6:
 			System.out.println("\ncerrando  sesion\n");
@@ -102,21 +135,6 @@ public class ClaseUi {
         }
 		return false;
 		
-	}
-	
-	//////////////////////////////////////////////////////
-	
-	public static void matanga() {
-		System.out.print("El despido inteligente se encarga de despedir al empleado con peor rendimiento \nseguro de que quiere continuar? \n\n (1)si \n (2)no \n Respuesta: ");
-		int confirmacion= R.nextInt();
-		switch(confirmacion) {
-		case 1:
-			System.out.println("realizando despido inteligente");
-			break;
-		case 2:
-			System.out.println("volviendo al menu principal");
-			break;
-	     }
 	}
 		
 		
@@ -128,8 +146,6 @@ public class ClaseUi {
 		
 		do {
 		System.out.print("Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) cerrar programa \n\n Respuesta: ");
-		
-		Scanner R = new Scanner(System.in);
 
 		
 		int Respuesta = R.nextInt(); //respuesta
@@ -152,19 +168,20 @@ public class ClaseUi {
 			case 2:
 				boolean sesiong=true; //estado de sesion gerente
 				System.out.print("\nbienvenido Gerente, dijite la contraseña de gerente para poder acceder: ");
-				int contraseña = R.nextInt(); //contraseña gerente
+				String contraseña = N.nextLine(); //contraseña gerente
 				do {
 					sesiong=inicio_Sesion_gerente(contraseña);
 				}
 				while(sesiong==true);
-				
+
 				break;
 				
 			case 3:
-				System.out.print("\n ingrese los datos del nuevo gerente");
+				//System.out.print("\n ingrese los datos del nuevo gerente");
 				boolean estado=true;
 				do {
-					nombrar_gerente();
+					System.out.print("\n ingrese los datos del nuevo gerente");
+					estado=nombrar_gerente();
 				}
 				while(estado==true);
 				
