@@ -2,8 +2,9 @@ package gestorAplicacion.restaurante;
 import java.util.ArrayList; 
 import java.util.Collections;
 import gestorAplicacion.gente.*;
+import java.io.Serializable;
 
-public class Turno {
+public class Turno implements Serializable{
 	private Empleado empleado;
 	private Caja caja;
 	private String horario;
