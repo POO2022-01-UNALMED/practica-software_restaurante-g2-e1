@@ -21,7 +21,7 @@ public class Orden implements Serializable {
 	private static int cantidad_orden = 0;
 	private boolean estado_pedido;
 	private static Caja caja = new Caja();
-	public static ArrayList<Orden> lista_orden = new ArrayList<Orden>(); // se añadio esta lista de ordenes, la cual va
+	public static ArrayList<Orden> lista_orden = new ArrayList<Orden>(); // se anadio esta lista de ordenes, la cual va
 																			// a ser util a la hora de usar la interfaz
 
 	// constructor
