@@ -50,7 +50,7 @@ public class ClaseUi {
 //inicio de sesion gerente, recibe una contraseña para verificar que se trate del mismisimo gerente en persona
 	
 	public static boolean inicio_Sesion_gerente(String contraseña) { 
-		if(contraseña.equals(Gerente.arr[0].getConstraseña_gerente())) {
+		if(contraseña.equals(Gerente.arr[0].getConstrasena_gerente())) {
 			return opciones_gerente();	
 		}
 		else {
