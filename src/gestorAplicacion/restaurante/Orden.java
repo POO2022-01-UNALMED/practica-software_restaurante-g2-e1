@@ -137,7 +137,7 @@ public class Orden implements Serializable {
 					estado_pedido = true;
 					caja.setEfectivo(precio_total);
 					caja.nuevoIngreso(precio_total);
-					return "Pedido confirmado";
+					return "Pedido confirmado" + (precio_total- n);
 				} 
 				else {
 					return "dinero insuficiente";
@@ -154,7 +154,7 @@ public class Orden implements Serializable {
 					return "Pedido confirmado, devuelta de " + (precio_total- n);
 				} 
 				else {
-					return "dinero insuficiente" + (precio_total- n);
+					return "dinero insuficiente" ;
 				}
 			}
 			return "Pedido rechazado";
