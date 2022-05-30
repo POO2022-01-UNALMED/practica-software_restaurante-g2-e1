@@ -17,6 +17,7 @@ public class Platillo implements Serializable{
 		int x = 0;
 		for(ingredientes i: ingredientes) {
 			x += i.getPrecio_compra()*2;
+			i.anadirCantidad(-1);
 		}
 		precio = x;
 	}
