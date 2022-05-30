@@ -64,9 +64,9 @@ public class ClaseUi {
 //lista de ingredientes, imprime una lista con todos los ingredientes y sus precios
 	
 	public static void lista_ingredientes() {
-    	String a="";
     	for (int l=0;l<ingredientes.lista_ingredientes.size();l++) {
-    		System.out.println(l+1+") ingrediente: "+ingredientes.lista_tipos_ingredientes.get(l)+" precio: "+ingredientes.lista_precios.get(l)+"\n");
+    		System.out.println(l+1+") ingrediente: "+ingredientes.lista_ingredientes.get(l).getTipo()+" precio de venta: "+ingredientes.lista_ingredientes.get(l).getPrecio_compra()*2+
+    				" cantidad: "+ingredientes.lista_ingredientes.get(l).getCantidad()+"\n");
     	}
     }
 	
@@ -248,17 +248,20 @@ public class ClaseUi {
 //en esta clase se implementa lo necesario para la interfaz generica por consola
 	
 	public static void main (String[] args) {
-		//ingredientes ing1=new ingredientes(1,0,"chococola");
-		//ingredientes ing2=new ingredientes(1,44,"papa");
-		//ingredientes ing3=new ingredientes(1,44,"jd");
+		ingredientes ing1=new ingredientes(1,0,"chococola");
+		ingredientes ing2=new ingredientes(1,44,"papa");
+		ingredientes ing3=new ingredientes(1,44,"jd");
+		System.out.print(ingredientes.lista_ingredientes.size());
 		//System.out.println(ing1.verificar_inventario());
 		//Platillo a=new Platillo();
 		//System.out.println(a.anadirIngrediente(ing1));
 		Empleado e=new Empleado(1,"juan",1);
 		Gerente g=new Gerente();
+		
+		lista_ingredientes();
 		//crear_platillo();*/
 		
-		boolean estado_programa=true;
+		/*boolean estado_programa=true;
 		do {
 		System.out.print("Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) cerrar programa \n\n Respuesta: ");
 
@@ -314,7 +317,7 @@ public class ClaseUi {
           }
 		
 		while(estado_programa==true);
-		
+		*/
         }
         
 }
