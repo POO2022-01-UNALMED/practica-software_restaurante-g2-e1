@@ -95,4 +95,14 @@ public class Deserializador {
             System.out.println("Esta vacio");
         } 
         }
+        
+        public static void deserializarTodo() {
+            Deserializador.deserializar(Gerente.arr, "Gerente");
+            Deserializador.deserializar(Empleado.lista_empleados, "Empleado");
+            Deserializador.deserializar(Caja.class, "Caja");
+            Deserializador.deserializar(horarios.class, "horarios");
+            Deserializador.deserializar(ingredientes.lista_ingredientes, "ingredientes");
+            Deserializador.deserializar(Orden.lista_orden, "Orden");
+            Deserializador.deserializar(Platillo.class, "Platillo");
+        }
     }
