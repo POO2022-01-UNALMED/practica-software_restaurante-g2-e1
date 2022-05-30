@@ -82,18 +82,22 @@ public class Orden implements Serializable {
 		precio_total += platillo.getPrecio(); // aumento el precio
 	}
 
-	public void retirarPlatillo(Platillo platillo) {
-		for (Platillo i : platillos) {
-			if (i == platillo) {
-				precio_total -= platillo.getPrecio(); // quito el precio del platillo
-				for (ingredientes e : platillo.getIngredientes()) { // elimino ingredientes 1 por 1 para poder tenerlos
-																	// otra vez en el inventario
-					platillo.retirarIngrediente(e);
+	public String retirarPlatillo(Platillo platillo) {
+		for(int i = 0; i < platillos.size(); i++) {
+			if(platillos.get(i) == platillo) {
+				precio_total -= platillo.getPrecio();
+				int x =  platillo.getIngredientes().size();
+				for (int e = 0; e < x; e++) {
+					platillo.retirarIngrediente(platillo.getIngredientes().get(0));	
 				}
 				platillos.remove(platillos.indexOf(platillo));
+				return "Platillo retirado";
 			}
-			break;
+			else if (platillos.size()-1 == i) {
+				return "no existe tal platillo";
+			}
 		}
+		return "no existe tal platillo";
 	}
 
 	public void descuento() {
@@ -105,10 +109,11 @@ public class Orden implements Serializable {
 		// falta descuento por ser un cliente especifico
 	}
 
-	public void cancelar_orden() { // cambiar cancelar orden
-		for (Platillo i : platillos) {
-			retirarPlatillo(i);
+	public String cancelar_orden() { // cambiar cancelar orden
+		for (int i = 0; i < platillos.size(); i++) {
+			retirarPlatillo(platillos.get(i));
 		}
+		return "orden cancelada";
 	}
 
 	public void duplicar(Platillo platillo) {
@@ -129,7 +134,7 @@ public class Orden implements Serializable {
 		String text = date.format(formatter);
 		LocalDate parsedDate = LocalDate.parse(text, formatter);
 		String dia = parsedDate.getDayOfWeek().toString();
-
+		descuento();
 		if (dia == "SATURDAY" || dia == "SUNDAY") {
 			if (horarios.horario2.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario2.getFinal()) {
@@ -137,7 +142,7 @@ public class Orden implements Serializable {
 					estado_pedido = true;
 					caja.setEfectivo(precio_total);
 					caja.nuevoIngreso(precio_total);
-					return "Pedido confirmado" + (precio_total- n);
+					return "Pedido confirmado, devuelta de " + (precio_total- n);
 				} 
 				else {
 					return "dinero insuficiente";
