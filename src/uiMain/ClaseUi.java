@@ -114,7 +114,7 @@ public class ClaseUi {
 						System.out.println(l + 1 + ") " + ingredientes_platillo.get(l).getTipo());
 					}
 					System.out.print("\ndigite el numero del ingrediente que desea retirar: ");
-					int ingre_ret = R.nextInt();
+					int ingre_ret = R.nextInt()-1;
 
 					if (0 < ingre_ret && ingre_ret <= ingredientes_platillo.size()) {
 						platillo.retirarIngrediente(ingredientes.lista_ingredientes.get(ingre_ret - 1));
