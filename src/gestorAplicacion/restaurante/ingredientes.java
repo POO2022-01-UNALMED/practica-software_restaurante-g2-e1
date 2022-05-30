@@ -11,16 +11,24 @@ public class ingredientes {
 	public static ArrayList<ingredientes> lista_ingredientes = new ArrayList<ingredientes>();
 
 	public ingredientes(int precio_compra, int cant, String tipo) {
-		for (ingredientes i: lista_ingredientes) {
-			if(tipo == i.tipo) {
-				nosepuede();
-			}
-			else {
-				if (i == lista_ingredientes.get(lista_ingredientes.size()-1)) {
-					this.precio_compra = precio_compra;
-					this.cantidad = cant;
-					this.tipo = tipo;
-					lista_ingredientes.add(this);
+		if(lista_ingredientes.size()==0) {
+			this.precio_compra=precio_compra;
+			this.cantidad=cantidad;
+			this.tipo=tipo;
+			lista_ingredientes.add(this);
+		}
+		else {
+			for (ingredientes i: lista_ingredientes) {
+				if(tipo == i.tipo) {
+					nosepuede();
+				}
+				else {
+					if (i == lista_ingredientes.get(lista_ingredientes.size()-1)) {
+						this.precio_compra = precio_compra;
+						this.cantidad = cant;
+						this.tipo = tipo;
+						lista_ingredientes.add(this);
+					}
 				}
 			}
 		}
