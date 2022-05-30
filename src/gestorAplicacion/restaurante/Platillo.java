@@ -15,7 +15,7 @@ public class Platillo {
 		this.ingredientes = ingredientes;
 		int x = 0;
 		for(ingredientes i: ingredientes) {
-			x += i.getPrecio_venta();
+			x += i.getPrecio_compra()*2;
 		}
 		precio = x;
 	}
@@ -32,9 +32,9 @@ public class Platillo {
 	//metodos set
 	public String anadirIngrediente(ingredientes ingrediente) {
 		if (ingrediente.verificar_inventario() == true) {
-			ingrediente.anadirCantidad(-1,ingrediente.getTipo());      // resto al inventario
+			ingrediente.anadirCantidad(-1);      // resto al inventario
 			ingredientes.add(ingrediente);		 //aï¿½ado a la lista de ingredientes
-			precio += ingrediente.getPrecio_venta();     // aumento el precio del platillo
+			precio += ingrediente.getPrecio_compra()*2;     // aumento el precio del platillo
 			return "añadido con exito";
 		}
 		else {
@@ -45,8 +45,8 @@ public class Platillo {
 		for (int i = 0; i < ingredientes.size(); i++) {
 			if (ingredientes.get(i) == ingrediente) {          //compruebo si existe ese elemento en la lista
 				ingredientes.remove(i);
-				ingrediente.anadirCantidad(1,ingredientes.get(i).getTipo());
-				precio -= ingrediente.getPrecio_venta();
+				ingrediente.anadirCantidad(1);
+				precio -= ingrediente.getPrecio_compra()*2;
 				return "ingrediente eliminado";
 			}	
 		}
