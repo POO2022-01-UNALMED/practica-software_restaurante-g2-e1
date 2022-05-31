@@ -145,11 +145,11 @@ public class Orden implements Serializable {
 		if (dia == "SATURDAY" || dia == "SUNDAY") {
 			if (horarios.horario2.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario2.getFinal()) {
-				if (n > precio_total) {
+				if (n >= precio_total) {
 					estado_pedido = true;
 					caja.setEfectivo(precio_total);
 					caja.nuevoIngreso(precio_total);
-					return "Pedido confirmado, devuelta de " + (precio_total- n);
+					return "Pedido confirmado, su devuelta es de $" + (n - precio_total);
 				} 
 				else {
 					return "dinero insuficiente";
@@ -159,11 +159,11 @@ public class Orden implements Serializable {
 		} else {
 			if (horarios.horario1.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario1.getFinal()) {
-				if (n > precio_total) {
+				if (n >= precio_total) {
 					estado_pedido = true;
 					caja.setEfectivo(precio_total);
 					caja.nuevoIngreso(precio_total);
-					return "Pedido confirmado, devuelta de " + (precio_total- n);
+					return "Pedido confirmado, su devuelta es de $" + (n - precio_total);
 				} 
 				else {
 					return "dinero insuficiente" ;
