@@ -167,6 +167,8 @@ public class ClaseUi {
 //es lo que el gerente puede realizar mientras esta en el sistema
 
 	public static boolean opciones_gerente() {
+		System.out.println("");
+		System.out.println(Gerente.arr[0].perfil());
 		System.out.print(
 				"\nselecione una opcion: \n\n (1) añadir ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
 						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) agregar/retirar efectivo \n"
@@ -285,7 +287,7 @@ public class ClaseUi {
 				for (int l=0;l<Empleado.lista_empleados.size();l++) {
 					Empleado a=Empleado.lista_empleados.get(l);
 					System.out.println("");
-					System.out.println(a.info_basi());
+					System.out.println(a.info_basi()+" observaciones: "+a.perfil());
 					System.out.println("");
 				}
 				break;
@@ -461,16 +463,13 @@ public class ClaseUi {
 //en esta clase se implementa lo necesario para la interfaz generica por consola
 
 	public static void main(String[] args) {
-		ingredientes ing1 = new ingredientes(1, 0, "chococola");
-		ingredientes ing2 = new ingredientes(1, 44, "papa");
-		ingredientes ing3 = new ingredientes(1, 44, "jd");
-		Empleado e = new Empleado(1, "juan", 1);
+		Empleado e = new Empleado(1, "empleado_1", 1);
 		Gerente g = new Gerente();
 
 		boolean estado_programa = true;
 		do {
 			System.out.print(
-					"Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) cerrar programa \n\n Respuesta: ");
+					"Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) generalidades sobre el software  \n (5) cerrar programa \n\n Respuesta: ");
 
 			int Respuesta = R.nextInt(); // respuesta
 
@@ -502,8 +501,22 @@ public class ClaseUi {
 				nombrar_gerente();
 
 				break;
-
 			case 4:
+				System.out.println("");
+				System.out.println(" este software cumple con la funcion de gestionar un restaurante a nivel general ademas de que sirve para administrar la nomina de empleados,");
+				System.out.println(" es recomendable que se familiarice con que actores van a interactuar con el software, es por ello que aqui dejamos un pequeño resumen:");
+				System.out.println("");
+				System.out.println(" sobre el empleado: el empleado se encarga de tomar los pedidos y gestionar las ventas durante su turno ");
+				System.out.println(" sobre el gerente: el gerente se encarga de gestionar el restaurante a nivel general");
+				System.out.println("");
+				System.out.println(" NOTA IMPORTANTE: el gerente por defecto tiene la siguiente informacion: cedula: 1111, nombre: nombre del gerente, telefono:1111 y contraseña:1111");
+				System.out.println(" para cambiar esta informacion selecione la opcion nombrar nuevo gerente, debe digitar la contraseña de gerente por defecto, depues podra editar la");
+				System.out.println(" informacion del gerente, ademas podra usar esta funcion cada que cambie el gerente o necesite editar su informacion usando la contraseña de gerente");
+				System.out.println(" que se disponga en ese momento, sea la contraseña por defecto u otra que usted haya fijado. ");
+				System.out.println("");
+				break;
+
+			case 5:
 				System.out.print("\n cerrando programa :) ");
 				estado_programa = false;
 				break;

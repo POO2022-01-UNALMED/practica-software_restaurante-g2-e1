@@ -81,5 +81,14 @@ public String info_basi() {
 	return super.informacion();
 }
 
+public String perfil() {
+	if(this.getNumero_ventas()>25) {
+		return "tiene mas de 50 ventas, felicidades";
+	}
+	else {
+		return "tiene menos de 50 ventas, debe esforzarce mas";
+	}
+}
+
 
 }

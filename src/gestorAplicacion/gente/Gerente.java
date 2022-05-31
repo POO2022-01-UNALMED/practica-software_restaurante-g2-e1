@@ -67,4 +67,8 @@ public String informacion() {
 	return "nombre del Gerente: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono();
 }
 
+public String perfil() {
+	return "recuerde, su funcion como gerente es administrar y gestionar el restaurante...";
+}
+
 }

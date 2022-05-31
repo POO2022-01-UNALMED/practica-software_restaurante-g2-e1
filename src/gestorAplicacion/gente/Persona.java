@@ -7,6 +7,7 @@ private String nombre;
 private int telefono;
 
 //constructor
+public abstract String perfil();
 
 public String informacion() {
 	return "cedula: "+cedula+" nombre: "+nombre+" telefono: "+telefono;
