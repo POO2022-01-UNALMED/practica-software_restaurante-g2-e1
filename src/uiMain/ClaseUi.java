@@ -16,17 +16,39 @@ public class ClaseUi {
 
 //Nombrar gerente, este metodo se encarga de ingresar la informacion del nuevo gerente y eliminar la del anterior
 
-	public static boolean nombrar_gerente() {
-		System.out.print("\n\ncedula: ");
-		int cedula = R.nextInt();
-		System.out.print("\nnombre: ");
-		String nombre = N.nextLine();
-		System.out.print("\ntelefono: ");
-		int telefono = R.nextInt();
-		System.out.print("\ncontrasena: ");
-		String contrasena = N.nextLine();
-		Gerente gerente = new Gerente(cedula, nombre, telefono, contrasena);
-		return false;
+	public static void nombrar_gerente() {
+		boolean x = true;
+		do {
+			System.out.println(" (1)Ingresar contrasena \n (2)Volver");
+			System.out.print(" Respuesta: ");
+			int option = R.nextInt();
+			switch (option) {
+			case 1:
+				System.out.println("Ingrese contrasena de gerente: ");
+				String w = N.nextLine();
+				
+				if (w.equals(Gerente.arr[0].getConstrasena_gerente())) {
+					System.out.print("\n\ncedula: ");
+					int cedula = R.nextInt();
+					System.out.print("\nnombre: ");
+					String nombre = N.nextLine();
+					System.out.print("\ntelefono: ");
+					int telefono = R.nextInt();
+					System.out.print("\ncontrasena: ");
+					String contrasena = N.nextLine();
+					Gerente gerente = new Gerente(cedula, nombre, telefono, contrasena);
+					x = false;
+				}
+				else {
+					System.out.println("Contrasena incorrecta");
+				}
+
+				break;
+			case 2:
+				x = false;
+				break;
+			}
+		} while (x == true);
 	}
 
 ///////////////////////////////////////////////////////////////////////////////////	
@@ -49,13 +71,13 @@ public class ClaseUi {
 
 ///////////////////////////////////////////////////////////////////////////////////	
 
-//inicio de sesion gerente, recibe una contraseï¿½a para verificar que se trate del mismisimo gerente en persona
+//inicio de sesion gerente, recibe una contrasena para verificar que se trate del mismisimo gerente en persona
 
 	public static boolean inicio_Sesion_gerente(String contrasena) {
 		if (contrasena.equals(Gerente.arr[0].getConstrasena_gerente())) {
 			return opciones_gerente();
 		} else {
-			System.out.println("\nEste contraseï¿½a no es valida, ingrese nuevamente\n");
+			System.out.println("\nEste contrasena no es valida, ingrese nuevamente\n");
 			return false;
 		}
 
@@ -82,19 +104,19 @@ public class ClaseUi {
 		Platillo platillo = new Platillo(ingredientes_platillo);
 		boolean x = true;
 		do {
-			System.out.println("\ningredientes en el platillo :\n"); // se imprime una pequeï¿½a lista con los
+			System.out.println("\ningredientes en el platillo :\n"); // se imprime una pequena lista con los
 																		// ingredientes que tiene el platillo
 			for (int l = 0; l < ingredientes_platillo.size(); l++) {
 				System.out.println(ingredientes_platillo.get(l).getTipo());
 			}
 			System.out.print(
-					"\nseleccione una opcion: \n\n(1)aï¿½adir ingrediente \n\n(2)retirar ingrediente \n\n(3)terminar platillo\n\nrespuesta: ");
+					"\nseleccione una opcion: \n\n(1)anadir ingrediente \n\n(2)retirar ingrediente \n\n(3)terminar platillo\n\nrespuesta: ");
 			int res = R.nextInt();
 			switch (res) {
 			case (1):
 				System.out.println("");
 				lista_ingredientes();
-				System.out.print("seleccione el ingrediente que va a aï¿½adir: ");
+				System.out.print("seleccione el ingrediente que va a anadir: ");
 				int ingre = R.nextInt(); // numero correspondiente al lugar en la lista que ocupa el ingredientes
 
 				// en caso de que se tenga en inventario el ingrediente
@@ -141,7 +163,7 @@ public class ClaseUi {
 
 		} while (x == true);
 
-		if (ingredientes_platillo.size() >= 1) { // aqui se crea el platillo con los ingredientes que aï¿½adimos
+		if (ingredientes_platillo.size() >= 1) { // aqui se crea el platillo con los ingredientes que anadimos
 													// anteriormente
 			return platillo;
 		} else {
@@ -229,8 +251,7 @@ public class ClaseUi {
 //es lo que el empleado puede realizar mientras esta en el sistema
 
 	public static boolean opciones_empleado(int nemp) {
-		System.out.print(
-				"\nseleciones una opcion: \n\n (1) tomar Orden \n (2) arqueo de caja \n (3) cerrar sesion \n\n respuesta: ");
+		System.out.print("\nseleciones una opcion: \n\n (1) tomar Orden \n (2) cerrar sesion \n\n respuesta: ");
 		int opcion = R.nextInt();
 
 		switch (opcion) {
@@ -238,9 +259,6 @@ public class ClaseUi {
 			tomar_orden(nemp);
 			return true;
 		case 2:
-			System.out.println("\narqueo de caja");
-			return true;
-		case 3:
 			System.out.println("\ncerrando  sesion\n");
 			return false;
 		}
@@ -256,7 +274,7 @@ public class ClaseUi {
 		boolean estado_orden = true;
 		do {
 			System.out.print(
-					"\nseleccione una opcion: \n\n(1)aï¿½adir platillo \n(2)retirar platillo \n(3)duplicar platillo\n(4)terminar orden\n(5)cancelar orden\n\n respuesta: ");
+					"\nseleccione una opcion: \n\n(1)anadir platillo \n(2)retirar platillo \n(3)duplicar platillo\n(4)terminar orden\n(5)cancelar orden\n\n respuesta: ");
 			int Respuesta = R.nextInt();
 			switch (Respuesta) {
 			case 1:
@@ -331,12 +349,13 @@ public class ClaseUi {
 				while (pago < o.getPrecio_total()) {
 					if (lista_platillos.size() > 0) {
 						System.out.println("el total a pagar es de $" + o.getPrecio_total());
-						System.out.println("Con cuanto vas a pagar?: ");
+						System.out.println("¿Con cuanto vas a pagar?: ");
 						pago = R.nextInt();
-						System.out.println(o.comprobar(pago));	
+						System.out.println(o.comprobar(pago));
 					}
 				}
-				Empleado.lista_empleados.get((nemp - 1)).nuevaVenta();;
+				Empleado.lista_empleados.get((nemp - 1)).nuevaVenta();
+				;
 				estado_orden = false;
 				break;
 			case 5:
@@ -384,8 +403,8 @@ public class ClaseUi {
 			// en caso de que sea tipo gerente
 			case 2:
 				boolean sesiong = true; // estado de sesion gerente
-				System.out.print("\nbienvenido Gerente, dijite la contraseï¿½a de gerente para poder acceder: ");
-				String contrasena = N.nextLine(); // contraseï¿½a gerente
+				System.out.print("\nbienvenido Gerente, dijite la contrasena de gerente para poder acceder: ");
+				String contrasena = N.nextLine(); // contrasena gerente
 				do {
 					sesiong = inicio_Sesion_gerente(contrasena);
 				} while (sesiong == true);
@@ -394,11 +413,7 @@ public class ClaseUi {
 
 			case 3:
 				// System.out.print("\n ingrese los datos del nuevo gerente");
-				boolean estado = true;
-				do {
-					System.out.print("\n ingrese los datos del nuevo gerente");
-					estado = nombrar_gerente();
-				} while (estado == true);
+				nombrar_gerente();
 
 				break;
 
