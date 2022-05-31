@@ -3,6 +3,7 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gestorAplicacion.gente.Persona;
 import gestorAplicacion.gente.Empleado;
 import gestorAplicacion.gente.Gerente;
 import gestorAplicacion.restaurante.Orden;
@@ -180,7 +181,7 @@ public class ClaseUi {
 	public static boolean opciones_gerente() {
 		System.out.print(
 				"\nselecione una opcion: \n\n (1) añadir ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
-						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) cerrar sesion \n\n respuesta: ");
+						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) cerrar sesion \n\n respuesta: ");
 
 		int ob = R.nextInt();
 
@@ -268,10 +269,36 @@ public class ClaseUi {
 
 			return true;
 		case 6:
-			System.out.println("Aqui podemos dar un vistazo mas a fondo sobre el empleado mas efeiciente: ");
+			System.out.println("\nAqui podemos dar un vistazo mas a fondo sobre el empleado mas eficiente: \n");
 			System.out.println(Empleado.empleado_mas_eficiente().informacion());
 			return true;
 		case 7:
+			System.out.print("\nSeleccione una opcion: \n(1)mostrar empleados en la nomina\n(2)mostrar informacion de un empleado en especifico\n\n respuesta: ");
+			int mostrar=R.nextInt();
+			switch (mostrar) {
+			case 1:
+				for (int l=0;l<Empleado.lista_empleados.size();l++) {
+					Empleado a=Empleado.lista_empleados.get(l);
+					System.out.println("");
+					System.out.println(a.info_basi());
+					System.out.println("");
+				}
+				break;
+			case 2:
+				System.out.print("\ndigite el numero de empleado: ");
+				int numero_empleado=R.nextInt();
+				if (numero_empleado>0 && numero_empleado<=Empleado.lista_empleados.size()) {
+					System.out.println("\n"+Empleado.lista_empleados.get(numero_empleado-1).informacion()+"\n");
+				}
+				else {
+					System.out.println("\neste numero de empleado no esta en la nomina");
+				}
+			}
+			return true;
+			
+			
+			
+		case 8:
 			System.out.println("\ncerrando  sesion\n");
 			return false;
 			
@@ -364,7 +391,7 @@ public class ClaseUi {
 							}
 						}
 					}
-					System.out.print("seleccione el platillo que desea retirar: \n\nrespuesta: ");
+					System.out.print("seleccione el platillo que desea duplicar: \n\nrespuesta: ");
 					int platillo_ret = R.nextInt() - 1;
 					if (platillo_ret < lista_platillos.size()) {
 						o.duplicar(lista_platillos.get(platillo_ret));
@@ -383,7 +410,7 @@ public class ClaseUi {
 				while (pago < o.getPrecio_total()) {
 					if (lista_platillos.size() > 0) {
 						System.out.println("el total a pagar es de $" + o.getPrecio_total());
-						System.out.println("¿Con cuanto vas a pagar?: ");
+						System.out.print("¿Con cuanto vas a pagar?: ");
 						pago = R.nextInt();
 						System.out.println(o.comprobar(pago));
 					}
@@ -437,7 +464,7 @@ public class ClaseUi {
 			// en caso de que sea tipo gerente
 			case 2:
 				boolean sesiong = true; // estado de sesion gerente
-				System.out.print("\nbienvenido Gerente, dijite la contrasena de gerente para poder acceder: ");
+				System.out.print("\nbienvenido Gerente, digite la contrasena de gerente para poder acceder: ");
 				String contrasena = N.nextLine(); // contrasena gerente
 				do {
 					sesiong = inicio_Sesion_gerente(contrasena);

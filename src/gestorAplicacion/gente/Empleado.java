@@ -77,5 +77,9 @@ public String informacion() {
 	return "nombre del Empleado: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono()+" \nnumero asignado: "+numero_asignado+" \nnumero de ventas: "+numero_ventas;
 }
 
+public String info_basi() {
+	return super.informacion();
+}
+
 
 }
