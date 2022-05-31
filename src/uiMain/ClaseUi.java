@@ -179,17 +179,46 @@ public class ClaseUi {
 
 	public static boolean opciones_gerente() {
 		System.out.print(
-				"\nselecione una opcion: \n\n (1) arqueo de caja global \n (2) arqueo de caja \n (3) contratar empleado"
-						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) cerrar sesion \n\n respuesta: ");
+				"\nselecione una opcion: \n\n (1) añadir ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
+						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) cerrar sesion \n\n respuesta: ");
 
 		int ob = R.nextInt();
 
 		switch (ob) {
 		case 1:
-			System.out.println("arqueo de caja global");
+			System.out.print("Seleccione una opcion: \n(1) añadir ingrediente \n(2) actualizar stock \n\nRespuesta: ");
+			int seleccion = R.nextInt();
+			switch(seleccion) {
+			case 1:
+				System.out.println("\ncoloque la informacion del nuevo ingrediente\n");
+				System.out.print("\nPrecio de compra: ");
+				int precio_compra=R.nextInt();
+				System.out.println("");
+				System.out.print("\ncantidad: ");
+				int cant=R.nextInt();
+				System.out.println("");
+				System.out.print("\ntipo: ");
+				String tipo=N.nextLine();
+				ingredientes ing= new ingredientes(precio_compra,cant,tipo);
+			case 2:
+				lista_ingredientes();
+				System.out.print("\nseleccione el ingrediente del cual se va a actualizar el stock: ");
+				int actualiza=R.nextInt();
+				System.out.println("");
+				System.out.print("indique la cantidad de ingrediente que se va a adicionar al stock: ");
+				int cantida=R.nextInt();
+				System.out.println("");
+				if(actualiza>0 && actualiza<=ingredientes.lista_ingredientes.size()) {
+					ingredientes.lista_ingredientes.get(actualiza-1).anadirCantidad(cantida);
+				}
+				else {
+					System.out.println("esa opcion no es valida");
+				}
+				
+			}
 			return true;
 		case 2:
-			System.out.println("arqueo de caja");
+			System.out.println("\nLa cantidad de dinero en la caja es: "+Orden.getCaja().arqueo());
 			return true;
 		case 3:
 			System.out.println("ingrese los datos del empleado que desea contratar ");
@@ -239,8 +268,13 @@ public class ClaseUi {
 
 			return true;
 		case 6:
+			System.out.println("Aqui podemos dar un vistazo mas a fondo sobre el empleado mas efeiciente: ");
+			System.out.println(Empleado.empleado_mas_eficiente().informacion());
+			return true;
+		case 7:
 			System.out.println("\ncerrando  sesion\n");
 			return false;
+			
 		}
 		return false;
 
