@@ -65,7 +65,7 @@ public class Caja implements Serializable{
 			x += n;
 		}
 		for (int i: egresos) {
-			x += i;
+			x -= i;
 		}
 		return x;
 	}
