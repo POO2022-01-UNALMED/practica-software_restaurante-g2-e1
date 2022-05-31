@@ -3,7 +3,6 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import gestorAplicacion.gente.Persona;
 import gestorAplicacion.gente.Empleado;
 import gestorAplicacion.gente.Gerente;
 import gestorAplicacion.restaurante.Orden;
@@ -11,7 +10,6 @@ import gestorAplicacion.restaurante.Platillo;
 import gestorAplicacion.restaurante.ingredientes;
 
 public class ClaseUi {
-
 	static Scanner R = new Scanner(System.in); // para los int
 	static Scanner N = new Scanner(System.in); // para los String
 
@@ -25,11 +23,11 @@ public class ClaseUi {
 			int option = R.nextInt();
 			switch (option) {
 			case 1:
-				System.out.println("Ingrese contrasena de gerente: ");
+				System.out.print("Ingrese contrasena de gerente: ");
 				String w = N.nextLine();
 				
 				if (w.equals(Gerente.arr[0].getConstrasena_gerente())) {
-					System.out.print("\n\ncedula: ");
+					System.out.print("\ncedula: ");
 					int cedula = R.nextInt();
 					System.out.print("\nnombre: ");
 					String nombre = N.nextLine();
@@ -101,14 +99,13 @@ public class ClaseUi {
 //construir platillo
 
 	public static Platillo crear_platillo() {
-		ArrayList<ingredientes> ingredientes_platillo = new ArrayList<ingredientes>();
-		Platillo platillo = new Platillo(ingredientes_platillo);
+		Platillo platillo = new Platillo();
 		boolean x = true;
 		do {
 			System.out.println("\ningredientes en el platillo :\n"); // se imprime una pequena lista con los
 																		// ingredientes que tiene el platillo
-			for (int l = 0; l < ingredientes_platillo.size(); l++) {
-				System.out.println(ingredientes_platillo.get(l).getTipo());
+			for (int l = 0; l < platillo.getIngredientes().size(); l++) {
+				System.out.println(platillo.getIngredientes().get(l).getTipo());
 			}
 			System.out.print(
 					"\nseleccione una opcion: \n\n(1)anadir ingrediente \n\n(2)retirar ingrediente \n\n(3)terminar platillo\n\nrespuesta: ");
@@ -122,7 +119,9 @@ public class ClaseUi {
 
 				// en caso de que se tenga en inventario el ingrediente
 				if (ingre > 0 && ingredientes.lista_ingredientes.size() >= ingre) {
+					System.out.println("");
 					System.out.println(platillo.anadirIngrediente(ingredientes.lista_ingredientes.get(ingre - 1)));
+					System.out.println("");
 				}
 				// en caso de que no haya inventario
 				else {
@@ -131,28 +130,17 @@ public class ClaseUi {
 
 				break;
 			case (2):
-				if (ingredientes_platillo.size() > 0) {
-					System.out.println("\nseleccione el ingrediente que va a retirar");
-					for (int l = 0; l < ingredientes_platillo.size(); l++) {
-						System.out.println(l + 1 + ") " + ingredientes_platillo.get(l).getTipo());
-					}
-					System.out.print("\ndigite el numero del ingrediente que desea retirar: ");
-					int ingre_ret = R.nextInt() - 1;
-
-					if (0 < ingre_ret && ingre_ret <= ingredientes_platillo.size()) {
-						platillo.retirarIngrediente(ingredientes.lista_ingredientes.get(ingre_ret - 1));
-					}
-
-					else {
-						System.out.println("ese numero de ingrediente no esta en el platillo");
-					}
+				if (platillo.getIngredientes().size() > 0) {
+					System.out.println("");
+					System.out.println(platillo.retirarIngrediente(platillo.getIngredientes().get(platillo.getIngredientes().size()-1)));
+					System.out.println("");
 
 				} else {
 					System.out.println("\nerror este platillo no cuenta con ingredientes");
 				}
 				break;
 			case (3):
-				if (ingredientes_platillo.size() == 0) {
+				if (platillo.getIngredientes().size() == 0) {
 					System.out.println("\neste platillo no tiene ingredientes\n");
 					x = false;
 				} else {
@@ -164,7 +152,7 @@ public class ClaseUi {
 
 		} while (x == true);
 
-		if (ingredientes_platillo.size() >= 1) { // aqui se crea el platillo con los ingredientes que anadimos
+		if (platillo.getIngredientes().size() >= 1) { // aqui se crea el platillo con los ingredientes que anadimos
 													// anteriormente
 			return platillo;
 		} else {
@@ -181,13 +169,14 @@ public class ClaseUi {
 	public static boolean opciones_gerente() {
 		System.out.print(
 				"\nselecione una opcion: \n\n (1) añadir ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
-						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) cerrar sesion \n\n respuesta: ");
-
+						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) agregar/retirar efectivo \n"
+						+" (9) ver inventario \n (10) cerrar sesion \n\n respuesta: ");
 		int ob = R.nextInt();
 
 		switch (ob) {
 		case 1:
 			System.out.print("Seleccione una opcion: \n(1) añadir ingrediente \n(2) actualizar stock \n\nRespuesta: ");
+			System.out.println("");
 			int seleccion = R.nextInt();
 			switch(seleccion) {
 			case 1:
@@ -201,6 +190,7 @@ public class ClaseUi {
 				System.out.print("\ntipo: ");
 				String tipo=N.nextLine();
 				ingredientes ing= new ingredientes(precio_compra,cant,tipo);
+				break;
 			case 2:
 				lista_ingredientes();
 				System.out.print("\nseleccione el ingrediente del cual se va a actualizar el stock: ");
@@ -215,15 +205,30 @@ public class ClaseUi {
 				else {
 					System.out.println("esa opcion no es valida");
 				}
+				break;
 				
 			}
 			return true;
 		case 2:
+			System.out.println("");
+			ArrayList<Integer> ingresos_caja=Orden.getCaja().getIngresos();
+			ArrayList<Integer> egresos_caja=Orden.getCaja().getEgresos();
+			System.out.println("lista de ingresos:");
+			for (int k=0;k<ingresos_caja.size();k++) {
+				System.out.println("");
+				System.out.println(ingresos_caja.get(k));
+			}
+			System.out.println("");
+			System.out.println("lista de egresos:");
+			for (int k=0;k<egresos_caja.size();k++) {
+				System.out.println("");
+				System.out.println(egresos_caja.get(k));
+			}
 			System.out.println("\nLa cantidad de dinero en la caja es: "+Orden.getCaja().arqueo());
 			return true;
 		case 3:
-			System.out.println("ingrese los datos del empleado que desea contratar ");
-			System.out.print("\n\ncedula: ");
+			System.out.println("\ningrese los datos del empleado que desea contratar ");
+			System.out.print("\ncedula: ");
 			int cedula_e = R.nextInt();
 			System.out.print("\nnombre: ");
 			String nombre_e = N.nextLine();
@@ -295,10 +300,30 @@ public class ClaseUi {
 				}
 			}
 			return true;
-			
-			
-			
 		case 8:
+			System.out.print("\nSeleccione una opcion: \n(1)añadir efectivo\n(2)retirar efectivo\n\n respuesta: ");
+			int mop=R.nextInt();
+			switch(mop) {
+			case 1:
+				System.out.print("\ndigite el monto de efectivo que va a ingresar a la caja: ");
+				int efectivo=R.nextInt();
+				Orden.getCaja().nuevoIngreso(efectivo);
+				System.out.println("");
+				break;
+			case 2:
+				System.out.print("\ndigite el monto de efectivo que va a retirar de la caja: ");
+				int efectivoret=R.nextInt();
+				Orden.getCaja().nuevoEgreso(efectivoret);
+				System.out.println("");
+				break;
+			}
+			return true;
+		case 9:
+			System.out.println("");
+			lista_ingredientes();
+			return true;
+			
+		case 10:
 			System.out.println("\ncerrando  sesion\n");
 			return false;
 			
@@ -351,6 +376,7 @@ public class ClaseUi {
 					int num = 0;
 					for (int l = 0; l < lista_platillos.size(); l++) {
 						num += 1;
+						System.out.println("");
 						System.out.print("platillo numero: " + num + " ingredientes: ");
 						Platillo plato = lista_platillos.get(l);
 						for (int j = 0; j < plato.getIngredientes().size(); j++) {
@@ -414,8 +440,8 @@ public class ClaseUi {
 						pago = R.nextInt();
 						System.out.println(o.comprobar(pago));
 					}
+					Empleado.lista_empleados.get((nemp - 1)).nuevaVenta();
 				}
-				Empleado.lista_empleados.get((nemp - 1)).nuevaVenta();
 				;
 				estado_orden = false;
 				break;
@@ -423,7 +449,7 @@ public class ClaseUi {
 				System.out.print("");
 				if (lista_platillos.size() > 0) {
 					o.cancelar_orden();
-					System.out.println("Orden cancelada");
+					System.out.println("\nOrden cancelada");
 				}
 				estado_orden = false;
 				break;
@@ -473,7 +499,6 @@ public class ClaseUi {
 				break;
 
 			case 3:
-				// System.out.print("\n ingrese los datos del nuevo gerente");
 				nombrar_gerente();
 
 				break;

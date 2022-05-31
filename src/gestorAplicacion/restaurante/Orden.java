@@ -156,7 +156,8 @@ public class Orden implements Serializable {
 				}
 			}
 			return "Pedido rechazado";
-		} else {
+		} 
+		else {
 			if (horarios.horario1.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario1.getFinal()) {
 				if (n >= precio_total) {
