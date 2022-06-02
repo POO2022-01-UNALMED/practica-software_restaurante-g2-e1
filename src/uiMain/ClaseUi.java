@@ -3,6 +3,7 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import gestorAplicacion.gente.Cliente;
 import gestorAplicacion.gente.Empleado;
 import gestorAplicacion.gente.Gerente;
 import gestorAplicacion.restaurante.Orden;
@@ -378,7 +379,7 @@ public class ClaseUi {
 //es lo que el empleado puede realizar mientras esta en el sistema
 
 	public static boolean opciones_empleado(int nemp) {
-		System.out.print("\nseleciones una opcion: \n\n (1) tomar Orden \n (2) cerrar sesion \n\n respuesta: ");
+		System.out.print("\nseleciones una opcion: \n\n (1) tomar Orden \n (2) agregar socio \n (3) cerrar sesion \n\n respuesta: ");
 		int opcion = R.nextInt();
 
 		switch (opcion) {
@@ -386,6 +387,32 @@ public class ClaseUi {
 			tomar_orden(nemp);
 			return true;
 		case 2:
+			System.out.print("\nseleccione una opcion: \n\n (1) crear nuevo cliente \n (2) cerrar");
+			int n = R.nextInt();
+			switch (n) {
+			case 1:
+				System.out.print("\ningrese cedula: ");
+				int cedula = R.nextInt();
+				System.out.print("\ningrese nombre: ");
+				String nombre = N.nextLine();
+				System.out.print("\ningrese telefono: ");
+				int telefono = R.nextInt();
+				for (Cliente i: Cliente.getListaSocios()) {
+					if (cedula == i.getCedula()) {
+						System.out.print("\nEste usuario ya ha sido registrado");
+						break;
+					}
+				}
+				Cliente cliente = new Cliente(cedula, nombre, telefono);
+				Cliente.addSocio(cliente);
+				System.out.print("\nUsuario creado exitosamente");
+				break;
+			case 2:
+				break;
+				}
+			return true;
+			
+		case 3:
 			System.out.println("\ncerrando  sesion\n");
 			return false;
 		}
@@ -401,7 +428,7 @@ public class ClaseUi {
 		boolean estado_orden = true;
 		do {
 			System.out.print(
-					"\nseleccione una opcion: \n\n(1)anadir platillo \n(2)retirar platillo \n(3)duplicar platillo\n(4)terminar orden\n(5)cancelar orden\n\n respuesta: ");
+					"\nseleccione una opcion: \n\n(1)anadir platillo \n(2)retirar platillo \n(3)duplicar platillo\n(4)ingresar cedula cliente\n(5)terminar orden\n(6)cancelar orden\n\n respuesta: ");
 			int Respuesta = R.nextInt();
 			switch (Respuesta) {
 			case 1:
@@ -472,6 +499,10 @@ public class ClaseUi {
 				}
 				break;
 			case 4:
+				System.out.print("\ningrese cedula: ");
+				int cedula = R.nextInt();
+				o.setCliente(new Cliente(cedula,null, 0));
+			case 5:
 				int pago = 0;
 				System.out.print("");
 				while (pago < o.getPrecio_total()) {
@@ -486,7 +517,7 @@ public class ClaseUi {
 				;
 				estado_orden = false;
 				break;
-			case 5:
+			case 6:
 				System.out.print("");
 				if (lista_platillos.size() > 0) {
 					o.cancelar_orden();
@@ -509,7 +540,7 @@ public class ClaseUi {
 		do {
 			System.out.print(
 					"Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) generalidades sobre el software  \n (5) cerrar programa \n\n Respuesta: ");
-
+			
 			int Respuesta = R.nextInt(); // respuesta
 
 			switch (Respuesta) {
