@@ -321,8 +321,16 @@ public class ClaseUi {
 			}
 			return true;
 		case 9:
-			System.out.println("");
-			lista_ingredientes();
+			if (ingredientes.lista_ingredientes.size()>=1) {
+				System.out.println("");
+				lista_ingredientes();
+				System.out.println("");
+			}
+			else {
+				System.out.println("");
+				System.out.println("todavia no hay articulos en el inventario");
+				System.out.println("");
+			}
 			return true;
 			
 		case 10:
