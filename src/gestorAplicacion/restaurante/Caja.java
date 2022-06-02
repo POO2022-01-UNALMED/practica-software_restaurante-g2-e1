@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.io.Serializable;
 public class Caja implements Serializable{
 	private int efectivo;
-	public ArrayList<Integer> ingresos;
+	private ArrayList<Integer> ingresos;
 	private ArrayList<Integer>  egresos;    
 	
 	
