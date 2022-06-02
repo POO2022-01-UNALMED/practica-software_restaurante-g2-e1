@@ -21,7 +21,7 @@ import gestorAplicacion.restaurante.horarios;
 import gestorAplicacion.restaurante.ingredientes;
 
 public class Serializador {
-    /**
+	/**
 	 * Serializamos una lista por el nombre de la clase
 	 * 
 	 * @param <E>       el generico se usa para poder agredar las clases que se
@@ -30,9 +30,9 @@ public class Serializador {
 	 * @param className El nombre de la clase que queremos usar como nombre del
 	 *                  archivo
 	 */
-	public static <E> void serializar(List<E> lista, String className) {//para serilizar listas
-		FileOutputStream fileOut;
 
+	public static <E> void serializar(ArrayList<E> list, String className) {// para Arraylist
+		FileOutputStream fileOut;
 		try {
 			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
 			// se crea un fileoutputstream para saber donde serializar los archivos
@@ -40,7 +40,7 @@ public class Serializador {
 			// Se crea un objeto output stream para poder escribir en el archivo
 			ObjectOutputStream out = new ObjectOutputStream(fileOut);
 			// Guardamos la lista de objetos
-			out.writeObject(lista);
+			out.writeObject(list);
 			out.close();
 			fileOut.close();
 		} catch (FileNotFoundException e) {
@@ -49,36 +49,13 @@ public class Serializador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Serilizando " + className);
 	}
-	
-	public static  void serializar(Object obj, String className) {//para serializar el objeto entero
-		FileOutputStream fileOut;
 
-		try {
-			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
-			// se crea un fileoutputstream para saber donde serializar los archivos
-			fileOut = new FileOutputStream(path);
-			// Se crea un objeto output stream para poder escribir en el archivo
-			ObjectOutputStream out = new ObjectOutputStream(fileOut);
-			// Guardamos la lista de objetos
-			out.writeObject(obj);
-			out.close();
-			fileOut.close();
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	public static void serializarTodo() {
-		Serializador.serializar(Gerente.arr,"Gerente");
+		// Serializador.serializar(Gerente.arr,"Gerente");
 		Serializador.serializar(Empleado.lista_empleados, "Empleado");
-		Serializador.serializar(Caja.class, "Caja");
-		Serializador.serializar(horarios.class, "horarios");
 		Serializador.serializar(ingredientes.lista_ingredientes, "ingredientes");
-		Serializador.serializar(Orden.lista_orden, "Orden");
-		Serializador.serializar(Platillo.class, "Platillo");
+
 	}
 }

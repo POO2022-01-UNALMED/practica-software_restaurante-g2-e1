@@ -3,6 +3,8 @@ package uiMain;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import baseDatos.Deserializador;
+import baseDatos.Serializador;
 import gestorAplicacion.gente.Cliente;
 import gestorAplicacion.gente.Empleado;
 import gestorAplicacion.gente.Gerente;
@@ -171,14 +173,14 @@ public class ClaseUi {
 		System.out.println("");
 		System.out.println(Gerente.arr[0].perfil());
 		System.out.print(
-				"\nselecione una opcion: \n\n (1) añadir/retirar ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
+				"\nselecione una opcion: \n\n (1) aï¿½adir/retirar ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
 						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) agregar/retirar efectivo \n"
 						+" (9) ver inventario \n (10) cerrar sesion \n\n respuesta: ");
 		int ob = R.nextInt();
 
 		switch (ob) {
 		case 1:
-			System.out.print("Seleccione una opcion: \n(1) añadir ingrediente \n(2) retirar ingredientes \n(3) actualizar stock \n\nRespuesta: ");
+			System.out.print("Seleccione una opcion: \n(1) aï¿½adir ingrediente \n(2) retirar ingredientes \n(3) actualizar stock \n\nRespuesta: ");
 			System.out.println("");
 			int seleccion = R.nextInt();
 			switch(seleccion) {
@@ -204,7 +206,7 @@ public class ClaseUi {
 				break;
 				
 			case 3:
-				System.out.print("\nelija una opcion: \n(1) añadir stock \n(1) retirar stock \n\n respuesta: ");
+				System.out.print("\nelija una opcion: \n(1) aï¿½adir stock \n(1) retirar stock \n\n respuesta: ");
 				int eleccion=R.nextInt();
 				switch(eleccion){
 				case 1:
@@ -335,7 +337,7 @@ public class ClaseUi {
 			}
 			return true;
 		case 8:
-			System.out.print("\nSeleccione una opcion: \n(1)añadir efectivo\n(2)retirar efectivo\n\n respuesta: ");
+			System.out.print("\nSeleccione una opcion: \n(1)aï¿½adir efectivo\n(2)retirar efectivo\n\n respuesta: ");
 			int mop=R.nextInt();
 			switch(mop) {
 			case 1:
@@ -508,7 +510,7 @@ public class ClaseUi {
 				while (pago < o.getPrecio_total()) {
 					if (lista_platillos.size() > 0) {
 						System.out.println("el total a pagar es de $" + o.getPrecio_total());
-						System.out.print("¿Con cuanto vas a pagar?: ");
+						System.out.print("ï¿½Con cuanto vas a pagar?: ");
 						pago = R.nextInt();
 						System.out.println(o.comprobar(pago));
 					}
@@ -532,18 +534,26 @@ public class ClaseUi {
 
 //en esta clase se implementa lo necesario para la interfaz generica por consola
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ClassNotFoundException {
+	Gerente g = new Gerente();
+	Deserializador.deserializarTodo();
+	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) {
 		Empleado e = new Empleado(1, "empleado_1", 1);
-		Gerente g = new Gerente();
 
-		boolean estado_programa = true;
-		do {
-			System.out.print(
-					"Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) generalidades sobre el software  \n (5) cerrar programa \n\n Respuesta: ");
-			
-			int Respuesta = R.nextInt(); // respuesta
+		ingredientes i1 = new ingredientes(10, 5, "pan");
+		ingredientes i2 = new ingredientes(8, 5, "carne");
+		ingredientes i3 = new ingredientes(7, 5, "queso");
+	}
 
-			switch (Respuesta) {
+	boolean estado_programa = true;
+	do {
+
+		System.out.print(
+				"Selecione una opcion: \n\n (1) iniciar sesion como empleado \n (2) iniciar sesion como Gerente \n (3) nombrar gerente \n (4) generalidades sobre el software  \n (5) cerrar programa \n\n Respuesta: ");
+
+		int Respuesta = R.nextInt(); // respuesta
+
+		switch (Respuesta) {
 
 			// en caso de que sea tipo empleado
 			case 1:
@@ -573,32 +583,41 @@ public class ClaseUi {
 				break;
 			case 4:
 				System.out.println("");
-				System.out.println(" este software cumple con la funcion de gestionar un restaurante a nivel general ademas de que sirve para administrar la nomina de empleados,");
-				System.out.println(" es recomendable que se familiarice con que actores van a interactuar con el software, es por ello que aqui dejamos un pequeño resumen:");
+				System.out.println(
+						" este software cumple con la funcion de gestionar un restaurante a nivel general ademas de que sirve para administrar la nomina de empleados,");
+				System.out.println(
+						" es recomendable que se familiarice con que actores van a interactuar con el software, es por ello que aqui dejamos un pequeï¿½o resumen:");
 				System.out.println("");
-				System.out.println(" sobre el empleado: el empleado se encarga de tomar los pedidos y gestionar las ventas durante su turno ");
-				System.out.println(" sobre el gerente: el gerente se encarga de gestionar el restaurante a nivel general");
+				System.out.println(
+						" sobre el empleado: el empleado se encarga de tomar los pedidos y gestionar las ventas durante su turno ");
+				System.out.println(
+						" sobre el gerente: el gerente se encarga de gestionar el restaurante a nivel general");
 				System.out.println("");
-				System.out.println(" NOTA IMPORTANTE: el gerente por defecto tiene la siguiente informacion: cedula: 1111, nombre: nombre del gerente, telefono:1111 y contraseña:1111");
-				System.out.println(" para cambiar esta informacion selecione la opcion nombrar nuevo gerente, debe digitar la contraseña de gerente por defecto, depues podra editar la");
-				System.out.println(" informacion del gerente, ademas podra usar esta funcion cada que cambie el gerente o necesite editar su informacion usando la contraseña de gerente");
-				System.out.println(" que se disponga en ese momento, sea la contraseña por defecto u otra que usted haya fijado. ");
+				System.out.println(
+						" NOTA IMPORTANTE: el gerente por defecto tiene la siguiente informacion: cedula: 1111, nombre: nombre del gerente, telefono:1111 y contraseï¿½a:1111");
+				System.out.println(
+						" para cambiar esta informacion selecione la opcion nombrar nuevo gerente, debe digitar la contraseï¿½a de gerente por defecto, depues podra editar la");
+				System.out.println(
+						" informacion del gerente, ademas podra usar esta funcion cada que cambie el gerente o necesite editar su informacion usando la contraseï¿½a de gerente");
+				System.out.println(
+						" que se disponga en ese momento, sea la contraseï¿½a por defecto u otra que usted haya fijado. ");
 				System.out.println("");
 				break;
 
 			case 5:
-				System.out.print("\n cerrando programa :) ");
+				System.out.print("\n cerrando programa :) " + "\n");
 				estado_programa = false;
+				Serializador.serializarTodo();
 				break;
 
 			default:
 				System.out.println("\n opcion invalida \n");
-			}
-
 		}
 
-		while (estado_programa == true);
-
 	}
+
+	while (estado_programa == true);
+
+}
 
 }
