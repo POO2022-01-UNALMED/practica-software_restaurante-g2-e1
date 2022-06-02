@@ -278,6 +278,7 @@ public class ClaseUi {
 				System.out.print("\ndigite el numero del empleado al que quiere despedir: ");
 				int nu_e = R.nextInt(); // numero de empleado que se piensa despedir
 				if (nu_e > 0 && nu_e <= Empleado.lista_empleados.size()) {
+					System.out.println("\nSe despidio al empleado: "+Empleado.lista_empleados.get(nu_e - 1).info_basi()+"\n");
 					Gerente.arr[0].despedir_empleado(Empleado.lista_empleados.get(nu_e - 1));
 				} else {
 					System.out.println("\nerror, ese numero de empleado no existe \n");
@@ -297,6 +298,7 @@ public class ClaseUi {
 				System.out.println("\nverificando lista de empleados..\n");
 				if (Empleado.lista_empleados.size() > 0) {
 					System.out.println("\nrealizando despido inteligente");
+					System.out.println("\nSe despidio al empleado: "+Empleado.empleado_menos_eficiente().info_basi()+"\n");
 					Gerente.arr[0].despido_inteligente();
 				} else {
 					System.out.println(
