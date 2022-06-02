@@ -77,6 +77,11 @@ public class ingredientes implements Serializable{
 		this.cantidad += cantidad;
 		return "Se aumento el stock de: " + tipo + " en " +  cantidad + " unidades";
 	}
+	
+	public String retirarCantidad(int cantidad) { // añade la cantidad en la que se aumenta la cantidad de unidades de esta instancia
+		this.cantidad -= cantidad;
+		return "Se disminuyo el stock de: " + tipo + " en " +  cantidad + " unidades";
+	}
 
 	public boolean verificar_inventario() {
 		if (cantidad > 0) {

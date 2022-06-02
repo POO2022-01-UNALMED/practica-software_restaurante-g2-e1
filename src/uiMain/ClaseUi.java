@@ -170,14 +170,14 @@ public class ClaseUi {
 		System.out.println("");
 		System.out.println(Gerente.arr[0].perfil());
 		System.out.print(
-				"\nselecione una opcion: \n\n (1) añadir ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
+				"\nselecione una opcion: \n\n (1) añadir/retirar ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
 						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) agregar/retirar efectivo \n"
 						+" (9) ver inventario \n (10) cerrar sesion \n\n respuesta: ");
 		int ob = R.nextInt();
 
 		switch (ob) {
 		case 1:
-			System.out.print("Seleccione una opcion: \n(1) añadir ingrediente \n(2) actualizar stock \n\nRespuesta: ");
+			System.out.print("Seleccione una opcion: \n(1) añadir ingrediente \n(2) retirar ingredientes \n(3) actualizar stock \n\nRespuesta: ");
 			System.out.println("");
 			int seleccion = R.nextInt();
 			switch(seleccion) {
@@ -195,17 +195,48 @@ public class ClaseUi {
 				break;
 			case 2:
 				lista_ingredientes();
-				System.out.print("\nseleccione el ingrediente del cual se va a actualizar el stock: ");
-				int actualiza=R.nextInt();
-				System.out.println("");
-				System.out.print("indique la cantidad de ingrediente que se va a adicionar al stock: ");
-				int cantida=R.nextInt();
-				System.out.println("");
-				if(actualiza>0 && actualiza<=ingredientes.lista_ingredientes.size()) {
-					ingredientes.lista_ingredientes.get(actualiza-1).anadirCantidad(cantida);
+				System.out.print("\nseleccione el ingrediente que va a retirar del inventario: ");
+				int retirando=R.nextInt();
+				if (retirando>0 && retirando<=ingredientes.lista_ingredientes.size()) {
+					ingredientes.lista_ingredientes.remove(retirando-1);
 				}
-				else {
-					System.out.println("esa opcion no es valida");
+				break;
+				
+			case 3:
+				System.out.print("\nelija una opcion: \n(1) añadir stock \n(1) retirar stock \n\n respuesta: ");
+				int eleccion=R.nextInt();
+				switch(eleccion){
+				case 1:
+					lista_ingredientes();
+					System.out.print("\nseleccione el ingrediente del cual se va a actualizar el stock: ");
+					int actualiza=R.nextInt();
+					System.out.println("");
+					System.out.print("indique la cantidad de ingrediente que se va a adicionar al stock: ");
+					int cantida=R.nextInt();
+					System.out.println("");
+					if(actualiza>0 && actualiza<=ingredientes.lista_ingredientes.size()) {
+						ingredientes.lista_ingredientes.get(actualiza-1).anadirCantidad(cantida);
+					}
+					else {
+						System.out.println("esa opcion no es valida");
+					}
+					break;
+				case 2:
+					lista_ingredientes();
+					System.out.print("\nseleccione el ingrediente del cual se va a actualizar el stock: ");
+					int actualizar=R.nextInt();
+					System.out.println("");
+					System.out.print("indique la cantidad de ingrediente que se va a retirar del stock: ");
+					int cantidar=R.nextInt();
+					System.out.println("");
+					if(actualizar>0 && actualizar<=ingredientes.lista_ingredientes.size()) {
+						ingredientes.lista_ingredientes.get(actualizar-1).retirarCantidad(cantidar);
+					}
+					else {
+						System.out.println("esa opcion no es valida");
+					}
+					break;
+				
 				}
 				break;
 				
