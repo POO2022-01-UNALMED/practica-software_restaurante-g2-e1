@@ -21,8 +21,6 @@ public class Orden implements Serializable {
 	private static int cantidad_orden = 0;
 	private boolean estado_pedido;
 	private static Caja caja = new Caja();
-	public static ArrayList<Orden> lista_orden = new ArrayList<Orden>(); // se anadio esta lista de ordenes, la cual va
-																			// a ser util a la hora de usar la interfaz
 
 	// constructor
 	public Orden() {
@@ -45,7 +43,6 @@ public class Orden implements Serializable {
 		this.propina = propina;
 		numero_orden = cantidad_orden;
 		cantidad_orden++;
-		lista_orden.add(this);
 		// se tiene cantidad de orden y numero de orden por separado porque
 		// uno me sirve para la instancia y el otro a modo de contador para
 		// saber cuantas ordenes han sido creadas
