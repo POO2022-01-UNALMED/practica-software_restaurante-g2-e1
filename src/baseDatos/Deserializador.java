@@ -34,9 +34,9 @@ public class Deserializador {
      * @throws ClassNotFoundException
      */
 
-    public static <E> void deserializar(ArrayList<E> obj, String className) throws ClassNotFoundException {
-        FileInputStream fileIn;
-        try {
+    public static <E> void deserializar(ArrayList<E> obj, String className) throws ClassNotFoundException { // para arraylist
+        FileInputStream fileIn; //Apuntador FileInputStream de fileIn
+        try {// try catch para el manejo de archivos
             // Creamos una cadena con la ruta del archivo que vamos a cargar
             String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
             System.out.println(path);
@@ -45,18 +45,14 @@ public class Deserializador {
             // archivo.createNewFile(); // Crea un nuevo archivo si no existe
             fileIn = new FileInputStream(path);
             ObjectInputStream in = new ObjectInputStream(fileIn);
-            ArrayList<E> obj2 = (ArrayList<E>) in.readObject();
+            ArrayList<E> obj2 = (ArrayList<E>) in.readObject(); // Se instancia una lista segun sea el tipo a deserializar y se lee el objeto deserializado
             in.close();
             fileIn.close();
 
             for (E l : obj2) {
-                obj.add(l);
+                obj.add(l); // se agregan los objetos creados a la instancia
             }
-            /*
-             * for(int i=0;i<obj.size();i++){
-             * obj.add(obj.get(i));
-             * }
-             */
+            
         } catch (
 
         FileNotFoundException e) {
@@ -69,7 +65,7 @@ public class Deserializador {
         System.out.println("Deserilizando " + className);
     }
 
-    public static void deserializarTodo() throws ClassNotFoundException {
+    public static void deserializarTodo() throws ClassNotFoundException {// AQUI DESERIALIZAMOS EN UN SOLO METODO LAS CLASES DE INTERES
         // Deserializador.deserializar(Gerente.arr, "Gerente");
         Deserializador.deserializar(Empleado.lista_empleados, "Empleado");
         Deserializador.deserializar(ingredientes.lista_ingredientes, "ingredientes");
