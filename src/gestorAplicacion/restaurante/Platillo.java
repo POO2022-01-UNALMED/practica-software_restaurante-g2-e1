@@ -35,9 +35,9 @@ public class Platillo implements Serializable{
 	public String anadirIngrediente(ingredientes ingrediente) {
 		if (ingrediente.verificar_inventario() == true) {
 			ingrediente.anadirCantidad(-1);      // resto al inventario
-			ingredientes.add(ingrediente);		 //aï¿½ado a la lista de ingredientes
+			ingredientes.add(ingrediente);		 //anado a la lista de ingredientes
 			precio += ingrediente.getPrecio_compra()*2;     // aumento el precio del platillo
-			return "añadido con exito";
+			return "aï¿½adido con exito";
 		}
 		else {
 			return "no hay existencias de este producto";

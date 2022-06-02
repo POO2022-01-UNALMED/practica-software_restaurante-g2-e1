@@ -173,14 +173,14 @@ public class ClaseUi {
 		System.out.println("");
 		System.out.println(Gerente.arr[0].perfil());
 		System.out.print(
-				"\nselecione una opcion: \n\n (1) a�adir/retirar ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
+				"\nselecione una opcion: \n\n (1) anadir/retirar ingredientes \n (2) arqueo de caja \n (3) contratar empleado"
 						+ "\n (4) despedir empleado \n (5) despido inteligente \n (6) empleado mas eficiente \n (7) ver empleados \n (8) agregar/retirar efectivo \n"
 						+" (9) ver inventario \n (10) cerrar sesion \n\n respuesta: ");
 		int ob = R.nextInt();
 
 		switch (ob) {
 		case 1:
-			System.out.print("Seleccione una opcion: \n(1) a�adir ingrediente \n(2) retirar ingredientes \n(3) actualizar stock \n\nRespuesta: ");
+			System.out.print("Seleccione una opcion: \n(1) anadir ingrediente \n(2) retirar ingredientes \n(3) actualizar stock \n\nRespuesta: ");
 			System.out.println("");
 			int seleccion = R.nextInt();
 			switch(seleccion) {
@@ -206,7 +206,7 @@ public class ClaseUi {
 				break;
 				
 			case 3:
-				System.out.print("\nelija una opcion: \n(1) a�adir stock \n(1) retirar stock \n\n respuesta: ");
+				System.out.print("\nelija una opcion: \n(1) anadir stock \n(1) retirar stock \n\n respuesta: ");
 				int eleccion=R.nextInt();
 				switch(eleccion){
 				case 1:
@@ -337,7 +337,7 @@ public class ClaseUi {
 			}
 			return true;
 		case 8:
-			System.out.print("\nSeleccione una opcion: \n(1)a�adir efectivo\n(2)retirar efectivo\n\n respuesta: ");
+			System.out.print("\nSeleccione una opcion: \n(1)anadir efectivo\n(2)retirar efectivo\n\n respuesta: ");
 			int mop=R.nextInt();
 			switch(mop) {
 			case 1:
@@ -510,7 +510,7 @@ public class ClaseUi {
 				while (pago < o.getPrecio_total()) {
 					if (lista_platillos.size() > 0) {
 						System.out.println("el total a pagar es de $" + o.getPrecio_total());
-						System.out.print("�Con cuanto vas a pagar?: ");
+						System.out.print("nCon cuanto vas a pagar?: ");
 						pago = R.nextInt();
 						System.out.println(o.comprobar(pago));
 					}
@@ -586,7 +586,7 @@ public class ClaseUi {
 				System.out.println(
 						" este software cumple con la funcion de gestionar un restaurante a nivel general ademas de que sirve para administrar la nomina de empleados,");
 				System.out.println(
-						" es recomendable que se familiarice con que actores van a interactuar con el software, es por ello que aqui dejamos un peque�o resumen:");
+						" es recomendable que se familiarice con que actores van a interactuar con el software, es por ello que aqui dejamos un pequeno resumen:");
 				System.out.println("");
 				System.out.println(
 						" sobre el empleado: el empleado se encarga de tomar los pedidos y gestionar las ventas durante su turno ");
@@ -594,13 +594,13 @@ public class ClaseUi {
 						" sobre el gerente: el gerente se encarga de gestionar el restaurante a nivel general");
 				System.out.println("");
 				System.out.println(
-						" NOTA IMPORTANTE: el gerente por defecto tiene la siguiente informacion: cedula: 1111, nombre: nombre del gerente, telefono:1111 y contrase�a:1111");
+						" NOTA IMPORTANTE: el gerente por defecto tiene la siguiente informacion: cedula: 1111, nombre: nombre del gerente, telefono:1111 y contrasena:1111");
 				System.out.println(
-						" para cambiar esta informacion selecione la opcion nombrar nuevo gerente, debe digitar la contrase�a de gerente por defecto, depues podra editar la");
+						" para cambiar esta informacion selecione la opcion nombrar nuevo gerente, debe digitar la contrasena de gerente por defecto, depues podra editar la");
 				System.out.println(
-						" informacion del gerente, ademas podra usar esta funcion cada que cambie el gerente o necesite editar su informacion usando la contrase�a de gerente");
+						" informacion del gerente, ademas podra usar esta funcion cada que cambie el gerente o necesite editar su informacion usando la contrasena de gerente");
 				System.out.println(
-						" que se disponga en ese momento, sea la contrase�a por defecto u otra que usted haya fijado. ");
+						" que se disponga en ese momento, sea la contrasena por defecto u otra que usted haya fijado. ");
 				System.out.println("");
 				break;
 
