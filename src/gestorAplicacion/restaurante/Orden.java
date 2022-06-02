@@ -103,8 +103,15 @@ public class Orden implements Serializable {
 	public void descuento() {
 		if (precio_total > 100000) {
 			precio_total = (int) Math.round(precio_total * 0.95); // descuento del 5% por cantiad de dinero gastado
-		} else if (platillos.size() > 50) {
+		} 
+		if (platillos.size() > 50) {
 			precio_total = (int) Math.round(precio_total * 0.90); // descuento del 10% por cantidad de compras
+		}
+		for (Cliente i: Cliente.getListaSocios()) {
+			if(i.getCedula() == this.getCliente().getCedula()) {
+				precio_total = (int) Math.round(precio_total * 0.90);
+				break;
+			}
 		}
 		// falta descuento por ser un cliente especifico
 	}
@@ -114,6 +121,12 @@ public class Orden implements Serializable {
 			retirarPlatillo(platillos.get(i));
 		}
 		return "orden cancelada";
+	}
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
+	}
+	public void nuevoSocio(Cliente cliente) {
+		Cliente.addSocio(cliente);
 	}
 
 	public String duplicar(Platillo platillo) {
