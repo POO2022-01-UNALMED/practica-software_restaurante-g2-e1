@@ -49,7 +49,7 @@ public class Serializador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Serilizando " + className);
+		//System.out.println("Serilizando " + className);
 	}
 	public static void serializar(int n, String className){
 		FileOutputStream fileOut;
@@ -69,7 +69,7 @@ public class Serializador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Serilizando " + className);
+		//System.out.println("Serilizando " + className);
 	}
 	public static <E> void serializar(Gerente[] list,String className){ // Serializardor de la lista  gerente 
 		FileOutputStream fileOut;
@@ -89,7 +89,7 @@ public class Serializador {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("Serilizando " + className);
+		//System.out.println("Serilizando " + className);
 	}
 	
 

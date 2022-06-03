@@ -12,7 +12,7 @@ public class Caja implements Serializable{
 	public Caja() {
 		this(0,new  ArrayList<Integer>(),new  ArrayList<Integer>());
 	}
-	public Caja(int efectivo, ArrayList<Integer> ingresos, ArrayList<Integer> egresos) {
+	public Caja(int efectivo, ArrayList<Integer> ingresos, ArrayList<Integer> egresos) { 
 		this.efectivo = efectivo;
 		this.ingresos = ingresos;
 		this.egresos = egresos;	

@@ -540,12 +540,23 @@ public class ClaseUi {
 	
 	Deserializador.deserializarTodo();
 	Gerente g = new Gerente();
-	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) {
-		Empleado e = new Empleado(1, "empleado_1", 1);
+	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) { // Se comprueba si existen elementos
+		Empleado e1 = new Empleado(1, "empleado_1", 1);			// Esto se ejecuta si los archivos de deserializacion 
+		Empleado e2 = new Empleado(2, "empleado_2", 2);			// Estan Vacios
+		Empleado e3 = new Empleado(3, "empleado_3", 3);
+		Empleado e4 = new Empleado(4, "empleado_4", 4);
+		Empleado e5 = new Empleado(5, "empleado_5", 5);
 		
 		ingredientes i1 = new ingredientes(10, 5, "pan");
 		ingredientes i2 = new ingredientes(8, 5, "carne");
 		ingredientes i3 = new ingredientes(7, 5, "queso");
+		ingredientes i4 = new ingredientes(12, 5, "salchicha");
+		ingredientes i5 = new ingredientes(15, 5, "pollo apanado");
+		ingredientes i6 = new ingredientes(8, 10, "papas fritas");
+		ingredientes i7 = new ingredientes(16, 10, "tocineta");
+		ingredientes i8 = new ingredientes(18, 3, "pollo asado");
+		ingredientes i9 = new ingredientes(34, 2, "langosta");
+		ingredientes i10 = new ingredientes(6,15,"huevo codorniz");
 	}
 
 	boolean estado_programa = true;
@@ -561,7 +572,7 @@ public class ClaseUi {
 			// en caso de que sea tipo empleado
 			case 1:
 				boolean sesion = true; // estado de seion del empleado
-				System.out.print("\nbienvenido Empleado, digite su numero de empleado: ");
+				System.out.print("\nBienvenido Empleado, digite su numero de empleado: ");
 				int nemp = R.nextInt(); // numero de empleado
 				do {
 					sesion = inicio_Sesion_empledo(nemp);
