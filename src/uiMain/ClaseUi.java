@@ -298,7 +298,7 @@ public class ClaseUi {
 				System.out.println("\nverificando lista de empleados..\n");
 				if (Empleado.lista_empleados.size() > 0) {
 					System.out.println("\nrealizando despido inteligente");
-					System.out.println("\nSe despidio al empleado: "+Empleado.empleado_menos_eficiente().info_basi()+"\n");
+					System.out.println("\nSe despidio al empleado: \n"+Empleado.empleado_menos_eficiente().informacion()+"\n");
 					Gerente.arr[0].despido_inteligente();
 				} else {
 					System.out.println(
