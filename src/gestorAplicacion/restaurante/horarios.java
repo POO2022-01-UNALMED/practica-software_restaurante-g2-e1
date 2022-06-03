@@ -1,7 +1,7 @@
 package gestorAplicacion.restaurante;
 
 public enum horarios {
-	horario1(9, 20), horario2(10, 18);//lunes a viernes, sadado y domingo
+	horario1(9, 22), horario2(10, 18);//lunes a viernes, sadado y domingo
 	
 	private int inicio;
 	private int fin;
