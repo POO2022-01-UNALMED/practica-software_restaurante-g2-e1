@@ -540,7 +540,7 @@ public class ClaseUi {
 	
 	Deserializador.deserializarTodo();
 	Gerente g = new Gerente();
-	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) { // Se comprueba si existen elementos
+	/*if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) { // Se comprueba si existen elementos
 		Empleado e1 = new Empleado(1, "empleado_1", 1);			// Esto se ejecuta si los archivos de deserializacion 
 		Empleado e2 = new Empleado(2, "empleado_2", 2);			// Estan Vacios
 		Empleado e3 = new Empleado(3, "empleado_3", 3);
@@ -557,7 +557,7 @@ public class ClaseUi {
 		ingredientes i8 = new ingredientes(18, 3, "pollo asado");
 		ingredientes i9 = new ingredientes(34, 2, "langosta");
 		ingredientes i10 = new ingredientes(6,15,"huevo codorniz");
-	}
+	}*/
 
 	boolean estado_programa = true;
 	do {
