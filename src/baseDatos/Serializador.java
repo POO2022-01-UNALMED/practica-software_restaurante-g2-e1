@@ -91,6 +91,8 @@ public class Serializador {
 		}
 		System.out.println("Serilizando " + className);
 	}
+	
+
 	public static void serializarTodo() { // AQUI SERIALIZAMOS EN UN SOLO METODO LAS CLASES DE INTERES
 		Serializador.serializar(Gerente.arr, "Gerente");
 		Serializador.serializar(Empleado.numero_empleados,"NumEmple");
