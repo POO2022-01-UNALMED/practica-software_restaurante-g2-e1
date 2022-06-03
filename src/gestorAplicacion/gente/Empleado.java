@@ -13,7 +13,7 @@ private int numero_ventas; //numero de ventas del empleado
 private int numero_asignado; //el numero asignado al empleado
 public static ArrayList<Empleado> lista_empleados = new ArrayList<Empleado>(); //variable de clase, es una lista con todos los empleados que se crean
 public static int numero_empleados; //variable estatica con el numero actual de empleados
-private static final long serialVersionUID =1L;
+//private static final long serialVersionUID =1L;
 
 //constructor para las instancias de empleado
 
