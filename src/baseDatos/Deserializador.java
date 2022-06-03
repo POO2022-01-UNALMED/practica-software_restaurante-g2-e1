@@ -64,9 +64,37 @@ public class Deserializador {
         }
         System.out.println("Deserilizando " + className);
     }
+    public static void deserializar(int n, String className) throws ClassNotFoundException{
+        FileInputStream fileIn; //Apuntador FileInputStream de fileIn
+        try {// try catch para el manejo de archivos
+            // Creamos una cadena con la ruta del archivo que vamos a cargar
+            String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
+            System.out.println(path);
+            // utilizamos un file para crear este archivo si no existe aun
+            // File archivo = new File(path);
+            // archivo.createNewFile(); // Crea un nuevo archivo si no existe
+            fileIn = new FileInputStream(path);
+            ObjectInputStream in = new ObjectInputStream(fileIn);
+            int ndes= in.readInt();
+            Empleado.numero_empleados=ndes;
+            in.close();
+            fileIn.close();
+
+    }catch (
+
+        FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            System.out.println("Esta vacio");
+        }
+        System.out.println("Deserilizando " + className);
+    }
 
     public static void deserializarTodo() throws ClassNotFoundException {// AQUI DESERIALIZAMOS EN UN SOLO METODO LAS CLASES DE INTERES
         // Deserializador.deserializar(Gerente.arr, "Gerente");
+        Deserializador.deserializar(Empleado.numero_empleados, "NumEmple");
         Deserializador.deserializar(Empleado.lista_empleados, "Empleado");
         Deserializador.deserializar(ingredientes.lista_ingredientes, "ingredientes");
 

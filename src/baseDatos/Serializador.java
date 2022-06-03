@@ -51,9 +51,29 @@ public class Serializador {
 		}
 		System.out.println("Serilizando " + className);
 	}
-
+	public static void serializar(int n, String className){
+		FileOutputStream fileOut;
+		try { // try catch para el manejo de archivos
+			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
+			// se crea un fileoutputstream para saber donde serializar los archivos
+			fileOut = new FileOutputStream(path);
+			// Se crea un objeto output stream para poder escribir en el archivo
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			// Guardamos la lista de objetos
+			out.writeInt(n); // Se serializa el objeto
+			out.close(); // Cierre del out
+			fileOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Serilizando " + className);
+	}
 	public static void serializarTodo() { // AQUI SERIALIZAMOS EN UN SOLO METODO LAS CLASES DE INTERES
 		// Serializador.serializar(Gerente.arr,"Gerente");
+		Serializador.serializar(Empleado.numero_empleados,"NumEmple");
 		Serializador.serializar(Empleado.lista_empleados, "Empleado");
 		Serializador.serializar(ingredientes.lista_ingredientes, "ingredientes");
 
