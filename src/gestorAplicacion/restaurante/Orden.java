@@ -153,7 +153,7 @@ public class Orden implements Serializable {
 		String dia = parsedDate.getDayOfWeek().toString();
 		descuento();
 		if (dia == "SATURDAY" || dia == "SUNDAY") {
-			if (horarios.horario2.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
+			if (horarios.horario2.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario2.getFinal()) {
 				if (n >= precio_total) {
 					estado_pedido = true;
@@ -168,7 +168,7 @@ public class Orden implements Serializable {
 			return "Pedido rechazado";
 		} 
 		else {
-			if (horarios.horario1.getInicio() < Integer.valueOf(LocalTime.now().toString().substring(0, 2))
+			if (horarios.horario1.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario1.getFinal()) {
 				if (n >= precio_total) {
 					estado_pedido = true;
