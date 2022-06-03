@@ -71,11 +71,33 @@ public class Serializador {
 		}
 		System.out.println("Serilizando " + className);
 	}
+	public static <E> void serializar(Gerente[] list,String className){ // Serializardor de la lista  gerente 
+		FileOutputStream fileOut;
+		try { // try catch para el manejo de archivos
+			String path = System.getProperty("user.dir") + "/src/baseDatos/temp/" + className + ".txt";
+			// se crea un fileoutputstream para saber donde serializar los archivos
+			fileOut = new FileOutputStream(path);
+			// Se crea un objeto output stream para poder escribir en el archivo
+			ObjectOutputStream out = new ObjectOutputStream(fileOut);
+			// Guardamos la lista de objetos
+			out.writeObject(list); // Se serializa el objeto
+			out.close(); // Cierre del out
+			fileOut.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println("Serilizando " + className);
+	}
 	public static void serializarTodo() { // AQUI SERIALIZAMOS EN UN SOLO METODO LAS CLASES DE INTERES
-		// Serializador.serializar(Gerente.arr,"Gerente");
+		Serializador.serializar(Gerente.arr, "Gerente");
 		Serializador.serializar(Empleado.numero_empleados,"NumEmple");
 		Serializador.serializar(Empleado.lista_empleados, "Empleado");
 		Serializador.serializar(ingredientes.lista_ingredientes, "ingredientes");
+		Serializador.serializar(Cliente.getListaSocios(), "Cliente");
+		
 
 	}
 }

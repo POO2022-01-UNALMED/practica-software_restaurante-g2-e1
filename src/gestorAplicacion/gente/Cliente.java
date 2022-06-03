@@ -8,7 +8,7 @@ import java.io.Serializable;
 //personas que consumen los productos del restaurante
 
 public class Cliente extends Persona implements Serializable{
-	private static ArrayList<Cliente> lista_socio = new ArrayList<Cliente>();
+	private static ArrayList<Cliente> lista_socio = new ArrayList<Cliente>();//Serializar
 	
 	//este metodo devuelve una lista con los clientes que son socios
 	public static ArrayList<Cliente> getListaSocios(){

@@ -9,7 +9,7 @@ public class ingredientes implements Serializable{ //Debido a que esta clase se 
 	private int cantidad; // cantidad del ingrediente
 	private String tipo; // aqui se especifica que es el ingrediente EJ: Tocino, Huevo, Tomate, etc..
 	public static ArrayList<ingredientes> lista_ingredientes = new ArrayList<ingredientes>(); // En este array se guardan los ingredientes para ser usados en armado de platillos
-	// Agregar el serialVersionUID
+	
 	public ingredientes(int precio_compra, int cant, String tipo) { // constructor de ingredientes se crea el ingrendiete y se añade a la lista de ingredientes
 		if(lista_ingredientes.size()==0) {
 			this.precio_compra=precio_compra;

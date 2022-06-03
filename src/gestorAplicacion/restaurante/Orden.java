@@ -20,7 +20,7 @@ public class Orden implements Serializable {
 	private int propina;
 	private static int cantidad_orden = 0;
 	private boolean estado_pedido;
-	private static Caja caja = new Caja();
+	private static Caja caja = new Caja(); // serializar
 
 	// constructor
 	public Orden() {
@@ -101,7 +101,7 @@ public class Orden implements Serializable {
 	}
 
 	public void descuento() {
-		if (precio_total > 100000) {
+		if (precio_total > 100) {
 			precio_total = (int) Math.round(precio_total * 0.95); // descuento del 5% por cantiad de dinero gastado
 		} 
 		if (platillos.size() > 50) {

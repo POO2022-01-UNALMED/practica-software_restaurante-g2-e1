@@ -512,7 +512,7 @@ public class ClaseUi {
 				while (pago < o.getPrecio_total()) {
 					if (lista_platillos.size() > 0) {
 						System.out.println("el total a pagar es de $" + o.getPrecio_total());
-						System.out.print("nCon cuanto vas a pagar?: ");
+						System.out.print("Con cuanto vas a pagar?: ");
 						pago = R.nextInt();
 						System.out.println(o.comprobar(pago));
 					}
@@ -537,11 +537,11 @@ public class ClaseUi {
 //en esta clase se implementa lo necesario para la interfaz generica por consola
 
 	public static void main(String[] args) throws ClassNotFoundException {
-	Gerente g = new Gerente();
+	
 	Deserializador.deserializarTodo();
 	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) {
 		Empleado e = new Empleado(1, "empleado_1", 1);
-
+		Gerente g = new Gerente();
 		ingredientes i1 = new ingredientes(10, 5, "pan");
 		ingredientes i2 = new ingredientes(8, 5, "carne");
 		ingredientes i3 = new ingredientes(7, 5, "queso");
