@@ -22,7 +22,9 @@ public class Gerente extends Persona implements gerente_por_defecto,Serializable
 	//constructor por defecto del gerente, toma las constantes que estan en la interfaz gerente por defecto
 	
 	public Gerente() {
-		this(CEDULA,NOMBRE,TELEFONO,CONTRASENA);
+		super(CEDULA,NOMBRE,TELEFONO);
+		contrasena_gerente=CONTRASENA;
+		arr[0]=this;
 	}
 	
 	//metodos get y set
