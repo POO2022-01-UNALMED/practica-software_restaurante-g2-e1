@@ -539,9 +539,10 @@ public class ClaseUi {
 	public static void main(String[] args) throws ClassNotFoundException {
 	
 	Deserializador.deserializarTodo();
+	Gerente g = new Gerente();
 	if (ingredientes.lista_ingredientes.isEmpty() && Empleado.lista_empleados.isEmpty()) {
 		Empleado e = new Empleado(1, "empleado_1", 1);
-		Gerente g = new Gerente();
+		
 		ingredientes i1 = new ingredientes(10, 5, "pan");
 		ingredientes i2 = new ingredientes(8, 5, "carne");
 		ingredientes i3 = new ingredientes(7, 5, "queso");

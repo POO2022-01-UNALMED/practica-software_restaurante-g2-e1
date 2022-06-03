@@ -4,9 +4,9 @@ import java.io.Serializable;
 //persona es una clase abstracta que hereda caracteristicas y metodos utiles para las clases
 //Gerente, Cliente y Empleado
 public abstract class Persona implements Serializable{
-private int cedula; //numero de cedula de la persona
-private String nombre; //nombre de la persona
-private int telefono; //telefono de la persona
+protected int cedula; //numero de cedula de la persona
+protected String nombre; //nombre de la persona
+protected int telefono; //telefono de la persona
 
 //constructor
 public abstract String perfil(); //metodo abstracto que es implementado por las clases Cliente, Empleado y Persona
