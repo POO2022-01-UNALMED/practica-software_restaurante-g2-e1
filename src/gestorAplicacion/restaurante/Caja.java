@@ -48,7 +48,7 @@ public class Caja implements Serializable{
 	
 	
 	//metodos reales
-	public String devuelta(int n, Orden orden) {
+	public String devuelta(int n, Orden orden) {    
 		if (n > orden.getPrecio_total()) {
 			int w = n - orden.getPrecio_total();   //devuelta 
 			this.nuevoIngreso(orden.getPrecio_total());     //agrego ingresos a la lista
@@ -59,7 +59,7 @@ public class Caja implements Serializable{
 		}
 	}
 	
-	public int arqueo() {
+	public int arqueo() {     //devuelve la cantidad de dinero en la caja
 		int x = 0;
 		for (int n: ingresos) {
 			x += n;
