@@ -77,18 +77,18 @@ public class Orden implements Serializable {
 	}
 
 	// metodos set
-	public void anadirPlatillos(Platillo platillo) {
+	public void anadirPlatillos(Platillo platillo) { 
 		platillos.add(platillo);
 		precio_total += platillo.getPrecio(); // aumento el precio
 	}
 
 	public String retirarPlatillo(Platillo platillo) {
-		for(int i = 0; i < platillos.size(); i++) {
+		for(int i = 0; i < platillos.size(); i++) {	
 			if(platillos.get(i) == platillo) {
-				precio_total -= platillo.getPrecio();
+				precio_total -= platillo.getPrecio();       //disminuyo el precio de la orden
 				int x =  platillo.getIngredientes().size();
 				for (int e = 0; e < x; e++) {
-					platillo.retirarIngrediente(platillo.getIngredientes().get(0));	
+					platillo.retirarIngrediente(platillo.getIngredientes().get(0));	//retiro cada ingrediente del platillo
 				}
 				platillos.remove(platillos.indexOf(platillo));
 				return "Platillo retirado";
@@ -107,7 +107,7 @@ public class Orden implements Serializable {
 		if (platillos.size() > 50) {
 			precio_total = (int) Math.round(precio_total * 0.90); // descuento del 10% por cantidad de compras
 		}
-		for (Cliente i: Cliente.getListaSocios()) {
+		for (Cliente i: Cliente.getListaSocios()) {               // descuento por ser socio
 			if(i.getCedula() == this.getCliente().getCedula()) {
 				precio_total = (int) Math.round(precio_total * 0.90);
 				break;
@@ -118,7 +118,7 @@ public class Orden implements Serializable {
 
 	public String cancelar_orden() { // cambiar cancelar orden
 		for (int i = 0; i < platillos.size(); i++) {
-			retirarPlatillo(platillos.get(i));
+			retirarPlatillo(platillos.get(i));         //retiro cada platillo
 		}
 		return "orden cancelada";
 	}
@@ -129,12 +129,12 @@ public class Orden implements Serializable {
 		Cliente.addSocio(cliente);
 	}
 
-	public String duplicar(Platillo platillo) {
+	public String duplicar(Platillo platillo) { 
 
 		for (int i = 0; i < platillo.getIngredientes().size(); i++) {
-			if (platillo.getIngredientes().get(i).verificar_inventario()) {
+			if (platillo.getIngredientes().get(i).verificar_inventario()) {      //verifico si hay existencias de cada uno de los ingredientes necesarios
 				if (i == platillo.getIngredientes().size() - 1) {
-					Platillo x = new Platillo(platillo.getIngredientes());
+					Platillo x = new Platillo(platillo.getIngredientes());       // agrego el platillo duplicado 
 					anadirPlatillos(x);
 					return "platillo duplicado";
 				}
@@ -146,18 +146,18 @@ public class Orden implements Serializable {
 	}
 
 	public String comprobar(int n) {
-		LocalDate date = LocalDate.now();
+		LocalDate date = LocalDate.now(); // obtengo la fecha
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy MM dd");
 		String text = date.format(formatter);
 		LocalDate parsedDate = LocalDate.parse(text, formatter);
-		String dia = parsedDate.getDayOfWeek().toString();
-		descuento();
-		if (dia == "SATURDAY" || dia == "SUNDAY") {
-			if (horarios.horario2.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))
+		String dia = parsedDate.getDayOfWeek().toString();    //obtengo dia de la semana asociado a la fecha
+		descuento();										//aplico el descuento
+		if (dia == "SATURDAY" || dia == "SUNDAY") {			//verifico si es sabado o domingo
+			if (horarios.horario2.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))  //verifico si estamos en el horario especifico
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario2.getFinal()) {
 				if (n >= precio_total) {
 					estado_pedido = true;
-					caja.setEfectivo(precio_total);
+					caja.setEfectivo(precio_total);												//anado dinero a la caja
 					caja.nuevoIngreso(precio_total);
 					return "Pedido confirmado, su devuelta es de $" + (n - precio_total);
 				} 
@@ -168,11 +168,11 @@ public class Orden implements Serializable {
 			return "Pedido rechazado";
 		} 
 		else {
-			if (horarios.horario1.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))
+			if (horarios.horario1.getInicio() <= Integer.valueOf(LocalTime.now().toString().substring(0, 2))   //verifico si estamos en el horario especifico
 					&& Integer.valueOf(LocalTime.now().toString().substring(0, 2)) < horarios.horario1.getFinal()) {
 				if (n >= precio_total) {
-					estado_pedido = true;
-					caja.setEfectivo(precio_total);
+					estado_pedido = true;												
+					caja.setEfectivo(precio_total);															//anado dinero a la caja
 					caja.nuevoIngreso(precio_total);
 					return "Pedido confirmado, su devuelta es de $" + (n - precio_total);
 				} 
