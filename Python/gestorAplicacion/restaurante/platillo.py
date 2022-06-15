@@ -1,4 +1,3 @@
-
 class Platillo():
     def __init__(self, ingredientes = None):
         if ingredientes is None:

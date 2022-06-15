@@ -1,5 +1,3 @@
-import Persona
-
 public class Cliente extends Persona implements Serializable{
 	private static ArrayList<Cliente> lista_socio = new ArrayList<Cliente>();//Serializar
 	
