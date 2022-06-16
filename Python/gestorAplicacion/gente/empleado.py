@@ -16,7 +16,7 @@ class Empleado(Persona):
         return self._numero_asignado
     
     @classmethod
-    def getNumero_empleados(self):
+    def getNumero_empleados(cls):
         return Empleado._numero_empleados
     
     def getNumero_ventas(self):

@@ -1,27 +1,19 @@
-public class Cliente extends Persona implements Serializable{
-	private static ArrayList<Cliente> lista_socio = new ArrayList<Cliente>();//Serializar
+from persona import Persona
+class Cliente(Persona):
+	_lista_socio=[]
+	def __init__(self,cedula,nombre,telefono):
+		super.__init__(self,cedula,nombre,telefono)
 	
-	//este metodo devuelve una lista con los clientes que son socios
-	public static ArrayList<Cliente> getListaSocios(){
-		return lista_socio;
-	}
-	//agrega un nuevo socio a la lista de clientes
-	public static void addSocio(Cliente cliente) {
-		lista_socio.add(cliente);
-	}
-	// el metodo perfil implementa el metod abstracto perfil de la clase abstracta persona
-	// para el caso de cliente devuelve un  array que explica la importancia del cliente
-	public String perfil() {
-		return "El cliente es la razon de ser del restaurante, puesto que es el quien consume los productos que se venden en el";
-	}
+	#metodos get
+
+	def getListaSocios(self):
+	    return Cliente._lista_socio
 	
-	//constructor para las instancias de cliente
-	public Cliente(int cedula,String nombre,int telefono) {
-		super(cedula,nombre,telefono);
-	}
-	//este metodo sobreescribe al metodo informacion de persona
-	public String informacion() {
-		return "nombre del cliente: "+this.getNombre()+" \ncedula: "+this.getCedula()+" \ntelefono: "+this.getTelefono();
-	}
+	#otros metodos
+
+    @classmethod    
+    def addSocio(cls,cliente):
+		Cliente._lista_socio.append(cliente)
 	
-}
+	def informacion(self):
+        return f"nombre del cliente: {self._nombre} \ncedula: {self._cedula} \ntelefono: {self._telefono}"
