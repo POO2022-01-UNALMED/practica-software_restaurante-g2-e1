@@ -64,16 +64,16 @@ def imprimir_hoja_vida():
 #fotos
 
 #foto juan david
-foto_juan_d = tk.PhotoImage(file=path+"/fotos/juan_david")
+#foto_juan_d = tk.PhotoImage(file=path+"/fotos/juan_david.jpg")
 
 #foto juan sebastian
-foto_juan_s = tk.PhotoImage(file=path+"/fotos/juan_sebastian")
+#foto_juan_s = tk.PhotoImage(file=path+"/fotos/juan_sebastian.jpg")
 
 #foto jorge
-foto_jorge = tk.PhotoImage(file=path+"/fotos/jorge")
+#foto_jorge = tk.PhotoImage(file=path+"/fotos/jorge.png")
 
 #foto que se muestra de un desarrollador en concreto
-P6 = tk.Label(P5)  
+#P6 = tk.Label(P5)  
 #P6.config(image=foto_juan_d)
 #P6.grid(row=1,column=0)
 #def visualizacion_foto():
