@@ -62,7 +62,7 @@ def ejecucion(event):
     imprimir_hoja_vida() #imprime la hoja de vida
 
 #va a suceder cuando le demos click al espacio asignado para las hojas de vida de los desarrolladores(con el boton izquierdo del mouse)
-P5.bind("<Button-1>",ejecucion)
+hoja_vida.bind("<Button-1>",ejecucion)
 
 #texto de bienvenida esquina superior derecha
 P3=tk.Label(inicio,text="bienvenido al sofware para un restaurante") #da un mensaje de bienvenida
