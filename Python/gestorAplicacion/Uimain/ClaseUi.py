@@ -1,4 +1,8 @@
 import tkinter as tk
+import os
+import pathlib
+path = os.path.join(pathlib.Path(__file__).parent.absolute())
+
 #esta es la clase en la que va a ir la interfaz y otros temas de interes
 
 inicio = tk.Tk()
@@ -56,6 +60,35 @@ def imprimir_hoja_vida():
         hoja_vida.insert(tk.END,hoja_vida_3)
         print(hoja_vida.get('1.0', 'end-1c'))  #se imprime la tercera hoja de vida
         hoja_vida.configure(state='disabled')
+
+#fotos
+
+#foto juan david
+foto_juan_d = tk.PhotoImage(file=path+"/fotos/juan_david")
+
+#foto juan sebastian
+foto_juan_s = tk.PhotoImage(file=path+"/fotos/juan_sebastian")
+
+#foto jorge
+foto_jorge = tk.PhotoImage(file=path+"/fotos/jorge")
+
+#foto que se muestra de un desarrollador en concreto
+P6 = tk.Label(P5)  
+#P6.config(image=foto_juan_d)
+#P6.grid(row=1,column=0)
+#def visualizacion_foto():
+    #global seleccion
+    #if seleccion==1:
+        
+    #if seleccion==2:
+        
+    #if seleccion==3:
+        
+
+
+
+
+
 
 def ejecucion(event):
     cambio() #primero realiza el cambio al numero de hoja de vida
