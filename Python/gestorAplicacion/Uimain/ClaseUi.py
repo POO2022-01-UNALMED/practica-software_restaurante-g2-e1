@@ -98,14 +98,14 @@ foto_juan_d4 = tk.PhotoImage(file=path+"\juan_david1.png")
 
 #fotos juan sebastian
 foto_juan_s1 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
-foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
-foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
-foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
+foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian2.png")
+foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian3.png")
+foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian4.png")
 
 #fotos jorge
 foto_jorge1 = tk.PhotoImage(file=path+"\jorge1.png")
-foto_jorge2 = tk.PhotoImage(file=path+"\jorge1.png")
-foto_jorge3 = tk.PhotoImage(file=path+"\jorge1.png")
+foto_jorge2 = tk.PhotoImage(file=path+"\jorge2.png")
+foto_jorge3 = tk.PhotoImage(file=path+"\jorge3.png")
 foto_jorge4 = tk.PhotoImage(file=path+"\jorge1.png")
 
 
@@ -134,10 +134,6 @@ foto4= tk.Label(P6)
 foto4.grid(row=1,column=1)
 foto4.config(image=foto_juan_d1)
 
-
-
-
-
 def visualizacion_foto():
     global seleccion
     if seleccion==1:
@@ -147,14 +143,14 @@ def visualizacion_foto():
         foto4.config(image=foto_juan_d1)
     if seleccion==2:
         foto1.config(image=foto_jorge1)
-        foto2.config(image=foto_jorge1)
-        foto3.config(image=foto_jorge1)
+        foto2.config(image=foto_jorge2)
+        foto3.config(image=foto_jorge3)
         foto4.config(image=foto_jorge1)
     if seleccion==3:
         foto1.config(image=foto_juan_s1)
-        foto2.config(image=foto_juan_s1)
-        foto3.config(image=foto_juan_s1)
-        foto4.config(image=foto_juan_s1)
+        foto2.config(image=foto_juan_s2)
+        foto3.config(image=foto_juan_s3)
+        foto4.config(image=foto_juan_s4)
         
 def ejecucion(event):
     cambio() #primero realiza el cambio al numero de hoja de vida
@@ -226,12 +222,30 @@ def ejecucion_foto_platillo(event):
 #va a suceder cuando pasemos el mouse por encima de una imagen
 foto_muestra.bind("<Enter>",ejecucion_foto_platillo)
 
+#ventana de usuario
+
+#esta funcion se ejecuta al dar click en iniciar sesion
+def ingreso_ventana_usuario(event):
+    ventana_1.destroy()
+    ventana_2 = tk.Tk()
+    ventana_2.title("ventana_2")
+    ventana_2.geometry("500x400")
+    ventana_2.configure(bg="white")
+    ventana_2.mainloop()
+
+#dentro de esta funcion sucede todo lo relacionado con la ventana 2
+def venta2():
+    pass
+
 #boton para ir a la siguiente ventana
 
 boton_i_sesion = tk.Button(P4,text="iniciar sesion")
+
 boton_i_sesion.grid(row=1,column=0)
 
 boton_i_sesion.place(x=180,y=600,width=200, height=50)
+
+boton_i_sesion.bind("<Button-1>",ingreso_ventana_usuario)
 
 #separador
 separador = tk.Frame(P4, bg="black", width=30,height=539)
@@ -240,6 +254,4 @@ separador2 = tk.Frame(P4, bg="black", width=30,height=250)
 separador2.grid(row=1,column=1)
 
 
-ventana_1.mainloop()
-
-
+#ventana_1.mainloop()
