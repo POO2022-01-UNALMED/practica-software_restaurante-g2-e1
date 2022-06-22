@@ -10,10 +10,24 @@ ventana_1.title("ventana_1")
 ventana_1.geometry("500x400")
 ventana_1.configure(bg="red")
 
+#menu
+
+def evento():
+    pass
+
+menuBar = tk.Menu(ventana_1)
+ventana_1.config(menu=menuBar)
+menu1 = tk.Menu(menuBar)
+menuBar.add_cascade(label="inicio", 
+menu=menu1,command=evento)
+menu1.add_command(label="Salir de la aplicacion",command=evento)
+menu1.add_command(label="Descripcion del sistema",command=evento)
+
+
 #hojas de vida desarrolladores
 P5=tk.Frame(ventana_1,bg="white",width=1200) #en este frame van a ir las hojas de vida
 P5.pack(side="right",fill="y")
-hoja_vida=tk.Text(P5,width=50,height=10)
+hoja_vida=tk.Text(P5,width=90,height=10)
 hoja_vida.pack()
 hoja_vida.grid(row=0,column=0)
 
@@ -64,28 +78,71 @@ def imprimir_hoja_vida():
 
 #fotos
 
-#foto juan david
-foto_juan_d = tk.PhotoImage(file=path+"\juan_david.png")
+#fotos juan david
+foto_juan_d1 = tk.PhotoImage(file=path+"\juan_david1.png")
+foto_juan_d2 = tk.PhotoImage(file=path+"\juan_david1.png")
+foto_juan_d3 = tk.PhotoImage(file=path+"\juan_david1.png")
+foto_juan_d4 = tk.PhotoImage(file=path+"\juan_david1.png")
 
-#foto juan sebastian
-foto_juan_s = tk.PhotoImage(file=path+"\juan_sebastian.png")
+#fotos juan sebastian
+foto_juan_s1 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
+foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
+foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
+foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
 
-#foto jorge
-foto_jorge = tk.PhotoImage(file=path+"\jorge.png")
+#fotos jorge
+foto_jorge1 = tk.PhotoImage(file=path+"\jorge1.png")
+foto_jorge2 = tk.PhotoImage(file=path+"\jorge1.png")
+foto_jorge3 = tk.PhotoImage(file=path+"\jorge1.png")
+foto_jorge4 = tk.PhotoImage(file=path+"\jorge1.png")
 
 
-#foto que se muestra de un desarrollador en concreto
+#espacio para las fotos que se muestran de un desarrollador en concreto
 P6 = tk.Label(P5)  
-P6.config(image=foto_juan_d)
+#P6.config(image=foto_juan_d1)
 P6.grid(row=1,column=0)
+
+#primera foto que se muestra del desarrollador
+foto1= tk.Label(P6)
+foto1.grid(row=0,column=0)
+foto1.config(image=foto_juan_d1)
+
+#segunda foto que se muestra del desarrollador
+foto2= tk.Label(P6)
+foto2.grid(row=0,column=1)
+foto2.config(image=foto_juan_d1)
+
+#tercera foto que se muestra del desarrollador
+foto3= tk.Label(P6)
+foto3.grid(row=1,column=0)
+foto3.config(image=foto_juan_d1)
+
+#cuarta foto que se muestra del desarrollador
+foto4= tk.Label(P6)
+foto4.grid(row=1,column=1)
+foto4.config(image=foto_juan_d1)
+
+
+
+
+
 def visualizacion_foto():
     global seleccion
     if seleccion==1:
-        P6.config(image=foto_juan_d)
+        foto1.config(image=foto_juan_d1)
+        foto2.config(image=foto_juan_d1)
+        foto3.config(image=foto_juan_d1)
+        foto4.config(image=foto_juan_d1)
     if seleccion==2:
-        P6.config(image=foto_jorge)
+        foto1.config(image=foto_jorge1)
+        foto2.config(image=foto_jorge1)
+        foto3.config(image=foto_jorge1)
+        foto4.config(image=foto_jorge1)
     if seleccion==3:
-        P6.config(image=foto_juan_s)
+        foto1.config(image=foto_juan_s1)
+        foto2.config(image=foto_juan_s1)
+        foto3.config(image=foto_juan_s1)
+        foto4.config(image=foto_juan_s1)
         
 def ejecucion(event):
     cambio() #primero realiza el cambio al numero de hoja de vida
@@ -169,7 +226,7 @@ separador = tk.Frame(P4, bg="black", width=30,height=539)
 separador.grid(row=0,column=1)
 separador2 = tk.Frame(P4, bg="black", width=30,height=250)
 separador2.grid(row=1,column=1)
-#separador.pack(fill="y")
+
 
 ventana_1.mainloop()
 
