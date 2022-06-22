@@ -1,7 +1,10 @@
 import tkinter as tk
 import os
 import pathlib
+from tkinter import messagebox
+
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
+
 
 #esta es la clase en la que va a ir la interfaz y otros temas de interes
 
@@ -15,13 +18,20 @@ ventana_1.configure(bg="red")
 def evento():
     pass
 
+#muestra un mensaje dando una pequeña descripcion del sistema
+
+def eventodescripcion(): 
+    messagebox.showinfo("Descripcion del sistema","Este software se encarga de la gestion de un restaurante a nivel general, es decir, con el software para un restaurante se podran administrar diferentes aspectos como lo son ventas, nomina e inventario")
+
+
+
 menuBar = tk.Menu(ventana_1)
 ventana_1.config(menu=menuBar)
 menu1 = tk.Menu(menuBar)
 menuBar.add_cascade(label="inicio", 
 menu=menu1,command=evento)
 menu1.add_command(label="Salir de la aplicacion",command=evento)
-menu1.add_command(label="Descripcion del sistema",command=evento)
+menu1.add_command(label="Descripcion del sistema",command=eventodescripcion)
 
 
 #hojas de vida desarrolladores
