@@ -15,8 +15,10 @@ ventana_1.configure(bg="red")
 
 #menu
 
-def evento():
-    pass
+#cierra la aplicacion
+
+def eventosalir_aplicacion():
+    ventana_1.destroy()
 
 #muestra un mensaje dando una pequeña descripcion del sistema
 
@@ -29,8 +31,8 @@ menuBar = tk.Menu(ventana_1)
 ventana_1.config(menu=menuBar)
 menu1 = tk.Menu(menuBar)
 menuBar.add_cascade(label="inicio", 
-menu=menu1,command=evento)
-menu1.add_command(label="Salir de la aplicacion",command=evento)
+menu=menu1,command=eventosalir_aplicacion)
+menu1.add_command(label="Salir de la aplicacion",command=eventosalir_aplicacion)
 menu1.add_command(label="Descripcion del sistema",command=eventodescripcion)
 
 
