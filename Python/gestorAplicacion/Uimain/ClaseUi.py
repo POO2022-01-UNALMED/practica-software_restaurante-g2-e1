@@ -5,13 +5,13 @@ path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
 #esta es la clase en la que va a ir la interfaz y otros temas de interes
 
-inicio = tk.Tk()
-inicio.title("inicio")
-inicio.geometry("500x400")
-inicio.configure(bg="red")
+ventana_1 = tk.Tk()
+ventana_1.title("ventana_1")
+ventana_1.geometry("500x400")
+ventana_1.configure(bg="red")
 
 #hojas de vida desarrolladores
-P5=tk.Frame(inicio,bg="white",width=1200) #en este frame van a ir las hojas de vida
+P5=tk.Frame(ventana_1,bg="white",width=1200) #en este frame van a ir las hojas de vida
 P5.pack(side="right",fill="y")
 hoja_vida=tk.Text(P5,width=50,height=10)
 hoja_vida.pack()
@@ -95,8 +95,8 @@ def ejecucion(event):
 #va a suceder cuando le demos click al espacio asignado para las hojas de vida de los desarrolladores(con el boton izquierdo del mouse)
 hoja_vida.bind("<Button-1>",ejecucion)
 
-#texto de bienvenida esquina superior derecha
-frame1=tk.Frame(inicio,bg="red",width=1000)
+#texto de bienvenida esquina superior izquierda
+frame1=tk.Frame(ventana_1,bg="red",width=1000)
 frame1.pack(side="top",anchor="w")
 P3=tk.Label(frame1,text=" bienvenido al sofware para un restaurante     ") #da un mensaje de bienvenida
 P3.grid(row=0,column=0)
@@ -105,7 +105,7 @@ sep = tk.Frame(frame1, bg="black", width=30,height=50)
 sep.grid(row=0,column=1)
 
 #imagenes asociadas al sistema, entre otros
-P4=tk.Frame(inicio,bg="red",width=1000)
+P4=tk.Frame(ventana_1,bg="red",width=1000)
 P4.pack(side="left",fill="both")
 
 #foto hamburguesa
@@ -171,6 +171,6 @@ separador2 = tk.Frame(P4, bg="black", width=30,height=250)
 separador2.grid(row=1,column=1)
 #separador.pack(fill="y")
 
-inicio.mainloop()
+ventana_1.mainloop()
 
 
