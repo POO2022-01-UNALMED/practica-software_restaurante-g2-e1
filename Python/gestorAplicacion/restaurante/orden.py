@@ -2,6 +2,7 @@ from this import s
 from platillo import Platillo
 from caja import Caja
 from horarios import Horarios
+from gente.cliente import Cliente
 
 import datetime as dt
 
@@ -123,6 +124,3 @@ class Orden:
                 else:
                     return "dinero insuficiente"
             return "Pedido por fuera de horario"
-        
-
-        
