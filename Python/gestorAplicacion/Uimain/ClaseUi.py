@@ -5,253 +5,236 @@ from tkinter import messagebox
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
+class ventana_inicio(tk.Tk):
+    def __init__(self):
+        super().__init__()
+        self.title("ventana_1")
+        self.geometry("500x400")
+        self.configure(bg="red")
 
-#esta es la clase en la que va a ir la interfaz y otros temas de interes
+        #menu
 
-ventana_1 = tk.Tk()
-ventana_1.title("ventana_1")
-ventana_1.geometry("500x400")
-ventana_1.configure(bg="red")
+        #cierra la aplicacion
 
-#menu
+        def eventosalir_aplicacion():
+            self.destroy()
 
-#cierra la aplicacion
+        #muestra un mensaje dando una pequeña descripcion del sistema
 
-def eventosalir_aplicacion():
-    ventana_1.destroy()
-
-#muestra un mensaje dando una pequeña descripcion del sistema
-
-def eventodescripcion(): 
-    messagebox.showinfo("Descripcion del sistema","Este software se encarga de la gestion de un restaurante a nivel general, es decir, con el software para un restaurante se podran administrar diferentes aspectos como lo son ventas, nomina e inventario")
-
+        def eventodescripcion(): 
+            messagebox.showinfo("Descripcion del sistema","Este software se encarga de la gestion de un restaurante a nivel general, es decir, con el software para un restaurante se podran administrar diferentes aspectos como lo son ventas, nomina e inventario")
 
 
-menuBar = tk.Menu(ventana_1)
-ventana_1.config(menu=menuBar)
-menu1 = tk.Menu(menuBar)
-menuBar.add_cascade(label="inicio", 
-menu=menu1,command=eventosalir_aplicacion)
-menu1.add_command(label="Salir de la aplicacion",command=eventosalir_aplicacion)
-menu1.add_command(label="Descripcion del sistema",command=eventodescripcion)
+        self.menuBar = tk.Menu(self)
+        self.config(menu=self.menuBar)
+        self.menu1 = tk.Menu(self.menuBar)
+        self.menuBar.add_cascade(label="inicio", 
+        menu=self.menu1,command=eventosalir_aplicacion)
+        self.menu1.add_command(label="Salir de la aplicacion",command=eventosalir_aplicacion)
+        self.menu1.add_command(label="Descripcion del sistema",command=eventodescripcion)
+
+        #hojas de vida desarrolladores
+        self.P5=tk.Frame(self,bg="white",width=1200) #en este frame van a ir las hojas de vida
+        self.P5.pack(side="right",fill="y")
+        self.hoja_vida=tk.Text(self.P5,width=90,height=10)
+        self.hoja_vida.pack()
+        self.hoja_vida.grid(row=0,column=0)
+
+        #hoja de vida juan david villamizar
+        self.hoja_vida_1=" \n hoja de vida desarrollador 1 \n \n nombres: Juan David\n apellidos: Villamizar Gelves\n edad: 21 años\n Ocupacion: Estudiante ingenieria electrica\n correo: juvillamizar@unal.edu.co"
+
+        #hoja de vida Jorge Higuita
+        self.hoja_vida_2=" \n hoja de vida desarrollador 2 \n \n nombres: Jorge Andres\n apellidos: Higuita Monsalve\n edad: 22 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jhiguitam@unal.edu.co "
+
+        #hola de vida Juan Sebastian
+
+        self.hoja_vida_3=" \n hoja de vida desarrollador 3 \n \n nombres: Juan Sebastian\n apellidos: Zapata echeverry\n edad: 20 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jzapatec@unal.edu.co"
+
+        #imprimiendo la hoja de vida
+
+        self.hoja_vida.insert(tk.END,self.hoja_vida_1)
+        print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
+        self.hoja_vida.configure(state='disabled')
+
+        self.seleccion=1 #el numero de la hoja de vida que se muestra en el widget de las hojas de vida(1,2 o 3)
+        def cambio():
+            if self.seleccion<3:
+                self.seleccion+=1
+            else:
+                self.seleccion=1
+
+        def imprimir_hoja_vida():
+            if self.seleccion==1:
+                self.hoja_vida.configure(state='normal')
+                self.hoja_vida.delete('1.0', 'end-1c')
+                self.hoja_vida.insert(tk.END,self.hoja_vida_1)
+                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
+                self.hoja_vida.configure(state='disabled')
+            if self.seleccion==2:
+                self.hoja_vida.configure(state='normal')
+                self.hoja_vida.delete('1.0', 'end-1c')
+                self.hoja_vida.insert(tk.END,self.hoja_vida_2)
+                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la segunda hoja de vida
+                self.hoja_vida.configure(state='disabled')
+            if self.seleccion==3:
+                self.hoja_vida.configure(state='normal')
+                self.hoja_vida.delete('1.0', 'end-1c')
+                self.hoja_vida.insert(tk.END,self.hoja_vida_3)
+                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la tercera hoja de vida
+                self.hoja_vida.configure(state='disabled')
 
 
-#hojas de vida desarrolladores
-P5=tk.Frame(ventana_1,bg="white",width=1200) #en este frame van a ir las hojas de vida
-P5.pack(side="right",fill="y")
-hoja_vida=tk.Text(P5,width=90,height=10)
-hoja_vida.pack()
-hoja_vida.grid(row=0,column=0)
+        #fotos
 
-#hoja de vida juan david villamizar
-hoja_vida_1=" \n hoja de vida desarrollador 1 \n \n nombres: Juan David\n apellidos: Villamizar Gelves\n edad: 21 años\n Ocupacion: Estudiante ingenieria electrica\n correo: juvillamizar@unal.edu.co"
+        #fotos juan david
+        self.foto_juan_d1 = tk.PhotoImage(file=path+"\juan_david1.png")
+        self.foto_juan_d2 = tk.PhotoImage(file=path+"\juan_david1.png")
+        self.foto_juan_d3 = tk.PhotoImage(file=path+"\juan_david1.png")
+        self.foto_juan_d4 = tk.PhotoImage(file=path+"\juan_david1.png")
 
-#hoja de vida Jorge Higuita
-hoja_vida_2=" \n hoja de vida desarrollador 2 \n \n nombres: Jorge Andres\n apellidos: Higuita Monsalve\n edad: 22 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jhiguitam@unal.edu.co "
+        #fotos juan sebastian
+        self.foto_juan_s1 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
+        self.foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian2.png")
+        self.foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian3.png")
+        self.foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian4.png")
 
-#hola de vida Juan Sebastian
-
-hoja_vida_3=" \n hoja de vida desarrollador 3 \n \n nombres: Juan Sebastian\n apellidos: Zapata echeverry\n edad: 20 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jzapatec@unal.edu.co"
-
-#imprimiendo la hoja de vida
-
-hoja_vida.insert(tk.END,hoja_vida_1)
-print(hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
-hoja_vida.configure(state='disabled')
-
-seleccion=1 #el numero de la hoja de vida que se muestra en el widget de las hojas de vida(1,2 o 3)
-def cambio():
-    global seleccion
-    if seleccion<3:
-        seleccion+=1
-    else:
-        seleccion=1
-
-def imprimir_hoja_vida():
-    global seleccion
-    if seleccion==1:
-        hoja_vida.configure(state='normal')
-        hoja_vida.delete('1.0', 'end-1c')
-        hoja_vida.insert(tk.END,hoja_vida_1)
-        print(hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
-        hoja_vida.configure(state='disabled')
-    if seleccion==2:
-        hoja_vida.configure(state='normal')
-        hoja_vida.delete('1.0', 'end-1c')
-        hoja_vida.insert(tk.END,hoja_vida_2)
-        print(hoja_vida.get('1.0', 'end-1c'))  #se imprime la segunda hoja de vida
-        hoja_vida.configure(state='disabled')
-    if seleccion==3:
-        hoja_vida.configure(state='normal')
-        hoja_vida.delete('1.0', 'end-1c')
-        hoja_vida.insert(tk.END,hoja_vida_3)
-        print(hoja_vida.get('1.0', 'end-1c'))  #se imprime la tercera hoja de vida
-        hoja_vida.configure(state='disabled')
-
-#fotos
-
-#fotos juan david
-foto_juan_d1 = tk.PhotoImage(file=path+"\juan_david1.png")
-foto_juan_d2 = tk.PhotoImage(file=path+"\juan_david1.png")
-foto_juan_d3 = tk.PhotoImage(file=path+"\juan_david1.png")
-foto_juan_d4 = tk.PhotoImage(file=path+"\juan_david1.png")
-
-#fotos juan sebastian
-foto_juan_s1 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
-foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian2.png")
-foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian3.png")
-foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian4.png")
-
-#fotos jorge
-foto_jorge1 = tk.PhotoImage(file=path+"\jorge1.png")
-foto_jorge2 = tk.PhotoImage(file=path+"\jorge2.png")
-foto_jorge3 = tk.PhotoImage(file=path+"\jorge3.png")
-foto_jorge4 = tk.PhotoImage(file=path+"\jorge1.png")
+        #fotos jorge
+        self.foto_jorge1 = tk.PhotoImage(file=path+"\jorge1.png")
+        self.foto_jorge2 = tk.PhotoImage(file=path+"\jorge2.png")
+        self.foto_jorge3 = tk.PhotoImage(file=path+"\jorge3.png")
+        self.foto_jorge4 = tk.PhotoImage(file=path+"\jorge1.png")
 
 
-#espacio para las fotos que se muestran de un desarrollador en concreto
-P6 = tk.Label(P5)  
-#P6.config(image=foto_juan_d1)
-P6.grid(row=1,column=0)
+        #espacio para las fotos que se muestran de un desarrollador en concreto
+        self.P6 = tk.Label(self.P5)  
+        self.P6.config(image=self.foto_juan_d1)
+        self.P6.grid(row=1,column=0)
 
-#primera foto que se muestra del desarrollador
-foto1= tk.Label(P6)
-foto1.grid(row=0,column=0)
-foto1.config(image=foto_juan_d1)
+        #primera foto que se muestra del desarrollador
+        self.foto1= tk.Label(self.P6)
+        self.foto1.grid(row=0,column=0)
+        self.foto1.config(image=self.foto_juan_d1)
 
-#segunda foto que se muestra del desarrollador
-foto2= tk.Label(P6)
-foto2.grid(row=0,column=1)
-foto2.config(image=foto_juan_d1)
+        #segunda foto que se muestra del desarrollador
+        self.foto2= tk.Label(self.P6)
+        self.foto2.grid(row=0,column=1)
+        self.foto2.config(image=self.foto_juan_d1)
 
-#tercera foto que se muestra del desarrollador
-foto3= tk.Label(P6)
-foto3.grid(row=1,column=0)
-foto3.config(image=foto_juan_d1)
+        #tercera foto que se muestra del desarrollador
+        self.foto3= tk.Label(self.P6)
+        self.foto3.grid(row=1,column=0)
+        self.foto3.config(image=self.foto_juan_d1)
 
-#cuarta foto que se muestra del desarrollador
-foto4= tk.Label(P6)
-foto4.grid(row=1,column=1)
-foto4.config(image=foto_juan_d1)
+        #cuarta foto que se muestra del desarrollador
+        self.foto4= tk.Label(self.P6)
+        self.foto4.grid(row=1,column=1)
+        self.foto4.config(image=self.foto_juan_d1)
 
-def visualizacion_foto():
-    global seleccion
-    if seleccion==1:
-        foto1.config(image=foto_juan_d1)
-        foto2.config(image=foto_juan_d1)
-        foto3.config(image=foto_juan_d1)
-        foto4.config(image=foto_juan_d1)
-    if seleccion==2:
-        foto1.config(image=foto_jorge1)
-        foto2.config(image=foto_jorge2)
-        foto3.config(image=foto_jorge3)
-        foto4.config(image=foto_jorge1)
-    if seleccion==3:
-        foto1.config(image=foto_juan_s1)
-        foto2.config(image=foto_juan_s2)
-        foto3.config(image=foto_juan_s3)
-        foto4.config(image=foto_juan_s4)
+        def visualizacion_foto():
+            #global seleccion
+            if self.seleccion==1:
+                self.foto1.config(image=self.foto_juan_d1)
+                self.foto2.config(image=self.foto_juan_d1)
+                self.foto3.config(image=self.foto_juan_d1)
+                self.foto4.config(image=self.foto_juan_d1)
+            if self.seleccion==2:
+                self.foto1.config(image=self.foto_jorge1)
+                self.foto2.config(image=self.foto_jorge2)
+                self.foto3.config(image=self.foto_jorge3)
+                self.foto4.config(image=self.foto_jorge1)
+            if self.seleccion==3:
+                self.foto1.config(image=self.foto_juan_s1)
+                self.foto2.config(image=self.foto_juan_s2)
+                self.foto3.config(image=self.foto_juan_s3)
+                self.foto4.config(image=self.foto_juan_s4)
         
-def ejecucion(event):
-    cambio() #primero realiza el cambio al numero de hoja de vida
-    imprimir_hoja_vida() #imprime la hoja de vida
-    visualizacion_foto() #imprime la foto del desarrollador
+        def ejecucion(event):
+            cambio() #primero realiza el cambio al numero de hoja de vida
+            imprimir_hoja_vida() #imprime la hoja de vida
+            visualizacion_foto() #imprime la foto del desarrollador
 
-#va a suceder cuando le demos click al espacio asignado para las hojas de vida de los desarrolladores(con el boton izquierdo del mouse)
-hoja_vida.bind("<Button-1>",ejecucion)
+        #va a suceder cuando le demos click al espacio asignado para las hojas de vida de los desarrolladores(con el boton izquierdo del mouse)
+        self.hoja_vida.bind("<Button-1>",ejecucion)
 
-#texto de bienvenida esquina superior izquierda
-frame1=tk.Frame(ventana_1,bg="red",width=1000)
-frame1.pack(side="top",anchor="w")
-P3=tk.Label(frame1,text=" bienvenido al sofware para un restaurante     ") #da un mensaje de bienvenida
-P3.grid(row=0,column=0)
-P3.config(fg="white",bg="gray",font=("italic",20,"italic"))
-sep = tk.Frame(frame1, bg="black", width=30,height=50)
-sep.grid(row=0,column=1)
+        #####################################################################
 
-#imagenes asociadas al sistema, entre otros
-P4=tk.Frame(ventana_1,bg="red",width=1000)
-P4.pack(side="left",fill="both")
+        #texto de bienvenida esquina superior izquierda
+        self.frame1=tk.Frame(self,bg="red",width=1000)
+        self.frame1.pack(side="top",anchor="w")
+        self.P3=tk.Label(self.frame1,text=" bienvenido al sofware para un restaurante     ") #da un mensaje de bienvenida
+        self.P3.grid(row=0,column=0)
+        self.P3.config(fg="white",bg="gray",font=("italic",20,"italic"))
+        self.sep = tk.Frame(self.frame1, bg="black", width=30,height=50)
+        self.sep.grid(row=0,column=1)
 
-#foto hamburguesa
-foto_hamburguesa = tk.PhotoImage(file=path+"\hamburguesa.png")
+        #imagenes asociadas al sistema, entre otros
+        self.P4=tk.Frame(self,bg="red",width=1000)
+        self.P4.pack(side="left",fill="both")
 
-#foto papas_fritas
-foto_papas_fritas = tk.PhotoImage(file=path+"\papas_fritas.png")
+        #foto hamburguesa
+        self.foto_hamburguesa = tk.PhotoImage(file=path+"\hamburguesa.png")
 
-#foto perro_caliente
-foto_perro_caliente = tk.PhotoImage(file=path+"\perro_caliente.png")
+        #foto papas_fritas
+        self.foto_papas_fritas = tk.PhotoImage(file=path+"\papas_fritas.png")
 
-#foto taco
-foto_taco = tk.PhotoImage(file=path+"\Taco.png")
+        #foto perro_caliente
+        self.foto_perro_caliente = tk.PhotoImage(file=path+"\perro_caliente.png")
 
-#foto burrito
-foto_burrito = tk.PhotoImage(file=path+"\Burrito.png")
+        #foto taco
+        self.foto_taco = tk.PhotoImage(file=path+"\Taco.png")
 
-#nos va a servir para ver la foto de muestra de uno de los platillos
-numero_foto_platillo=1
+        #foto burrito
+        self.foto_burrito = tk.PhotoImage(file=path+"\Burrito.png")
 
-foto_muestra = tk.Label(P4)  
-foto_muestra.grid(row=0,column=0,padx=10,pady=10)
-foto_muestra.config(image=foto_hamburguesa)
+        #nos va a servir para ver la foto de muestra de uno de los platillos
+        self.numero_foto_platillo=1
 
-def visualizacion_foto_platillo(): #esta funcion es util para determinar cual es la foto que se va a ver
-    global numero_foto_platillo
-    if numero_foto_platillo==1:
-        foto_muestra.config(image=foto_hamburguesa)
-    if numero_foto_platillo==2:
-        foto_muestra.config(image=foto_papas_fritas)
-    if numero_foto_platillo==3:
-        foto_muestra.config(image=foto_perro_caliente)
-    if numero_foto_platillo==4:
-        foto_muestra.config(image=foto_taco)
-    if numero_foto_platillo==5:
-        foto_muestra.config(image=foto_burrito)
+        self.foto_muestra = tk.Label(self.P4)  
+        self.foto_muestra.grid(row=0,column=0,padx=10,pady=10)
+        self.foto_muestra.config(image=self.foto_hamburguesa)
 
-def cambio_platillo():
-    global numero_foto_platillo
-    if numero_foto_platillo<5:
-        numero_foto_platillo+=1
-    else:
-        numero_foto_platillo=1
+        def visualizacion_foto_platillo(): #esta funcion es util para determinar cual es la foto que se va a ver
+            if self.numero_foto_platillo==1:
+                self.foto_muestra.config(image=self.foto_hamburguesa)
+            if self.numero_foto_platillo==2:
+                self.foto_muestra.config(image=self.foto_papas_fritas)
+            if self.numero_foto_platillo==3:
+                self.foto_muestra.config(image=self.foto_perro_caliente)
+            if self.numero_foto_platillo==4:
+                self.foto_muestra.config(image=self.foto_taco)
+            if self.numero_foto_platillo==5:
+                self.foto_muestra.config(image=self.foto_burrito)
+
+        def cambio_platillo():
+            if self.numero_foto_platillo<5:
+                self.numero_foto_platillo+=1
+            else:
+                self.numero_foto_platillo=1
         
-def ejecucion_foto_platillo(event):
-    cambio_platillo() #primero realiza el cambio al numero de hoja de vida
-    visualizacion_foto_platillo() #imprime la foto del desarrollador
+        def ejecucion_foto_platillo(event):
+            cambio_platillo() #primero realiza el cambio al numero de hoja de vida
+            visualizacion_foto_platillo() #imprime la foto del desarrollador
 
-#va a suceder cuando pasemos el mouse por encima de una imagen
-foto_muestra.bind("<Enter>",ejecucion_foto_platillo)
+        #va a suceder cuando pasemos el mouse por encima de una imagen
+        self.foto_muestra.bind("<Enter>",ejecucion_foto_platillo)
 
-#ventana de usuario
+        #boton para ir a la siguiente ventana
 
-#esta funcion se ejecuta al dar click en iniciar sesion
-def ingreso_ventana_usuario(event):
-    ventana_1.destroy()
-    ventana_2 = tk.Tk()
-    ventana_2.title("ventana_2")
-    ventana_2.geometry("500x400")
-    ventana_2.configure(bg="white")
-    ventana_2.mainloop()
+        self.boton_i_sesion = tk.Button(self.P4,text="iniciar sesion")
 
-#dentro de esta funcion sucede todo lo relacionado con la ventana 2
-def venta2():
-    pass
+        self.boton_i_sesion.grid(row=1,column=0)
 
-#boton para ir a la siguiente ventana
+        self.boton_i_sesion.place(x=180,y=600,width=200, height=50)
 
-boton_i_sesion = tk.Button(P4,text="iniciar sesion")
+        #self.boton_i_sesion.bind("<Button-1>",ingreso_ventana_usuario)
 
-boton_i_sesion.grid(row=1,column=0)
+        #separador
+        self.separador = tk.Frame(self.P4, bg="black", width=30,height=539)
+        self.separador.grid(row=0,column=1)
+        self.separador2 = tk.Frame(self.P4, bg="black", width=30,height=250)
+        self.separador2.grid(row=1,column=1)
 
-boton_i_sesion.place(x=180,y=600,width=200, height=50)
-
-boton_i_sesion.bind("<Button-1>",ingreso_ventana_usuario)
-
-#separador
-separador = tk.Frame(P4, bg="black", width=30,height=539)
-separador.grid(row=0,column=1)
-separador2 = tk.Frame(P4, bg="black", width=30,height=250)
-separador2.grid(row=1,column=1)
+        self.mainloop()
 
 
-ventana_1.mainloop()
+ventana_inicio()
