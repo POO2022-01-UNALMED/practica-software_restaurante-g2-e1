@@ -254,4 +254,4 @@ separador2 = tk.Frame(P4, bg="black", width=30,height=250)
 separador2.grid(row=1,column=1)
 
 
-#ventana_1.mainloop()
+ventana_1.mainloop()
