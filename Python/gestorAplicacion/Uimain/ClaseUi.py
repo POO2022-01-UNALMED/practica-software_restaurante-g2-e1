@@ -275,6 +275,16 @@ class ventana_principal(tk.Tk):
         #se muestra una ventana de dialogo con los nombres de los autores del software
         def autores_software(): 
             messagebox.showinfo("Autores del software","Autor 1:Juan David Villamizar Gelves\nAutor 2:Jorge Andres Higuita Monsalve\nAutor 3:Juan Sebastian Echeverry Zapata")
+        
+        #en este frame(frame_2) se encuentra lo relacionado con los procesos y consultas
+        self.frame_2=tk.Frame(self,bg="pink",height=650)
+        self.frame_2.pack(side="top",fill="both")
+
+        self.boton_1 = tk.Button(self.frame_2,text="agregar platillo",command=self.tomar_orden())
+        self.boton_1.place(x=180,y=600,width=200, height=50)
+
+        self.frame_fondo=tk.Frame(self,bg="red",height=80)
+        self.frame_fondo.pack(side="bottom",fill="both")
 
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
@@ -285,22 +295,23 @@ class ventana_principal(tk.Tk):
             if self.Archivo.get()=="Salir":
                 self.Archivo.set("Archivo")
                 self.ventana_inicio()
+                
             
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
-            if self.p_y_c.get()=="realizar pedido":
+            if self.p_y_c.get()=="tomar_orden":
                 self.p_y_c.set("Procesos y consultas")
-                pass
-            if self.p_y_c.get()=="cancelar pedido":
+                
+                
+            if self.p_y_c.get()=="agregar socio":
                 self.p_y_c.set("Procesos y consultas")
                 pass
         
-        #esta funcion ejecuta las opciones de ayuda
+        #esta funcion ejecuta las opciones del combox de ayuda
         def opciones_ayuda(event):
             if self.Ayuda.get()=="acerca de":
                 self.Ayuda.set("Ayuda")
                 autores_software()
-
 
 
         #Archivo
@@ -312,7 +323,7 @@ class ventana_principal(tk.Tk):
 
         #Procesos y consultas
         valorDefecto_p_y_c = tk.StringVar(value='Procesos y consultas')
-        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["realizar pedido","cancelar pedido"],textvariable=valorDefecto_p_y_c,state="readonly")
+        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["tomar orden","agregar socio"],textvariable=valorDefecto_p_y_c,state="readonly")
         self.p_y_c.grid(row=0,column=1)
         self.p_y_c.bind("<<ComboboxSelected>>",opciones_p_y_c)
 
@@ -322,11 +333,6 @@ class ventana_principal(tk.Tk):
         self.Ayuda.grid(row=0,column=2)
         self.Ayuda.bind("<<ComboboxSelected>>",opciones_ayuda)
 
-
-        #este frame va en el fondo, su funcion es meramente estetica
-        self.frame_fondo=tk.Frame(self,bg="red",height=80)
-        self.frame_fondo.pack(side="bottom",fill="x")
-
         self.mainloop()
 
     #vuelve a la ventana de inicio    
@@ -334,5 +340,7 @@ class ventana_principal(tk.Tk):
         self.destroy()
         ventana_inicio()
 
+    def tomar_orden(self):
+        pass
+
 ventana_inicio()
-#ventana_principal()
