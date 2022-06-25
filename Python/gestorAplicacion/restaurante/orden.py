@@ -16,7 +16,7 @@ class Orden:
             platillos = []
         x = 0 
         for i in platillos:
-            x += i.getPrecioCompra()
+            x += i.getPrecio()
         x += propina
         self._platillos = platillos
         self._precio_total = x
