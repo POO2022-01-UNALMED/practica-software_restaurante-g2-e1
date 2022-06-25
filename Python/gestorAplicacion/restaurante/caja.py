@@ -24,10 +24,10 @@ class Caja:
     def setEfectivo(self, efectivo):
         self._efectivo += efectivo
 
-    def setIngresos(self, ingresos):
+    def nuevoIngreso(self, ingresos):
         self._ingresos.append(ingresos)
 
-    def setEgresos(self, egresos):
+    def nuevoEgresos(self, egresos):
         self._egresos.append(egresos)
 
     #metodos
