@@ -22,6 +22,10 @@ class Empleado(Persona):
     def getNumero_ventas(self):
         return self._numero_ventas
     
+    @classmethod
+    def getListaEmpleado(cls):
+        return cls._lista_empleado
+    
     #metodos set
     def setNumero_asignado(self,numero_asignado):
         self._numero_asignado=numero_asignado
