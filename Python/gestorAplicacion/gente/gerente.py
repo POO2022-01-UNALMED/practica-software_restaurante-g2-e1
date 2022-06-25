@@ -28,8 +28,9 @@ class Gerente(Persona):
 	def despedir_Empleado(self,numero_empleado):
 		n=1
 		if numero_empleado<=len(Empleado._lista_empleado) and numero_empleado>0:
-			Empleado.lista_empleado.pop(numero_empleado-1)
-			info=i.informacion()
+			info=Empleado._lista_empleado[numero_empleado-1].informacion()
+			Empleado._lista_empleado.pop(numero_empleado-1)
+			
 			for i in Empleado._lista_empleado:
 				i.setNumero_asignado(n)
 				n+=1
@@ -39,7 +40,7 @@ class Gerente(Persona):
 			return "error este empleado no esta en la lista de empleados"
 	
 	def despido_inteligente(self):
-		self.despedir_Empleado(Empleado.empleado_menos_eficiente().getNumero())
+		return self.despedir_Empleado(Empleado.empleado_menos_eficiente().getNumero())
 	
 	def informacion(self):
 		return f"nombre del Gerente: {self._nombre} \ncedula: {self._cedula} \ntelefono: {self._telefono}"
