@@ -1,7 +1,6 @@
-from this import s
-from platillo import Platillo
-from caja import Caja
-from horarios import Horarios
+from restaurante.platillo import Platillo
+from restaurante.caja import Caja
+from restaurante.horarios import Horarios
 from gente.cliente import Cliente
 
 import datetime as dt
@@ -42,9 +41,11 @@ class Orden:
     def getPropina(self):
         return self._propina
 
+    @classmethod
     def getCantidadOrden(cls):
         return cls._cantidad_orden
     
+    @classmethod
     def getCaja(cls):
         return cls._caja
 

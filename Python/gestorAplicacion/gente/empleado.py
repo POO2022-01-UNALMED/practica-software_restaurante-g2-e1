@@ -1,10 +1,10 @@
 from csv import list_dialects
-from persona import Persona
+from gente.persona import Persona
 class Empleado(Persona):
     _numero_empleados=0
     _lista_empleado=[]
     def __init__(self,cedula,nombre,telefono):
-        super.__init__(self,cedula,nombre,telefono)
+        super().__init__(cedula,nombre,telefono)
         self.numero_ventas=0
         self._numero_ventas=0
         Empleado._numero_empleados+=1
@@ -36,8 +36,8 @@ class Empleado(Persona):
         for i in Empleado._lista_empleado:
             ventasporempleado.append(i.getNumero_ventas())
         maximo_ventas=max(ventasporempleado)
-        for e in ventasporempleado:
-            if ventasporempleado(e)==maximo_ventas:
+        for e in range(len(ventasporempleado)):
+            if ventasporempleado[e]==maximo_ventas:
                 return Empleado._lista_empleado[e]
     
     @classmethod
@@ -46,12 +46,12 @@ class Empleado(Persona):
         for i in Empleado._lista_empleado:
             ventasporempleado.append(i.getNumero_ventas())
         minimo_ventas=min(ventasporempleado)
-        for e in ventasporempleado:
-            if ventasporempleado(e)==minimo_ventas:
+        for e in range(len(ventasporempleado)):
+            if ventasporempleado[e]==minimo_ventas:
                 return Empleado._lista_empleado[e]
     
     def informacion(self):
         return f"nombre del Empleado: {self._nombre} \ncedula: {self._cedula} \ntelefono: {self._telefono}\nnumero asignado: {self._numero_asignado} \nnumero de ventas: {self._numero_ventas}"
     
     def info_basi(self):
-	    super().informacion()
+	    return super().informacion()

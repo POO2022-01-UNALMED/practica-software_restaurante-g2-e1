@@ -1,9 +1,9 @@
-from persona import Persona
-from empleado import Empleado
+from gente.persona import Persona
+from gente.empleado import Empleado
 class Gerente(Persona):
 	_list_gerente=[] #una lista que contiene al gerente
 	def __init__(self,cedula,nombre,telefono,contrasena):
-		super.__init__(self,cedula,nombre,telefono)
+		super().__init__(cedula,nombre,telefono)
 		self._contrasena=contrasena
 		if len(Gerente._list_gerente)==1:
 			Gerente._list_gerente[0]=self

@@ -21,6 +21,7 @@ class Ingredientes:
     return self._cantidad
   def getTipo(self):
     return self._tipo
+  @classmethod
   def getListaIngredientes(cls):
     return Ingredientes._listaIngredientes
   #metodos set
