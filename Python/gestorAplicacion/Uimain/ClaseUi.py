@@ -279,12 +279,10 @@ class ventana_principal(tk.Tk):
         #en este frame(frame_2) se encuentra lo relacionado con los procesos y consultas
         self.frame_2=tk.Frame(self,bg="pink",height=650)
         self.frame_2.pack(side="top",fill="both")
-
-        self.boton_1 = tk.Button(self.frame_2,text="agregar platillo",command=self.tomar_orden())
-        self.boton_1.place(x=180,y=600,width=200, height=50)
-
-        self.frame_fondo=tk.Frame(self,bg="red",height=80)
-        self.frame_fondo.pack(side="bottom",fill="both")
+        
+        #frame de la parte de abajo, es meramente decorativo 
+        self.frame_abajo=tk.Frame(self,bg="red",height=80)
+        self.frame_abajo.pack(side="bottom",fill="both")
 
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
@@ -295,17 +293,14 @@ class ventana_principal(tk.Tk):
             if self.Archivo.get()=="Salir":
                 self.Archivo.set("Archivo")
                 self.ventana_inicio()
-                
-            
+               
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
-            if self.p_y_c.get()=="tomar_orden":
-                self.p_y_c.set("Procesos y consultas")
-                
-                
             if self.p_y_c.get()=="agregar socio":
                 self.p_y_c.set("Procesos y consultas")
-                pass
+
+            if self.p_y_c.get()=="tomar orden":
+                self.p_y_c.set("Procesos y consultas")
         
         #esta funcion ejecuta las opciones del combox de ayuda
         def opciones_ayuda(event):
@@ -335,12 +330,9 @@ class ventana_principal(tk.Tk):
 
         self.mainloop()
 
-    #vuelve a la ventana de inicio    
+    #vuelve a la ventana de inicio   
     def ventana_inicio(self):
         self.destroy()
         ventana_inicio()
-
-    def tomar_orden(self):
-        pass
 
 ventana_inicio()
