@@ -51,7 +51,7 @@ class Ventana_inicio(tk.Tk):
 
         #hola de vida Juan Sebastian
 
-        self.hoja_vida_3=" \n hoja de vida desarrollador 3 \n \n nombres: Juan Sebastian\n apellidos: Zapata echeverry\n edad: 20 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jzapatec@unal.edu.co"
+        self.hoja_vida_3=" \n hoja de vida desarrollador 3 \n \n nombres: Juan Sebastian\n apellidos: Zapata echeverri\n edad: 20 años\n Ocupacion: Estudiante ingenieria de sistemas\n correo: jzapatec@unal.edu.co"
 
         #imprimiendo la hoja de vida
 
