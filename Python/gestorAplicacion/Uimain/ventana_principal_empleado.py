@@ -37,7 +37,7 @@ class Ventana_principal_empleado(tk.Tk):
     
         #se muestra una ventana de dialogo con los nombres de los autores del software
         def autores_software(): 
-            messagebox.showinfo("Autores del software","Autor 1:Juan David Villamizar Gelves\nAutor 2:Jorge Andres Higuita Monsalve\nAutor 3:Juan Sebastian Echeverry Zapata")
+            messagebox.showinfo("Autores del software","Autor 1:Juan David Villamizar Gelves\nAutor 2:Jorge Andres Higuita Monsalve\nAutor 3:Juan Sebastian echeverri Zapata")
         
         #en este frame(frame_2) se encuentra lo relacionado con los procesos y consultas
         self.frame_2=tk.Frame(self,bg="pink",height=650)
