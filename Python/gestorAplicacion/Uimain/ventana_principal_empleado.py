@@ -4,6 +4,7 @@ import pathlib
 from tkinter import messagebox
 from tkinter import ttk
 import ventana_inicio
+import iniciar_sesion
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -161,4 +162,4 @@ class Ventana_principal_empleado(tk.Tk):
     #vuelve a la ventana de inicio   
     def ventana_inicio(self):
         self.destroy()
-        ventana_inicio.Ventana_inicio()
+        iniciar_sesion.Inicio_sesion()
