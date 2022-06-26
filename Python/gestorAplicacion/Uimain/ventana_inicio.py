@@ -166,9 +166,9 @@ class Ventana_inicio(tk.Tk):
         self.frame1.pack(side="top",anchor="w")
         self.P3=tk.Label(self.frame1,text=" bienvenido al sofware para un restaurante     ") #da un mensaje de bienvenida
         self.P3.grid(row=0,column=0)
-        self.P3.config(fg="white",bg="gray",font=("italic",20,"italic"))
+        self.P3.config(fg="white",bg="gray",font=("italic",20))
         self.sep = tk.Frame(self.frame1, bg="black", width=30,height=50)
-        self.sep.grid(row=0,column=1)
+        self.sep.grid(row=0,column=1,padx = 2)
 
         #imagenes asociadas al sistema, entre otros
         self.P4=tk.Frame(self,bg="red",width=1000)
