@@ -34,7 +34,7 @@ class Inicio_sesion(tk.Tk):
         self.frame_1.pack(side="top",fill="x")
         
         #en este frame(frame_inicio) se encuentran los botones relacionados con el inicio de sesion
-        self.frame_inicio=tk.Frame(self,bg="pink",height=650)
+        self.frame_inicio=tk.Frame(self,bg="white",height=650)
         self.frame_inicio.pack(side="top",fill="both")
         
         #inicio de sesion como empleado

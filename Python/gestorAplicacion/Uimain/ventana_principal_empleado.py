@@ -56,14 +56,79 @@ class Ventana_principal_empleado(tk.Tk):
             if self.Archivo.get()=="Salir":
                 self.Archivo.set("Archivo")
                 self.ventana_inicio()
+        
+        #esta funcion se ejecuta al seleccionar la opcion agragar socio del combobox de p y c
+        def agregar_socio():
+            print("no se ejecuta")
+
+            self.boton_anadir_platillo.grid_forget()
+
+            self.boton_retirar_platillo.grid_forget()
+
+            self.boton_revisar_pedido.grid_forget()
+
+            self.boton_terminar_orden.grid_forget()
+
+            self.boton_cancelar_orden.grid_forget()
+        
+        #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
+        def tomar_orden():
+            print("se ejecuta")
+            self.boton_anadir_platillo.grid()
+
+            self.boton_retirar_platillo.grid()
+
+            self.boton_revisar_pedido.grid()
+
+            self.boton_terminar_orden.grid()
+
+            self.boton_cancelar_orden.grid()
+        
+        #botones de tomar orden
+
+        self.boton_anadir_platillo = tk.Button(self.frame_2,text="anadir platillo")
+
+        self.boton_retirar_platillo = tk.Button(self.frame_2,text="retirar platillo")
+
+        self.boton_revisar_pedido = tk.Button(self.frame_2,text="revisar pedido")
+
+        self.boton_terminar_orden = tk.Button(self.frame_2,text="terminar orden")
+
+        self.boton_cancelar_orden = tk.Button(self.frame_2,text="cancelar orden")
+
+        ############################################################################
+
+        self.boton_anadir_platillo.grid(row=0,column=0, padx=10, pady=10)
+
+        self.boton_retirar_platillo.grid(row=1,column=0, padx=10, pady=10)
+
+        self.boton_revisar_pedido.grid(row=2,column=0, padx=10, pady=10)
+
+        self.boton_terminar_orden.grid(row=3,column=0, padx=10, pady=10)
+
+        self.boton_cancelar_orden.grid(row=4,column=0, padx=10, pady=10)
+
+        ############################################################################
+
+        self.boton_anadir_platillo.grid_forget()
+
+        self.boton_retirar_platillo.grid_forget()
+
+        self.boton_revisar_pedido.grid_forget()
+
+        self.boton_terminar_orden.grid_forget()
+
+        self.boton_cancelar_orden.grid_forget()
                
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
             if self.p_y_c.get()=="agregar socio":
+                agregar_socio()
                 self.p_y_c.set("Procesos y consultas")
 
             if self.p_y_c.get()=="tomar orden":
-                self.p_y_c.set("Procesos y consultas")
+                tomar_orden()
+                self.p_y_c.set("Procesos y consultas")   
         
         #esta funcion ejecuta las opciones del combox de ayuda
         def opciones_ayuda(event):
