@@ -3,7 +3,7 @@ import os
 import pathlib
 from tkinter import messagebox
 from tkinter import ttk
-import ventana_principal_empleado
+import iniciar_sesion
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -223,7 +223,7 @@ class Ventana_inicio(tk.Tk):
 
         #boton para ir a la siguiente ventana
 
-        self.boton_i_sesion = tk.Button(self.P4,text="iniciar sesion",command=self.ventana_principal)
+        self.boton_i_sesion = tk.Button(self.P4,text="iniciar sesion",command=self.Ventana_inicio)
 
         self.boton_i_sesion.grid(row=1,column=0)
 
@@ -239,6 +239,6 @@ class Ventana_inicio(tk.Tk):
 
         self.mainloop()
     
-    def ventana_principal(self):
+    def Ventana_inicio(self):
         self.destroy()
-        ventana_principal_empleado.Ventana_principal_empleado()
+        iniciar_sesion.Inicio_sesion()
