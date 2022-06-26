@@ -157,7 +157,7 @@ class Ventana_inicio(tk.Tk):
             visualizacion_foto() #imprime la foto del desarrollador
 
         #va a suceder cuando le demos click al espacio asignado para las hojas de vida de los desarrolladores(con el boton izquierdo del mouse)
-        self.hoja_vida.bind("<Button-1>",ejecucion)
+        self.P5.bind("<Enter>",ejecucion)
 
         #####################################################################
 
