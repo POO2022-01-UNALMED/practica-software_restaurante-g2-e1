@@ -96,6 +96,10 @@ class Ventana_principal_empleado(tk.Tk):
         def tomar_orden():
             self.b.place_forget()
 
+            self.t.place_forget()
+
+            self.boton_volver.place_forget()
+
             self.titulo_anadir_socio.place_forget()
 
             self.descripcion_anadir_socio.place_forget()
@@ -228,9 +232,32 @@ class Ventana_principal_empleado(tk.Tk):
                  
         self.a.botonAceptar.bind("<ButtonRelease-1>", agregando)
 
+        self.b.place(x=520,y=100,width=500,height=100)
+
+        self.b.place_forget()
+        
+
+        #un boton para volver despues de añadir un platillo
+
+        self.boton_volver = tk.Button(self.frame_2,text="volver",command=tomar_orden)
+
+        self.boton_volver.place(x=520,y=100,width=500,height=100)
+
+        self.boton_volver.place_forget()
+
+        #un formulario para terminar orden
+
+        self.t=fieldframe.FieldFrame(self.frame_2,"pago",["monto de dinero"],"total")
+
+        self.t.place(x=520,y=100,width=500,height=100)
+
+        self.t.place_forget()
+
         #funcionalidades para los botones de tomar orden
 
         def añadiendo_platillo():
+            self.boton_volver.place(x=520,y=300,width=200,height=60)
+
             self.b.place(x=520,y=100,width=500,height=100)
 
             self.boton_anadir_platillo.place_forget()
@@ -253,13 +280,46 @@ class Ventana_principal_empleado(tk.Tk):
             else:
                 messagebox.showwarning(title="Aviso",message="no hay platillos para retirar")
 
+        def terminando(entry):
+            z = self.t.aceptar()
+            if z[0] == '':
+                messagebox.showwarning(title="Aviso",message='debe ingresar un valor')
+            try:
+                valor = int(z[0])
+            except:
+                messagebox.showwarning(title="Aviso",message=ExcepcionEnteroString('valor').mensaje_error)
+            
+            orden=Orden
+            for i in Platillo._Lista_platillo:
+                orden.anadirPlatillos(i)
+            texto=orden.comprobar(valor)
+            messagebox.showwarning(title="Aviso",message=texto)
+        self.t.botonAceptar.bind("<ButtonRelease-1>", terminando)
+
 
         def terminando_orden():
-            print("terminando_la_orden")
+            self.boton_anadir_platillo.place_forget()
+
+            self.boton_retirar_platillo.place_forget()
+
+            self.boton_terminar_orden.place_forget()
+
+            self.boton_cancelar_orden.place_forget()
+
+            self.titulo_tomar_orden.place_forget()
+
+            self.descripcion_tomar_orden.place_forget()
+
+            self.t.place(x=520,y=100,width=500,height=100)
+
+            self.boton_volver.place(x=520,y=300,width=200,height=60)
+
+            #orden=Orden()
+            #orden.comprobar()
 
         def cancelando_orden():
             Platillo._Lista_platillo=[]
-            print("cancelando_la_orden")
+            messagebox.showwarning(title="Aviso",message="se ha cancelado la orden")
         
         #botones de tomar orden
 
