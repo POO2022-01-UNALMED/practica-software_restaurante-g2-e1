@@ -47,11 +47,3 @@ class FieldFrame(Frame):
     def getValue(self, criterio):
         entrada = self.entradas[criterio]
         return entrada.get()
-    
-    
-        
-ventana = tk.Tk()
-ventana.title("Ejemplo grid")
-frame=FieldFrame(ventana,"criterio",["nombre","cedula","tamaño_pene"],"valor")
-frame.place(x=100,y=100)
-ventana.mainloop()
