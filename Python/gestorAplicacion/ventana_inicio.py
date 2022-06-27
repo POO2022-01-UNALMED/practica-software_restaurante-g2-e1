@@ -56,7 +56,6 @@ class Ventana_inicio(tk.Tk):
         #imprimiendo la hoja de vida
 
         self.hoja_vida.insert(tk.END,self.hoja_vida_1)
-        print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
         self.hoja_vida.configure(state='disabled')
 
         self.seleccion=1 #el numero de la hoja de vida que se muestra en el widget de las hojas de vida(1,2 o 3)
@@ -71,19 +70,16 @@ class Ventana_inicio(tk.Tk):
                 self.hoja_vida.configure(state='normal')
                 self.hoja_vida.delete('1.0', 'end-1c')
                 self.hoja_vida.insert(tk.END,self.hoja_vida_1)
-                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la primera hoja de vida
                 self.hoja_vida.configure(state='disabled')
             if self.seleccion==2:
                 self.hoja_vida.configure(state='normal')
                 self.hoja_vida.delete('1.0', 'end-1c')
                 self.hoja_vida.insert(tk.END,self.hoja_vida_2)
-                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la segunda hoja de vida
                 self.hoja_vida.configure(state='disabled')
             if self.seleccion==3:
                 self.hoja_vida.configure(state='normal')
                 self.hoja_vida.delete('1.0', 'end-1c')
                 self.hoja_vida.insert(tk.END,self.hoja_vida_3)
-                print(self.hoja_vida.get('1.0', 'end-1c'))  #se imprime la tercera hoja de vida
                 self.hoja_vida.configure(state='disabled')
 
 

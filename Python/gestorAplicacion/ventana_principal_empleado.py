@@ -60,7 +60,6 @@ class Ventana_principal_empleado(tk.Tk):
         
         #esta funcion se ejecuta al seleccionar la opcion agragar socio del combobox de p y c
         def agregar_socio():
-            print("no se ejecuta")
 
             self.boton_anadir_platillo.place_forget()
 
@@ -74,7 +73,6 @@ class Ventana_principal_empleado(tk.Tk):
         
         #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
         def tomar_orden():
-            print("se ejecuta")
             self.boton_anadir_platillo.place(x=640,y=50,width=300,height=50)
 
             self.boton_retirar_platillo.place(x=640,y=110,width=300,height=50)
