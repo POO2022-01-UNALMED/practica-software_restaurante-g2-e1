@@ -53,10 +53,12 @@ class Ventana_principal_gerente(tk.Tk):
         self.frame_abajo=tk.Frame(self,bg="RoyalBlue",height=70)
         self.frame_abajo.pack(side="bottom",fill="both")
 
-        #frames, botones de empleados 
-        self.titl_label = tk.Label(self, text='Despido empleados', font=('Italic', 20))
+        #frames, botones de empleados ----------------------------------------------------------------------------------------------------------------------------------------------
+
+
+        self.titl_label = tk.Label(self, text='Ver empleados', font=('Italic', 20))
         self.desp_frame = tk.Frame(self, bg= 'LightSteelBlue', height= 80, width= 1360)
-        self.desp_exp = tk.Label(self.desp_frame, text = 'En esta ventana podremos visualizar la informacion de los empleados y despedir al que queramos,\nel despido inteligente despide al empleado menos eficiente.')
+        self.desp_exp = tk.Label(self.desp_frame, text = 'En esta ventana podremos visualizar la informacion de los empleados y despedir al que queramos,\nel despido inteligente despide al empleado menos eficiente, ademas podremos ver a nuestro mejor empleado.')
 
 
         self.despido = Button(self.frame_2, text='Despedir', width=15)
@@ -68,6 +70,7 @@ class Ventana_principal_gerente(tk.Tk):
         self.sig_emp = Button(self.frame_2, text='Siguiente', width=15)
         self.atr_emp = Button(self.frame_2, text='Anterior', width=15)
         self.desp_int = Button(self.frame_2, text='Despido inteligente', width=15)
+        self.mas_ef = Button(self.frame_2, text= 'Mas eficiente',width=15)
         
 
         def buscar_empleado(event):
@@ -156,11 +159,22 @@ class Ventana_principal_gerente(tk.Tk):
             self.textemp.delete('1.0', 'end-1c')
             self.textemp.insert(tk.END,self.info_emp)
             self.textemp.configure(state='disabled')
+
+        def emp_efic(event):
+            try:
+                self.info_emp = 'Nuestro mejor empleado es:\n\n' + Empleado.empleado_mas_eficiente().informacion() + '\n\n deberias aumentarle el salario a este buen trabajador. '
+            except:
+                self.info_emp = 'No hay empleados'
+            self.textemp.configure(state='normal')
+            self.textemp.delete('1.0', 'end-1c')
+            self.textemp.insert(tk.END,self.info_emp)
+            self.textemp.configure(state='disabled')
+
         self.sig_emp.bind('<ButtonRelease-1>',buscar_empleado)
         self.atr_emp.bind('<ButtonRelease-1>',atras_empleado)
         self.despido.bind('<ButtonRelease-1>', despido_emp)
         self.desp_int.bind('<ButtonRelease-1>', desp_int)
-
+        self.mas_ef.bind('<ButtonRelease-1>',emp_efic)
         def show_empleados():
             self.frame_abajo.pack_forget()
             self.frame_2.pack_forget()
@@ -171,11 +185,14 @@ class Ventana_principal_gerente(tk.Tk):
             self.despido.place(relx = 0.4, rely = 0.9, anchor = 'c')
             self.desp_int.place(relx = 0.6,rely=0.9, anchor='c')
             self.textemp.place(relx=0.5,rely=0.5,relheight=0.6, relwidth= 0.6, anchor= 'c')
-            self.sig_emp.place(relx = 0.8, rely = 0.9, anchor = 'c')
-            self.atr_emp.place(relx = 0.2, rely = 0.9, anchor = 'c')
+            self.sig_emp.place(relx = 0.7, rely = 0.9, anchor = 'c')
+            self.atr_emp.place(relx = 0.3, rely = 0.9, anchor = 'c')
+            self.mas_ef.place(relx = 0.5, rely = 0.9, anchor = 'c')
             
             
 
+        ##---------------------------------------------------------------------------------------------------------------------------------
+        #aqui va la parte de el inventario
 
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
