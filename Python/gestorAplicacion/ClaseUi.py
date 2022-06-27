@@ -31,8 +31,6 @@ if Vacio == True: # Si alguna de las carpetas esta vacia
     emp2 = Empleado(3, "sofia", 4)
     emp3 = Empleado(7, "t", 3)
     emp4 = Empleado(8, "david", 2)
-    ing1 = Ingredientes(2, 30, 'carne de res')
-    ing2 = Ingredientes(2, 30, 'leche')
     or1 = Orden().getCaja()[0]
     or1.setEfectivo(70000)
     or1.nuevoIngreso(3000)
@@ -45,7 +43,7 @@ else:
     Deserializador.DeserializarTodo()
     Orden.setCaja(Caja.getCajas()[0])
     print("cargando informacion")
-a=Ingredientes(10, 10, "tomate")
+
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()
 

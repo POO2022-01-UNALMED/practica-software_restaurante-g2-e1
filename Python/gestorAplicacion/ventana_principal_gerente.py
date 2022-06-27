@@ -623,17 +623,3 @@ class Ventana_principal_gerente(tk.Tk):
     def ventana_inicio(self):
         self.destroy()
         ventana_inicio.Ventana_inicio()
-if __name__ == "__main__":
-    emp1 = Empleado(1,"andres", 23)
-    emp2 = Empleado(3, "sofia", 4)
-    emp3 = Empleado(7,"t",3)
-    emp4 = Empleado(8, "david", 2)
-    ing1 = Ingredientes(2,30,'carne de res')
-    ing2 = Ingredientes(2,30,'leche')
-    or1 = Orden().getCaja()
-    or1.setEfectivo(70000)
-    or1.nuevoIngreso(3000)
-    or1.nuevoIngreso(17000)
-    or1.nuevoIngreso(50000)
-    
-    Ventana_principal_gerente()

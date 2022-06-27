@@ -168,7 +168,8 @@ class Ventana_principal_empleado(tk.Tk):
                             Platillo._Lista_platillo.append(platillo)
                             messagebox.showwarning(title="Aviso",message="platillo creado con exito")
                             break
-                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+                    elif i == Ingredientes._listaIngredientes[-1]:
+                        messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
             elif y[1] == "" and y[0] != '':
                 for i in Ingredientes._listaIngredientes:
                     if i.getTipo()==y[0]:
@@ -180,8 +181,10 @@ class Ventana_principal_empleado(tk.Tk):
                             Platillo._Lista_platillo.append(platillo)
                             messagebox.showwarning(title="Aviso",message="platillo creado con exito")
                             break
-                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+                    elif i == Ingredientes._listaIngredientes[-1]:
+                        messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
             else:
+                prueba = False
                 for i in Ingredientes._listaIngredientes:
                     if i.getTipo()==y[0]:
                         if i.getCantidad()==0:
@@ -189,20 +192,24 @@ class Ventana_principal_empleado(tk.Tk):
                             break
                         else:
                             platillo.anadirIngrediente(i)
+                            prueba = True
                             break
-                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")  
-                for i in Ingredientes._listaIngredientes:
-                    if i.getTipo()==y[1]:
-                        if i.getCantidad()==1:
-                            messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
-                            break
-                        else:
-                            platillo.anadirIngrediente(i)
-                            Platillo._Lista_platillo.append(platillo)
-                            messagebox.showwarning(title="Aviso",message="platillo creado con exito")
-                            
-                            break
-                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+                    elif i == Ingredientes._listaIngredientes[-1]:
+                        messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")  
+                if prueba:
+                    for i in Ingredientes._listaIngredientes:
+                        if i.getTipo()==y[1]:
+                            if i.getCantidad()==1:
+                                messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
+                                break
+                            else:
+                                platillo.anadirIngrediente(i)
+                                Platillo._Lista_platillo.append(platillo)
+                                messagebox.showwarning(title="Aviso",message="platillo creado con exito")
+                                
+                                break
+                        elif i == Ingredientes._listaIngredientes[-1]:
+                            messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
         self.b.botonAceptar.bind("<ButtonRelease-1>", agregando_pl)
 
         def agregando(entry):
