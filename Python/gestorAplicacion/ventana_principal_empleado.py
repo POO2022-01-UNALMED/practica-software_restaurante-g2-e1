@@ -3,6 +3,7 @@ import os
 import pathlib
 from tkinter import messagebox
 from tkinter import ttk
+from restaurante.platillo import Platillo
 import ventana_inicio
 import iniciar_sesion
 import fieldframe
@@ -90,9 +91,10 @@ class Ventana_principal_empleado(tk.Tk):
 
         #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
 
-        def tomar_orden():
+        #funcionalidades de tomar orden
 
-            orden=Orden()
+        def tomar_orden():
+            self.b.place_forget()
 
             self.titulo_anadir_socio.place_forget()
 
@@ -126,13 +128,78 @@ class Ventana_principal_empleado(tk.Tk):
 
         self.descripcion_anadir_socio.place_forget()
 
+        #formularios
+
+        #formulario para anadir a un nuevo socio
+
         self.a=fieldframe.FieldFrame(self.frame_2,"datos",["cedula","nombre","telefono"],"valor")
 
         self.a.place(x=520,y=100,width=500,height=100)
 
         self.a.place_forget()
 
-        #funcion que sirve para agregar socios
+        #formulario para anadir un nuevo platillo
+
+        self.b=fieldframe.FieldFrame(self.frame_2,"ingredientes",["ingrediente 1","ingrediente 2"],"nombres")
+
+        self.b.place(x=520,y=100,width=500,height=100)
+
+        self.b.place_forget()
+
+        #funcion que sirve para agregar platillos
+
+        def agregando_pl(entry):
+            y = self.b.aceptar()
+            platillo=Platillo()
+            if y[0] == '' and y[1] == '':
+                messagebox.showwarning(title="Aviso",message='platillo sin ingredientes, agregue por lo menos un ingrediente')  
+            elif y[0] == '' and y[1] != '':
+                for i in Ingredientes._listaIngredientes:
+                    if i.getTipo()==y[1]:
+                        if i.getCantidad()==0:
+                            messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
+                            break
+                        else:
+                            platillo.anadirIngrediente(i)
+                            Platillo._Lista_platillo.append(platillo)
+                            messagebox.showwarning(title="Aviso",message="platillo creado con exito")
+                            break
+                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+            elif y[1] == "" and y[0] != '':
+                for i in Ingredientes._listaIngredientes:
+                    if i.getTipo()==y[0]:
+                        if i.getCantidad()==0:
+                            messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
+                            break
+                        else:
+                            platillo.anadirIngrediente(i)
+                            Platillo._Lista_platillo.append(platillo)
+                            messagebox.showwarning(title="Aviso",message="platillo creado con exito")
+                            break
+                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+            else:
+                for i in Ingredientes._listaIngredientes:
+                    if i.getTipo()==y[0]:
+                        if i.getCantidad()==0:
+                            messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
+                            break
+                        else:
+                            platillo.anadirIngrediente(i)
+                            break
+                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")  
+                for i in Ingredientes._listaIngredientes:
+                    if i.getTipo()==y[1]:
+                        if i.getCantidad()==1:
+                            messagebox.showwarning(title="Aviso",message=platillo.anadirIngrediente(i))
+                            break
+                        else:
+                            platillo.anadirIngrediente(i)
+                            Platillo._Lista_platillo.append(platillo)
+                            messagebox.showwarning(title="Aviso",message="platillo creado con exito")
+                            
+                            break
+                    messagebox.showwarning(title="Aviso",message="atencion, el ingrediente que ha ingresado no existe")
+        self.b.botonAceptar.bind("<ButtonRelease-1>", agregando_pl)
 
         def agregando(entry):
             x = self.a.aceptar()
@@ -160,8 +227,39 @@ class Ventana_principal_empleado(tk.Tk):
             messagebox.showinfo(title='Aviso', message="el cliente fue agregado exitosamente a la lista de clientes")
                  
         self.a.botonAceptar.bind("<ButtonRelease-1>", agregando)
-            
-        
+
+        #funcionalidades para los botones de tomar orden
+
+        def añadiendo_platillo():
+            self.b.place(x=520,y=100,width=500,height=100)
+
+            self.boton_anadir_platillo.place_forget()
+
+            self.boton_retirar_platillo.place_forget()
+
+            self.boton_terminar_orden.place_forget()
+
+            self.boton_cancelar_orden.place_forget()
+
+            self.titulo_tomar_orden.place_forget()
+
+            self.descripcion_tomar_orden.place_forget()
+
+            #print("añadiendo_platillo")
+
+        def retirando_platillo():
+            if len(Platillo._Lista_platillo)>=1:
+                Platillo._Lista_platillo.pop(len(Platillo._Lista_platillo.pop)-1)
+            else:
+                messagebox.showwarning(title="Aviso",message="no hay platillos para retirar")
+
+
+        def terminando_orden():
+            print("terminando_la_orden")
+
+        def cancelando_orden():
+            Platillo._Lista_platillo=[]
+            print("cancelando_la_orden")
         
         #botones de tomar orden
 
@@ -177,13 +275,13 @@ class Ventana_principal_empleado(tk.Tk):
 
         self.descripcion_tomar_orden.place_forget()
 
-        self.boton_anadir_platillo = tk.Button(self.frame_2,text="anadir platillo")
+        self.boton_anadir_platillo = tk.Button(self.frame_2,text="anadir platillo",command=añadiendo_platillo)
 
-        self.boton_retirar_platillo = tk.Button(self.frame_2,text="retirar platillo")
+        self.boton_retirar_platillo = tk.Button(self.frame_2,text="retirar platillo",command=retirando_platillo)
 
-        self.boton_terminar_orden = tk.Button(self.frame_2,text="terminar orden")
+        self.boton_terminar_orden = tk.Button(self.frame_2,text="terminar orden",command=terminando_orden)
 
-        self.boton_cancelar_orden = tk.Button(self.frame_2,text="cancelar orden")
+        self.boton_cancelar_orden = tk.Button(self.frame_2,text="cancelar orden",command=cancelando_orden)
 
         ############################################################################
 
@@ -204,19 +302,6 @@ class Ventana_principal_empleado(tk.Tk):
         self.boton_terminar_orden.place_forget()
 
         self.boton_cancelar_orden.place_forget()
-
-        ###########################################################################
-
-        #funcionalidades dentro de tomar orden
-
-        #def añadiendo_platillo():
-        #    self.ventana_platillo()
-
-        #def retirando_platillo():
-
-        #def terminar_orden():       
-
-        ############################################################################
                
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
@@ -259,3 +344,6 @@ class Ventana_principal_empleado(tk.Tk):
     def ventana_inicio(self):
         self.destroy()
         ventana_inicio.Ventana_inicio()
+    
+a=Ingredientes(10, 10, "tomate")
+Ventana_principal_empleado()
