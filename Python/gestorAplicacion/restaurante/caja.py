@@ -1,5 +1,5 @@
 class Caja:
-
+    _cajas = []
     #constructor
     def __init__(self, efectivo = 0, ingresos = None, egresos = None):
         if ingresos is None:
@@ -9,6 +9,7 @@ class Caja:
         self._efectivo = efectivo
         self._ingresos = ingresos
         self._egresos = egresos
+        Caja._cajas.append(self)
 
     #metodos get 
     def getEfectivo(self):
@@ -19,7 +20,8 @@ class Caja:
 
     def getEgresos(self):
         return self._egresos
-
+    def getCajas(self):
+        return Caja._cajas
     #metodos set
     def setEfectivo(self, efectivo):
         self._efectivo += efectivo

@@ -8,7 +8,7 @@ import datetime as dt
 class Orden:
 
     _cantidad_orden = 0
-    _caja = Caja()
+    _caja = ''
 
     #constructor 
     def __init__(self, platillos = None, cliente = None, propina = 0):
@@ -48,8 +48,11 @@ class Orden:
     @classmethod
     def getCaja(cls):
         return cls._caja
-
+    
     #metodos set
+    @classmethod
+    def setCaja(cls,caja):
+        Orden._caja.append(caja)
     def anadirPlatillos(self, platillo):
         self._platillos.append(platillo)
         self._precio_total += platillo.getPrecio()

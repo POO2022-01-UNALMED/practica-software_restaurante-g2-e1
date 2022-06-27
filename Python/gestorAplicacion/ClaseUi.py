@@ -6,6 +6,8 @@ from baseDatos.Deserializador import Deserializador
 from restaurante.ingredientes import Ingredientes
 from gente.cliente import Cliente
 from gente.gerente import Gerente
+from restaurante.orden import Orden
+from restaurante.orden import Caja
 
 #Comprobanmos si existen objetos creados anteriormente
 Vacio=True
@@ -23,12 +25,16 @@ if Vacio == True: # Si alguna de las carpetas esta vacia
     ing2 = Ingredientes(2, 30, 'leche')
     g1 = Gerente(10, "Jorge", 4820249, 1111)
     c1 = Cliente(20, "Franlo el jefe", 318383)
+    caja = Caja(0)
     print("Instanciando objetos")
     
 else:
     # Se cargan los objetos guardados
     Deserializador.DeserializarTodo()
-    print("cargando informacion")  
+    print("cargando informacion") 
+
+Orden.setCaja(Caja.getCajas()[0])
+
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()
 
