@@ -37,7 +37,7 @@ class FieldFrame(Frame):
         self.valor_entradas=[]
         for criterio in self.entradas:
             self.valor_entradas.append(self.getValue(criterio))
-        print(self.valor_entradas)
+        return self.valor_entradas
     
     def borrarValores(self):
         for criterio in self.entradas:

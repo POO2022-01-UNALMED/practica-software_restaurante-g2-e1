@@ -21,8 +21,8 @@ class Gerente(Persona):
 		self._contrasena=contrasena
 
 	#otros metodos
-
-	def contratar_Empleado(self,cedula,nombre,telefono):
+	@classmethod
+	def contratar_Empleado(cls,cedula,nombre,telefono):
 		Empleado(cedula,nombre,telefono)
 	
 	@classmethod
