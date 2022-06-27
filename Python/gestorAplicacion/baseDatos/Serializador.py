@@ -12,37 +12,37 @@ class Serializador:
     @classmethod
     def serializar(cls,tipo):
         if tipo=="Cliente":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Cliente.txt", "wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/Cliente.txt", "wb")
             serializa = Cliente._lista_socio
             pickle.dump(serializa, pickfile,)
             pickfile.close
 
         elif tipo=="Empleado":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Empleado.txt", "wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/Empleado.txt", "wb")
             serializa = Empleado._lista_empleado
             pickle.dump(serializa, pickfile)
             pickfile.close
         
         elif tipo=="Gerente":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Gerente.txt", "wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/Gerente.txt", "wb")
             serializa = Gerente._list_gerente
             pickle.dump(serializa, pickfile)
             pickfile.close
         
         elif tipo=="ingredientes":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/ingredientes.txt", "wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/ingredientes.txt", "wb")
             serializa = Ingredientes.getListaIngredientes()
             pickle.dump(serializa, pickfile)
             pickfile.close
         
         elif tipo=="NumEmple":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/NumEmple.txt", "wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/NumEmple.txt", "wb")
             serializa = Empleado.getNumero_empleados()
             pickle.dump(serializa, pickfile)
             pickfile.close
 
         elif tipo == "Caja":
-            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Caja.txt","wb")
+            pickfile = open("gestorAplicacion/baseDatos/temp/Caja.txt","wb")
             serializa = Caja.getCajas()
             pickle.dump(serializa,pickfile)
             pickfile.close

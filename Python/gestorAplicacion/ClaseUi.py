@@ -11,7 +11,7 @@ from restaurante.orden import Caja
 
 #Comprobanmos si existen objetos creados anteriormente
 Vacio=True
-dirtemp = "Python/gestorAplicacion/baseDatos/temp"
+dirtemp = "gestorAplicacion/baseDatos/temp"
 for filename in os.listdir(dirtemp):
     f = os.path.join(dirtemp, filename)
     if os.stat(f).st_size == 0:
@@ -45,7 +45,7 @@ else:
     Deserializador.DeserializarTodo()
     Orden.setCaja(Caja.getCajas()[0])
     print("cargando informacion")
-     
+a=Ingredientes(10, 10, "tomate")
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()
 

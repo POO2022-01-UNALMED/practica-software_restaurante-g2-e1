@@ -405,5 +405,3 @@ class Ventana_principal_empleado(tk.Tk):
         self.destroy()
         ventana_inicio.Ventana_inicio()
     
-a=Ingredientes(10, 10, "tomate")
-Ventana_principal_empleado()
