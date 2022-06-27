@@ -44,10 +44,8 @@ else:
     # Se cargan los objetos guardados
     Deserializador.DeserializarTodo()
     Orden.setCaja(Caja.getCajas()[0])
-    print("cargando informacion") 
-
-
-
+    print("cargando informacion")
+     
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()
 
