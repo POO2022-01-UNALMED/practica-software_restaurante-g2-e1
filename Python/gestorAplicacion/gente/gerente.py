@@ -39,9 +39,9 @@ class Gerente(Persona):
 			return "se despidio al empleado con la siguiente informacion: \n"+info
 		else:
 			return "error este empleado no esta en la lista de empleados"
-	
-	def despido_inteligente(self):
-		return self.despedir_Empleado(Empleado.empleado_menos_eficiente().getNumero())
+	@classmethod
+	def despido_inteligente(cls):
+		return Gerente.despedir_Empleado(Empleado.empleado_menos_eficiente().getNumero())
 	
 	def informacion(self):
 		return f"nombre del Gerente: {self._nombre} \ncedula: {self._cedula} \ntelefono: {self._telefono}"
