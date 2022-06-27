@@ -1,9 +1,9 @@
 import pickle
 
-from Python.gestorAplicacion.gente.cliente import Cliente
-from Python.gestorAplicacion.gente.empleado import Empleado
-from Python.gestorAplicacion.gente.gerente import Gerente
-from Python.gestorAplicacion.restaurante.ingredientes import Ingredientes
+from gestorAplicacion.gente.cliente import Cliente
+from gestorAplicacion.gente.empleado import Empleado
+from gestorAplicacion.gente.gerente import Gerente
+from gestorAplicacion.restaurante.ingredientes import Ingredientes
 
 def deserializar(cls, tipo):
     if tipo == "Cliente":
