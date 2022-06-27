@@ -62,28 +62,28 @@ class Ventana_principal_empleado(tk.Tk):
         def agregar_socio():
             print("no se ejecuta")
 
-            self.boton_anadir_platillo.grid_forget()
+            self.boton_anadir_platillo.place_forget()
 
-            self.boton_retirar_platillo.grid_forget()
+            self.boton_retirar_platillo.place_forget()
 
-            self.boton_revisar_pedido.grid_forget()
+            self.boton_revisar_pedido.place_forget()
 
-            self.boton_terminar_orden.grid_forget()
+            self.boton_terminar_orden.place_forget()
 
-            self.boton_cancelar_orden.grid_forget()
+            self.boton_cancelar_orden.place_forget()
         
         #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
         def tomar_orden():
             print("se ejecuta")
-            self.boton_anadir_platillo.grid()
+            self.boton_anadir_platillo.place(x=640,y=50,width=300,height=50)
 
-            self.boton_retirar_platillo.grid()
+            self.boton_retirar_platillo.place(x=640,y=110,width=300,height=50)
 
-            self.boton_revisar_pedido.grid()
+            self.boton_revisar_pedido.place(x=640,y=170,width=300,height=50)
 
-            self.boton_terminar_orden.grid()
+            self.boton_terminar_orden.place(x=640,y=230,width=300,height=50)
 
-            self.boton_cancelar_orden.grid()
+            self.boton_cancelar_orden.place(x=640,y=290,width=300,height=50)
         
         #botones de tomar orden
 
@@ -99,27 +99,27 @@ class Ventana_principal_empleado(tk.Tk):
 
         ############################################################################
 
-        self.boton_anadir_platillo.grid(row=0,column=0, padx=10, pady=10)
+        self.boton_anadir_platillo.place(x=10,y=10,width=100,height=40)
 
-        self.boton_retirar_platillo.grid(row=1,column=0, padx=10, pady=10)
+        self.boton_retirar_platillo.place(x=10,y=20,width=100,height=40)
 
-        self.boton_revisar_pedido.grid(row=2,column=0, padx=10, pady=10)
+        self.boton_revisar_pedido.place(x=10,y=30,width=100,height=40)
 
-        self.boton_terminar_orden.grid(row=3,column=0, padx=10, pady=10)
+        self.boton_terminar_orden.place(x=10,y=40,width=100,height=40)
 
-        self.boton_cancelar_orden.grid(row=4,column=0, padx=10, pady=10)
+        self.boton_cancelar_orden.place(x=10,y=50,width=100,height=40)
 
         ############################################################################
 
-        self.boton_anadir_platillo.grid_forget()
+        self.boton_anadir_platillo.place_forget()
 
-        self.boton_retirar_platillo.grid_forget()
+        self.boton_retirar_platillo.place_forget()
 
-        self.boton_revisar_pedido.grid_forget()
+        self.boton_revisar_pedido.place_forget()
 
-        self.boton_terminar_orden.grid_forget()
+        self.boton_terminar_orden.place_forget()
 
-        self.boton_cancelar_orden.grid_forget()
+        self.boton_cancelar_orden.place_forget()
                
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
