@@ -1,10 +1,12 @@
 import tkinter as tk
 import os
 import pathlib
-from tkinter import Frame, messagebox
+from tkinter import Button, Frame, messagebox
 from tkinter import ttk
 import ventana_inicio
 import iniciar_sesion
+
+from gente.empleado import Empleado
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -18,13 +20,13 @@ class Ventana_principal_gerente(tk.Tk):
 
         #este frame(frame_0) corresponde al de la parte superior
 
-        self.frame_0=tk.Frame(self,bg="red",height=80)
+        self.frame_0=tk.Frame(self,bg="RoyalBlue",height=80)
         self.frame_0.pack(side="top",fill="x")
 
         #una etiqueta que contiene al titulo del nombre del software
 
         self.titulo=tk.Label(self.frame_0,text=" software para un restaurante ")
-        self.titulo.config(fg="white",bg="red",font=("italic",30,"italic"))
+        self.titulo.config(fg="white",bg="RoyalBlue",font=("italic",30,"italic"))
         self.titulo.pack(anchor="c")
 
         #este frame(frame_1) corresponde a la zona de menus
@@ -41,12 +43,49 @@ class Ventana_principal_gerente(tk.Tk):
             messagebox.showinfo("Autores del software","Autor 1:Juan David Billamizar Gelves\nAutor 2:Jorge Andres Higuita Monsalve\nAutor 3:Juan Sebastian echeverri Zapata")
         
         #en este frame(frame_2) se encuentra lo relacionado con los procesos y consultas
-        self.frame_2=tk.Frame(self,bg="pink",height=650)
+        self.frame_2=tk.Frame(self,bg="LightSteelBlue",height=580)
         self.frame_2.pack(side="top",fill="both")
-        
+       
         #frame de la parte de abajo, es meramente decorativo 
-        self.frame_abajo=tk.Frame(self,bg="red",height=80)
+        self.frame_abajo=tk.Frame(self,bg="RoyalBlue",height=70)
         self.frame_abajo.pack(side="bottom",fill="both")
+
+        #frames, botones
+        
+        self.frameemp = tk.Frame(self.frame_2, bg='SteelBlue',width='340', height='720')
+        self.despido = Button(self.frame_2, text='Despedir')
+        self.info_emp = Empleado.getListaEmpleado()[0].informacion()
+        self.num_emp = 0
+        self.textemp = tk.Text(self.frame_2)
+        self.textemp.place(relx=0.05, rely=0.1)
+        self.textemp.insert(tk.END, self.info_emp)
+        self.textemp.configure(state='disabled')
+
+        def buscar_empleado(event):
+            x = Empleado.getListaEmpleado()
+            if self.num_emp == len(x):
+                self.num_emp = 0
+                self.info_emp = x[self.num_emp].informacion()
+                self.textemp.configure(state='normal')
+                self.textemp.delete('1.0', 'end-1c')
+                self.textemp.insert(tk.END,self.info_emp)
+                self.textemp.configure(state='disabled')
+            else:
+                self.num_emp += 1
+                self.info_emp = x[self.num_emp].informacion()
+                self.textemp.configure(state='normal')
+                self.textemp.delete('1.0', 'end-1c')
+                self.textemp.insert(tk.END,self.info_emp)
+                self.textemp.configure(state='disabled')
+
+
+        def show_empleados():
+            self.frame_abajo.pack_forget()
+            self.frameemp.pack(anchor='e')
+            self.despido.place(relx = 0.375, rely = 0.9, anchor = 'c')
+            self.textemp.place(relx=0.05,rely=0.1)
+            
+
 
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
@@ -54,13 +93,18 @@ class Ventana_principal_gerente(tk.Tk):
                 self.Archivo.set("Archivo")
                 descripcion_software()
                 
-            if self.Archivo.get()=="Salir":
+            elif self.Archivo.get()=="Salir":
                 self.Archivo.set("Archivo")
                 self.ventana_inicio()
 
+
+        
+        
+            
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
             if self.p_y_c.get()=="Mostrar empleados":
+                show_empleados()
                 self.p_y_c.set("Procesos y consultas")
 
             elif self.p_y_c.get()=="Caja":
@@ -103,3 +147,7 @@ class Ventana_principal_gerente(tk.Tk):
     def ventana_inicio(self):
         self.destroy()
         ventana_inicio.Ventana_inicio()
+if __name__ == "__main__":
+    emp1 = Empleado(1,"andres", 23)
+    emp2 = Empleado(3, "sofia", 4)
+    Ventana_principal_gerente()
