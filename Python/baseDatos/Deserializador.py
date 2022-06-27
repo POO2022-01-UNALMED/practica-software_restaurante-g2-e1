@@ -23,10 +23,10 @@ def deserializar(cls, tipo):
 
     elif tipo == "ingredientes":
         pickfile = open("Python/baseDatos/temp/ingredientes.txt", "rb")
-        Ingredientes.getListaIngredientes = pickle.load(pickfile)
+        Ingredientes._listaIngredientes = pickle.load(pickfile)
         pickfile.close
 
     elif tipo == "NumEmple":
         pickfile = open("Python/baseDatos/temp/NumEmple.txt", "rb")
-        Empleado.getNumero_empleados = pickle.load(pickfile)
+        Empleado._numero_empleados = pickle.load(pickfile)
         pickfile.close
