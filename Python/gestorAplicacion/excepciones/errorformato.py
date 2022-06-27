@@ -18,3 +18,7 @@ class ExcepcionEnteroString(ErrorFormato):
 class ExcepcionEmpleado(ErrorFormato):
     def __init__(self,valor):
         self.mensaje_error = f'\n{valor} no hay empleados, por favor agrege nuevos empleados desde la seccion "contratar"'
+
+class ExcepcionInv(ErrorFormato):
+    def __init__(self,valor):
+        self.mensaje_error = f'\n{valor} no hay ingredientes, por favor agrege nuevos ingredientes desde la seccion "agregar ingredientes"'

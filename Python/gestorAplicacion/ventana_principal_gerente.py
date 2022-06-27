@@ -76,7 +76,21 @@ class Ventana_principal_gerente(tk.Tk):
         self.desp_int = Button(self.frame_2, text='Despido inteligente', width=15)
         self.mas_ef = Button(self.frame_2, text= 'Mas eficiente',width=15)
         
+        #frames, botones de inventario --------------------------------------------------------------------------------------------------------------------------------------------
+        self.titl_inv1 = tk.Label(self, text='Ver Inventario', font=('Italic', 20))
+        self.desp_inv1 = tk.Frame(self, bg= 'LightSteelBlue', height= 80, width= 1360)
+        self.desp_exp_inv1 = tk.Label(self, text="aqui podremos ver el inventario disponible")
 
+        self.sig_inv = Button(self.frame_2, text='Siguiente', width=15)
+        self.atr_inv = Button(self.frame_2, text='Anterior', width=15)
+        self.info_inv = 'Aqui aparecera la informacion de los distintos ingredientes.'
+        self.num_inv = 0
+        self.textinv = tk.Text(self.frame_2, border= False, font=('Italic', 20))
+        self.textemp.insert(tk.END, self.info_inv)
+        self.textemp.configure(state='disabled')
+
+
+        # ver empleado ------------------------------------------------------------------------------------------------------------
         def buscar_empleado(event):
             x = Empleado.getListaEmpleado()
             if self.info_emp == 'Aqui aparecera la informacion de los distintos empleados.':
@@ -188,6 +202,9 @@ class Ventana_principal_gerente(tk.Tk):
         def show_empleados():
             self.frame_abajo.pack_forget()
             self.frame_2.pack_forget()
+            self.titl_inv1.pack_forget()
+            self.desp_inv1.pack_forget()
+            self.desp_exp_inv1.pack_forget()
             self.titl_label.pack(pady = 10)
             self.desp_frame.pack(anchor='n')
             self.desp_exp.pack(pady= 10)
@@ -204,6 +221,97 @@ class Ventana_principal_gerente(tk.Tk):
         ##---------------------------------------------------------------------------------------------------------------------------------
         #aqui va la parte de el inventario
         
+        def buscar_inv(event):
+            x = Empleado.getListaEmpleado()
+            if self.info_inv == 'Aqui aparecera la informacion de los distintos invleados.':
+                self.num_inv = 0
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textinv.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+
+            elif self.num_inv >= len(x)-1:
+                self.num_inv = 0
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textinv.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+
+            else:
+                self.num_inv += 1
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textinv.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+
+
+        def atras_inv(event):
+            x = invleado.getListainvleado()
+            if self.info_inv == 'Aqui aparecera la informacion de los distintos invleados.':
+                self.num_inv = len(x)
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textinv.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+
+            elif self.num_inv == 0:
+                self.num_inv = len(x)-1
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textinv.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+
+            else:
+                self.num_inv -= 1
+                try:
+                    self.info_inv = x[self.num_inv].informacion()
+                    self.textinv.configure(state='normal')
+                    self.textinv.delete('1.0', 'end-1c')
+                    self.textinv.insert(tk.END,self.info_inv)
+                    self.textemp.configure(state='disabled')
+                except:
+                    messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+        def show_inv():
+            self.frame_abajo.pack_forget()
+            self.frame_2.pack_forget()
+            self.titl_label.pack_forget()
+            self.desp_frame.pack_forget()
+            self.desp_exp.pack_forget()
+            self.frame_2.pack_forget()
+            self.despido.place_forget()
+            self.desp_int.place_forget()
+            self.textemp.place_forget()
+            self.sig_emp.place_forget()
+            self.atr_emp.place_forget()
+            self.mas_ef.place_forget()
+            self.titl_inv1.pack(pady = 10)
+            self.desp_inv1.pack(anchor='n')
+            self.desp_exp_inv1.pack(pady= 10)
+            self.frame_2.pack(side="top",fill="both")
+            self.textinv.place(relx=0.5,rely=0.5,relheight=0.6, relwidth= 0.6, anchor= 'c')
+            self.sig_inv.place(relx = 0.6, rely = 0.9, anchor = 'c')
+            self.atr_inv.place(relx = 0.4, rely = 0.9, anchor = 'c')
+
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
             if self.Archivo.get()=="Aplicacion":
@@ -223,7 +331,9 @@ class Ventana_principal_gerente(tk.Tk):
             if self.p_y_c.get()=="Ver y despedir empleados":
                 show_empleados()
                 self.p_y_c.set("Procesos y consultas")
-
+            elif self.p_y_c.get()=="Ver inventario":
+                show_inv()
+                self.p_y_c.set("Procesos y consultas")
             elif self.p_y_c.get()=="Caja":
                 self.p_y_c.set("Procesos y consultas")
 
@@ -248,7 +358,7 @@ class Ventana_principal_gerente(tk.Tk):
 
         #Procesos y consultas
         valorDefecto_p_y_c = tk.StringVar(value='Procesos y consultas')
-        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["Ver y despedir empleados", "Caja", "Inventario"],textvariable=valorDefecto_p_y_c,state="readonly")
+        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["Ver y despedir empleados","Ver inventario", "Caja", "Inventario"],textvariable=valorDefecto_p_y_c,state="readonly")
         self.p_y_c.grid(row=0,column=1)
         self.p_y_c.bind("<<ComboboxSelected>>",opciones_p_y_c)
 
