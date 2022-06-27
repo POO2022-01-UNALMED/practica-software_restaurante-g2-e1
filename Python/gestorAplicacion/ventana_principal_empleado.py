@@ -5,6 +5,7 @@ from tkinter import messagebox
 from tkinter import ttk
 import ventana_inicio
 import iniciar_sesion
+import fieldframe
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -41,7 +42,7 @@ class Ventana_principal_empleado(tk.Tk):
             messagebox.showinfo("Autores del software","Autor 1:Juan David Villamizar Gelves\nAutor 2:Jorge Andres Higuita Monsalve\nAutor 3:Juan Sebastian echeverri Zapata")
         
         #en este frame(frame_2) se encuentra lo relacionado con los procesos y consultas
-        self.frame_2=tk.Frame(self,bg="pink",height=650)
+        self.frame_2=tk.Frame(self,bg="white",height=650)
         self.frame_2.pack(side="top",fill="both")
         
         #frame de la parte de abajo, es meramente decorativo 
@@ -60,6 +61,7 @@ class Ventana_principal_empleado(tk.Tk):
         
         #esta funcion se ejecuta al seleccionar la opcion agragar socio del combobox de p y c
         def agregar_socio():
+            global a
 
             self.boton_anadir_platillo.place_forget()
 
@@ -70,9 +72,15 @@ class Ventana_principal_empleado(tk.Tk):
             self.boton_terminar_orden.place_forget()
 
             self.boton_cancelar_orden.place_forget()
+
+            a=fieldframe.FieldFrame(self.frame_2,"datos",["nombre","cedula"],"valor")
+
+            a.place(x=520,y=100,width=500,height=100)
         
         #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
         def tomar_orden():
+            global a
+
             self.boton_anadir_platillo.place(x=640,y=50,width=300,height=50)
 
             self.boton_retirar_platillo.place(x=640,y=110,width=300,height=50)
@@ -82,6 +90,8 @@ class Ventana_principal_empleado(tk.Tk):
             self.boton_terminar_orden.place(x=640,y=230,width=300,height=50)
 
             self.boton_cancelar_orden.place(x=640,y=290,width=300,height=50)
+
+            a.place_forget()
         
         #botones de tomar orden
 
@@ -118,6 +128,8 @@ class Ventana_principal_empleado(tk.Tk):
         self.boton_terminar_orden.place_forget()
 
         self.boton_cancelar_orden.place_forget()
+
+        ############################################################################
                
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
