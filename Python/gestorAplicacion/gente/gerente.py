@@ -25,7 +25,8 @@ class Gerente(Persona):
 	def contratar_Empleado(self,cedula,nombre,telefono):
 		Empleado(cedula,nombre,telefono)
 	
-	def despedir_Empleado(self,numero_empleado):
+	@classmethod
+	def despedir_Empleado(cls,numero_empleado):
 		n=1
 		if numero_empleado<=len(Empleado._lista_empleado) and numero_empleado>0:
 			info=Empleado._lista_empleado[numero_empleado-1].informacion()

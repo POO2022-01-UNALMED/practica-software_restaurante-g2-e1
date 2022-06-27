@@ -4,9 +4,9 @@ import pathlib
 from tkinter import Button, Frame, messagebox
 from tkinter import ttk
 import ventana_inicio
-import iniciar_sesion
 
 from gente.empleado import Empleado
+from gente.gerente import Gerente
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -56,14 +56,15 @@ class Ventana_principal_gerente(tk.Tk):
         self.despido = Button(self.frame_2, text='Despedir')
         self.info_emp = Empleado.getListaEmpleado()[0].informacion()
         self.num_emp = 0
-        self.textemp = tk.Text(self.frame_2)
-        self.textemp.place(relx=0.05, rely=0.1)
+        self.textemp = tk.Text(self.frame_2, border= False, font=('Italic', 20))
         self.textemp.insert(tk.END, self.info_emp)
         self.textemp.configure(state='disabled')
+        self.sig_emp = Button(self.frame_2, text='Siguiente')
+        self.atr_emp = Button(self.frame_2, text='Anterior')
 
         def buscar_empleado(event):
             x = Empleado.getListaEmpleado()
-            if self.num_emp == len(x):
+            if self.num_emp >= len(x)-1:
                 self.num_emp = 0
                 self.info_emp = x[self.num_emp].informacion()
                 self.textemp.configure(state='normal')
@@ -78,12 +79,44 @@ class Ventana_principal_gerente(tk.Tk):
                 self.textemp.insert(tk.END,self.info_emp)
                 self.textemp.configure(state='disabled')
 
+        def atras_empleado(event):
+            x = Empleado.getListaEmpleado()
+            if self.num_emp == 0:
+                self.num_emp = len(x)-1
+                self.info_emp = x[self.num_emp].informacion()
+                self.textemp.configure(state='normal')
+                self.textemp.delete('1.0', 'end-1c')
+                self.textemp.insert(tk.END,self.info_emp)
+                self.textemp.configure(state='disabled')
+            else:
+                self.num_emp -= 1
+                self.info_emp = x[self.num_emp].informacion()
+                self.textemp.configure(state='normal')
+                self.textemp.delete('1.0', 'end-1c')
+                self.textemp.insert(tk.END,self.info_emp)
+                self.textemp.configure(state='disabled')
+        
+        def despido_emp(event):
+            for i in Empleado.getListaEmpleado():
+                if i.informacion() == self.info_emp:
+                    Gerente.despedir_Empleado(i.getNumero())
+                    self.info_emp = 'Enhorabuena, despediste al empleado:\n\n' + self.info_emp + '\n\nAhora no tendras que verlo nunca mas'
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
+
+        self.sig_emp.bind('<ButtonRelease-1>',buscar_empleado)
+        self.atr_emp.bind('<ButtonRelease-1>',atras_empleado)
+        self.despido.bind('<ButtonRelease-1>', despido_emp)
 
         def show_empleados():
             self.frame_abajo.pack_forget()
             self.frameemp.pack(anchor='e')
             self.despido.place(relx = 0.375, rely = 0.9, anchor = 'c')
-            self.textemp.place(relx=0.05,rely=0.1)
+            self.textemp.place(relx=0.05,rely=0.1,relheight=0.6, relwidth= 0.5)
+            self.sig_emp.place(relx = 0.6, rely = 0.9, anchor = 'c')
+            self.atr_emp.place(relx = 0.1, rely = 0.9, anchor = 'c')
             
 
 
@@ -150,4 +183,6 @@ class Ventana_principal_gerente(tk.Tk):
 if __name__ == "__main__":
     emp1 = Empleado(1,"andres", 23)
     emp2 = Empleado(3, "sofia", 4)
+    emp3 = Empleado(7,"t",3)
+    emp4 = Empleado(8, "david", 2)
     Ventana_principal_gerente()
