@@ -127,7 +127,7 @@ class Ventana_principal_empleado(tk.Tk):
                 agregar_socio()
                 self.p_y_c.set("Procesos y consultas")
 
-            if self.p_y_c.get()=="tomar orden":
+            elif self.p_y_c.get()=="tomar orden":
                 tomar_orden()
                 self.p_y_c.set("Procesos y consultas")   
         
@@ -162,4 +162,4 @@ class Ventana_principal_empleado(tk.Tk):
     #vuelve a la ventana de inicio   
     def ventana_inicio(self):
         self.destroy()
-        iniciar_sesion.Inicio_sesion()
+        ventana_inicio.Ventana_inicio()
