@@ -10,6 +10,8 @@ import ventana_inicio
 from gente.empleado import Empleado
 from gente.gerente import Gerente
 from restaurante.ingredientes import Ingredientes
+from restaurante.orden import Orden
+from restaurante.caja import Caja
 
 from excepciones.erroaplicacion import ErrorAplicacion
 from excepciones.errorformato import *
@@ -105,6 +107,17 @@ class Ventana_principal_gerente(tk.Tk):
 
         self.field_agg = FieldFrame(self.frame_3, "Caracteristica", ["Tipo", "Cantidad", "Precio de compra"], "valores")
 
+
+        # Widgets arqueo de caja-----------------------------------------------------------------------------------------------------------------------------------------------------
+        self.titl_arq = tk.Label(self, text='Arqueo de caja', font=('Italic', 20))
+        self.desp_arq = tk.Frame(self, bg= 'LightSteelBlue', height= 80, width= 1360)
+        self.desp_exp_arq = tk.Label(self, text="Aqui podremos ver las distintas entradas y salidas de caja y el valor final ")
+        self.textarq = tk.Text(self.frame_2, border= False, font=('Italic', 20))
+        self.info_arq = 'Dale "mostrar" para ver las distintas entradas y salidas de caja'
+        self.textarq.insert(tk.END, self.info_arq)
+        self.textarq.configure(state='disabled')
+        self.mostrar_arq = Button(self.frame_2, text='Mostrar', width=15)
+        
         # ver empleado ------------------------------------------------------------------------------------------------------------
         def buscar_empleado(event):
             x = Empleado.getListaEmpleado()
@@ -230,6 +243,11 @@ class Ventana_principal_gerente(tk.Tk):
             self.desp_agg.pack_forget()
             self.desp_exp_agg.pack_forget()
             self.field_agg.pack_forget()
+            self.titl_arq.pack_forget()
+            self.desp_arq.pack_forget()
+            self.desp_exp_arq.pack_forget()
+            self.textarq.place_forget()
+            self.mostrar_arq.place_forget()
             self.titl_label.pack(pady = 10)
             self.desp_frame.pack(anchor='n')
             self.desp_exp.pack(pady= 10)
@@ -296,6 +314,12 @@ class Ventana_principal_gerente(tk.Tk):
             self.desp_agg.pack_forget()
             self.desp_exp_agg.pack_forget()
             self.field_agg.pack_forget()
+
+            self.titl_arq.pack_forget()
+            self.desp_arq.pack_forget()
+            self.desp_exp_arq.pack_forget()
+            self.textarq.place_forget()
+            self.mostrar_arq.place_forget()
 
             self.titl_con.pack(pady = 10)
             self.desp_con.pack(anchor = 'n')
@@ -404,6 +428,12 @@ class Ventana_principal_gerente(tk.Tk):
             self.desp_exp_agg.pack_forget()
             self.field_agg.pack_forget()
 
+            self.titl_arq.pack_forget()
+            self.desp_arq.pack_forget()
+            self.desp_exp_arq.pack_forget()
+            self.textarq.place_forget()
+            self.mostrar_arq.place_forget()
+
             self.titl_inv1.pack(pady = 10)
             self.desp_inv1.pack(anchor='n')
             self.desp_exp_inv1.pack(pady= 10)
@@ -459,11 +489,69 @@ class Ventana_principal_gerente(tk.Tk):
             self.desp_inv1.pack_forget()
             self.desp_exp_inv1.pack_forget()
 
+            self.titl_arq.pack_forget()
+            self.desp_arq.pack_forget()
+            self.desp_exp_arq.pack_forget()
+            self.textarq.place_forget()
+            self.mostrar_arq.place_forget()
+
             self.titl_agg.pack(pady = 10)
             self.desp_agg.pack(anchor='n')
             self.desp_exp_agg.pack(pady= 10)
             self.frame_3.pack(side="top",fill="both")
             self.field_agg.pack(pady = 40)
+        
+
+        #arqueo de caja ----------------------------------------------------------------------------------------------------------------------------------------------------------
+        def show_arqueo(event):
+            x = Orden.getCaja().getIngresos()
+            self.info_arq = ''
+            for i in range(len(x)):
+                self.info_arq = self.info_arq + f'Ingreso {i+1}:            {x[i]}\n'
+            self.info_arq = self.info_arq + f'\n                                                                              Total: {Orden.getCaja().getEfectivo()}'
+            self.textarq.configure(state='normal')
+            self.textarq.delete('1.0', 'end-1c')
+            self.textarq.insert(tk.END,self.info_arq)
+            self.textarq.configure(state='disabled')
+                
+        self.mostrar_arq.bind('<ButtonRelease-1>', show_arqueo)
+        def arq_caja():
+            self.frame_abajo.pack_forget()
+            self.frame_2.pack_forget()
+            self.titl_label.pack_forget()
+            self.desp_frame.pack_forget()
+            self.desp_exp.pack_forget()
+            self.frame_2.pack_forget()
+            self.despido.place_forget()
+            self.desp_int.place_forget()
+            self.textemp.place_forget()
+            self.sig_emp.place_forget()
+            self.atr_emp.place_forget()
+            self.mas_ef.place_forget()
+
+            self.titl_con.pack_forget()
+            self.desp_con.pack_forget()
+            self.desp_exp_con.pack_forget()
+            self.field_con.pack_forget()
+            self.frame_3.pack_forget()
+
+            self.sig_inv.place_forget()
+            self.atr_inv.place_forget()
+            self.titl_inv1.pack_forget()
+            self.desp_inv1.pack_forget()
+            self.desp_exp_inv1.pack_forget()
+
+            self.titl_agg.pack_forget()
+            self.desp_agg.pack_forget()
+            self.desp_exp_agg.pack_forget()
+            self.field_agg.pack_forget()
+
+            self.titl_arq.pack(pady = 10)
+            self.desp_arq.pack(anchor= 'n')
+            self.desp_exp_arq.pack(pady = 10)
+            self.frame_2.pack(side="top",fill="both")
+            self.textarq.place(relx=0.5,rely=0.5,relheight=0.6, relwidth= 0.6, anchor= 'c')
+            self.mostrar_arq.place(relx=0.5, rely= 0.9, anchor ='c')
 
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
@@ -497,7 +585,8 @@ class Ventana_principal_gerente(tk.Tk):
                 new_ingredient()
                 self.p_y_c.set("Procesos y consultas")
 
-            elif self.p_y_c.get()=="Inventario":
+            elif self.p_y_c.get()=="Arqueo de caja":
+                arq_caja()
                 self.p_y_c.set("Procesos y consultas")
 
             
@@ -518,7 +607,7 @@ class Ventana_principal_gerente(tk.Tk):
 
         #Procesos y consultas
         valorDefecto_p_y_c = tk.StringVar(value='Procesos y consultas')
-        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["Ver y despedir empleados","Contratar empleado", "Ver inventario", 'Anadir/aumentar ingrediente'],textvariable=valorDefecto_p_y_c,state="readonly")
+        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["Ver y despedir empleados","Contratar empleado", "Ver inventario", 'Anadir/aumentar ingrediente', 'Arqueo de caja'],textvariable=valorDefecto_p_y_c,state="readonly")
         self.p_y_c.grid(row=0,column=1)
         self.p_y_c.bind("<<ComboboxSelected>>",opciones_p_y_c)
 
@@ -541,4 +630,10 @@ if __name__ == "__main__":
     emp4 = Empleado(8, "david", 2)
     ing1 = Ingredientes(2,30,'carne de res')
     ing2 = Ingredientes(2,30,'leche')
+    or1 = Orden().getCaja()
+    or1.setEfectivo(70000)
+    or1.nuevoIngreso(3000)
+    or1.nuevoIngreso(17000)
+    or1.nuevoIngreso(50000)
+    
     Ventana_principal_gerente()
