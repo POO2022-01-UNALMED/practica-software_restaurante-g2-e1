@@ -1,7 +1,7 @@
 import tkinter as tk
 import os
 import pathlib
-from tkinter import messagebox
+from tkinter import Frame, messagebox
 from tkinter import ttk
 import ventana_inicio
 import iniciar_sesion
@@ -57,14 +57,19 @@ class Ventana_principal_gerente(tk.Tk):
             if self.Archivo.get()=="Salir":
                 self.Archivo.set("Archivo")
                 self.ventana_inicio()
-               
+
         #esta funcion ejecuta las opciones del combobox de opciones_p_y_C(todavia faltan por definir bien las funciones)
         def opciones_p_y_c(event):
-            if self.p_y_c.get()=="agregar socio":
+            if self.p_y_c.get()=="Mostrar empleados":
                 self.p_y_c.set("Procesos y consultas")
 
-            if self.p_y_c.get()=="tomar orden":
+            elif self.p_y_c.get()=="Caja":
                 self.p_y_c.set("Procesos y consultas")
+
+            elif self.p_y_c.get()=="Inventario":
+                self.p_y_c.set("Procesos y consultas")
+
+            
         
         #esta funcion ejecuta las opciones del combox de ayuda
         def opciones_ayuda(event):
@@ -82,7 +87,7 @@ class Ventana_principal_gerente(tk.Tk):
 
         #Procesos y consultas
         valorDefecto_p_y_c = tk.StringVar(value='Procesos y consultas')
-        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["mostrar empleados","despedir_empleado"],textvariable=valorDefecto_p_y_c,state="readonly")
+        self.p_y_c = tk.ttk.Combobox(self.frame_1,values=["Mostrar empleados", "Caja", "Inventario"],textvariable=valorDefecto_p_y_c,state="readonly")
         self.p_y_c.grid(row=0,column=1)
         self.p_y_c.bind("<<ComboboxSelected>>",opciones_p_y_c)
 
@@ -97,4 +102,4 @@ class Ventana_principal_gerente(tk.Tk):
     #vuelve a la ventana de inicio   
     def ventana_inicio(self):
         self.destroy()
-        iniciar_sesion.Inicio_sesion()
+        ventana_inicio.Ventana_inicio()
