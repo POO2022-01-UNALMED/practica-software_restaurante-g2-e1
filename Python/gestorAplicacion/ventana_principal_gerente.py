@@ -9,6 +9,7 @@ import ventana_inicio
 
 from gente.empleado import Empleado
 from gente.gerente import Gerente
+from restaurante.ingredientes import Ingredientes
 
 from excepciones.erroaplicacion import ErrorAplicacion
 from excepciones.errorformato import *
@@ -86,8 +87,8 @@ class Ventana_principal_gerente(tk.Tk):
         self.info_inv = 'Aqui aparecera la informacion de los distintos ingredientes.'
         self.num_inv = 0
         self.textinv = tk.Text(self.frame_2, border= False, font=('Italic', 20))
-        self.textemp.insert(tk.END, self.info_inv)
-        self.textemp.configure(state='disabled')
+        self.textinv.insert(tk.END, self.info_inv)
+        self.textinv.configure(state='disabled')
 
 
         # ver empleado ------------------------------------------------------------------------------------------------------------
@@ -205,6 +206,7 @@ class Ventana_principal_gerente(tk.Tk):
             self.titl_inv1.pack_forget()
             self.desp_inv1.pack_forget()
             self.desp_exp_inv1.pack_forget()
+            self.textinv.place_forget()
             self.titl_label.pack(pady = 10)
             self.desp_frame.pack(anchor='n')
             self.desp_exp.pack(pady= 10)
@@ -222,11 +224,11 @@ class Ventana_principal_gerente(tk.Tk):
         #aqui va la parte de el inventario
         
         def buscar_inv(event):
-            x = Empleado.getListaEmpleado()
-            if self.info_inv == 'Aqui aparecera la informacion de los distintos invleados.':
+            x = Ingredientes.getListaIngredientes()
+            if self.info_inv == 'Aqui aparecera la informacion de los distintos ingredientes.':
                 self.num_inv = 0
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
@@ -237,7 +239,7 @@ class Ventana_principal_gerente(tk.Tk):
             elif self.num_inv >= len(x)-1:
                 self.num_inv = 0
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
@@ -248,7 +250,7 @@ class Ventana_principal_gerente(tk.Tk):
             else:
                 self.num_inv += 1
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
@@ -258,11 +260,11 @@ class Ventana_principal_gerente(tk.Tk):
 
 
         def atras_inv(event):
-            x = invleado.getListainvleado()
-            if self.info_inv == 'Aqui aparecera la informacion de los distintos invleados.':
+            x = Ingredientes.getListaIngredientes()
+            if self.info_inv == 'Aqui aparecera la informacion de los distintos ingredientes.':
                 self.num_inv = len(x)
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
@@ -273,7 +275,7 @@ class Ventana_principal_gerente(tk.Tk):
             elif self.num_inv == 0:
                 self.num_inv = len(x)-1
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
@@ -284,13 +286,16 @@ class Ventana_principal_gerente(tk.Tk):
             else:
                 self.num_inv -= 1
                 try:
-                    self.info_inv = x[self.num_inv].informacion()
+                    self.info_inv = x[self.num_inv].info()
                     self.textinv.configure(state='normal')
                     self.textinv.delete('1.0', 'end-1c')
                     self.textinv.insert(tk.END,self.info_inv)
                     self.textemp.configure(state='disabled')
                 except:
                     messagebox.showwarning(title="Aviso",message=ExcepcionInv('').mensaje_error)
+        
+        self.sig_inv.bind('<ButtonRelease-1>',buscar_inv)
+        self.atr_inv.bind('<ButtonRelease-1>',atras_inv)
         def show_inv():
             self.frame_abajo.pack_forget()
             self.frame_2.pack_forget()
@@ -379,4 +384,6 @@ if __name__ == "__main__":
     emp2 = Empleado(3, "sofia", 4)
     emp3 = Empleado(7,"t",3)
     emp4 = Empleado(8, "david", 2)
+    ing1 = Ingredientes(2,30,'carne de res')
+    ing2 = Ingredientes(2,30,'leche')
     Ventana_principal_gerente()

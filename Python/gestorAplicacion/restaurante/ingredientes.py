@@ -52,4 +52,4 @@ class Ingredientes:
     else: 
       return False
   def info(self):
-    return f'Nombre: {self._tipo}\n Cantidad: {self._cantidad}\n Precio: {self._precio_compra*2}'
+    return f'Nombre: {self._tipo}\nCantidad: {self._cantidad}\nPrecio: {self._precio_compra*2}'
