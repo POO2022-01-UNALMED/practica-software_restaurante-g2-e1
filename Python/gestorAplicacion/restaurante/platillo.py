@@ -1,4 +1,5 @@
 class Platillo():
+    _Lista_platillo=[]
     def __init__(self, ingredientes = None):
         if ingredientes is None:
             ingredientes = []
