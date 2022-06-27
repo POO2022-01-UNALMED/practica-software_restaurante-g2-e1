@@ -14,3 +14,7 @@ class ExcepcionEnteroString(ErrorFormato):
     def __init__(self,valor):
         self.mensaje_error=f"\n{valor} es un texto, por favor modifiquelo a un numero entero." 
         super().__init__(self.mensaje_error)
+
+class ExcepcionEmpleado(ErrorFormato):
+    def __init__(self,valor):
+        self.mensaje_error = f'\n{valor} no hay empleados, por favor agrege nuevos empleados desde la seccion "contratar"'

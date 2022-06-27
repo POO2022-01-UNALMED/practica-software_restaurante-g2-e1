@@ -4,10 +4,14 @@ import pathlib
 from tkinter import Button, Frame, messagebox
 from tkinter import ttk
 from turtle import width
+import turtle
 import ventana_inicio
 
 from gente.empleado import Empleado
 from gente.gerente import Gerente
+
+from excepciones.erroaplicacion import ErrorAplicacion
+from excepciones.errorformato import *
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
@@ -79,32 +83,35 @@ class Ventana_principal_gerente(tk.Tk):
                 self.num_emp = 0
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
+
             elif self.num_emp >= len(x)-1:
                 self.num_emp = 0
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
+
             else:
                 self.num_emp += 1
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
+
 
         def atras_empleado(event):
             x = Empleado.getListaEmpleado()
@@ -112,32 +119,34 @@ class Ventana_principal_gerente(tk.Tk):
                 self.num_emp = len(x)
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
+
             elif self.num_emp == 0:
                 self.num_emp = len(x)-1
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
+
             else:
                 self.num_emp -= 1
                 try:
                     self.info_emp = x[self.num_emp].informacion()
+                    self.textemp.configure(state='normal')
+                    self.textemp.delete('1.0', 'end-1c')
+                    self.textemp.insert(tk.END,self.info_emp)
+                    self.textemp.configure(state='disabled')
                 except:
-                    self.info_emp = 'No hay empleados registrados'
-                self.textemp.configure(state='normal')
-                self.textemp.delete('1.0', 'end-1c')
-                self.textemp.insert(tk.END,self.info_emp)
-                self.textemp.configure(state='disabled')
+                    messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
         
         def despido_emp(event):
             for i in Empleado.getListaEmpleado():
@@ -154,7 +163,7 @@ class Ventana_principal_gerente(tk.Tk):
                 self.info_emp = 'Enhorabuena, despediste al empleado:\n\n' + Empleado.empleado_menos_eficiente().informacion() + '\n\nAhora no tendras que verlo nunca mas'
                 Gerente.despido_inteligente()
             except:
-                self.info_emp = 'No hay empleados para despedir'
+                messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
             self.textemp.configure(state='normal')
             self.textemp.delete('1.0', 'end-1c')
             self.textemp.insert(tk.END,self.info_emp)
@@ -162,13 +171,14 @@ class Ventana_principal_gerente(tk.Tk):
 
         def emp_efic(event):
             try:
-                self.info_emp = 'Nuestro mejor empleado es:\n\n' + Empleado.empleado_mas_eficiente().informacion() + '\n\n deberias aumentarle el salario a este buen trabajador. '
+                w = Empleado.empleado_mas_eficiente()
+                self.info_emp = 'Nuestro mejor empleado es:\n\n' + w.informacion() + '\n\n deberias aumentarle el salario a este buen trabajador. '
+                self.textemp.configure(state='normal')
+                self.textemp.delete('1.0', 'end-1c')
+                self.textemp.insert(tk.END,self.info_emp)
+                self.textemp.configure(state='disabled')
             except:
-                self.info_emp = 'No hay empleados'
-            self.textemp.configure(state='normal')
-            self.textemp.delete('1.0', 'end-1c')
-            self.textemp.insert(tk.END,self.info_emp)
-            self.textemp.configure(state='disabled')
+                messagebox.showwarning(title="Aviso",message=ExcepcionEmpleado('').mensaje_error)
 
         self.sig_emp.bind('<ButtonRelease-1>',buscar_empleado)
         self.atr_emp.bind('<ButtonRelease-1>',atras_empleado)
