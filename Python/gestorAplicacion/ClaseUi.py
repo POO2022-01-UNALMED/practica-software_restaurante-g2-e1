@@ -11,7 +11,7 @@ from restaurante.orden import Caja
 
 #Comprobanmos si existen objetos creados anteriormente
 Vacio=True
-dirtemp = "gestorAplicacion/baseDatos/temp"
+dirtemp = "Python/gestorAplicacion/baseDatos/temp"
 for filename in os.listdir(dirtemp):
     f = os.path.join(dirtemp, filename)
     if os.stat(f).st_size == 0:
@@ -26,14 +26,27 @@ if Vacio == True: # Si alguna de las carpetas esta vacia
     g1 = Gerente(10, "Jorge", 4820249, 1111)
     c1 = Cliente(20, "Franlo el jefe", 318383)
     caja = Caja(0)
+    Orden.setCaja(Caja.getCajas()[0])
+    emp1 = Empleado(1, "andres", 23)
+    emp2 = Empleado(3, "sofia", 4)
+    emp3 = Empleado(7, "t", 3)
+    emp4 = Empleado(8, "david", 2)
+    ing1 = Ingredientes(2, 30, 'carne de res')
+    ing2 = Ingredientes(2, 30, 'leche')
+    or1 = Orden().getCaja()[0]
+    or1.setEfectivo(70000)
+    or1.nuevoIngreso(3000)
+    or1.nuevoIngreso(17000)
+    or1.nuevoIngreso(50000)
     print("Instanciando objetos")
     
 else:
     # Se cargan los objetos guardados
     Deserializador.DeserializarTodo()
+    Orden.setCaja(Caja.getCajas()[0])
     print("cargando informacion") 
 
-Orden.setCaja(Caja.getCajas()[0])
+
 
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()

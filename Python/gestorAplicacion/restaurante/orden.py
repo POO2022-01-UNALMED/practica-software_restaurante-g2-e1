@@ -8,7 +8,7 @@ import datetime as dt
 class Orden:
 
     _cantidad_orden = 0
-    _caja = ''
+    _caja = []
 
     #constructor 
     def __init__(self, platillos = None, cliente = None, propina = 0):

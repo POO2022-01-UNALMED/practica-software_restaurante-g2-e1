@@ -4,6 +4,8 @@ from gente.cliente import Cliente
 from gente.empleado import Empleado
 from gente.gerente import Gerente
 from restaurante.ingredientes import Ingredientes
+from restaurante.caja import Caja
+from restaurante.orden import Orden
 
 
 class Serializador:
@@ -38,10 +40,18 @@ class Serializador:
             serializa = Empleado.getNumero_empleados()
             pickle.dump(serializa, pickfile)
             pickfile.close
-    
+
+        elif tipo == "Caja":
+            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Caja.txt","wb")
+            serializa = Caja.getCajas()
+            pickle.dump(serializa,pickfile)
+            pickfile.close
+        
     def SerializarTodo():
         Serializador.serializar("Cliente")
         Serializador.serializar("Empleado")
         Serializador.serializar("Gerente")
         Serializador.serializar("ingredientes")
         Serializador.serializar("NumEmple")
+        Serializador.serializar("Caja")
+      

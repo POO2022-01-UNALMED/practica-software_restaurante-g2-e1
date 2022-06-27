@@ -504,11 +504,11 @@ class Ventana_principal_gerente(tk.Tk):
 
         #arqueo de caja ----------------------------------------------------------------------------------------------------------------------------------------------------------
         def show_arqueo(event):
-            x = Orden.getCaja().getIngresos()
+            x = Orden.getCaja()[0].getIngresos()
             self.info_arq = ''
             for i in range(len(x)):
-                self.info_arq = self.info_arq + f'Ingreso {i+1}:            {x[i]}\n'
-            self.info_arq = self.info_arq + f'\n                                                                              Total: {Orden.getCaja().getEfectivo()}'
+                self.info_arq = self.info_arq + f'Ingreso {i+1}:  {x[i]}\n'
+            self.info_arq = self.info_arq + f'\n  Total: {Orden.getCaja()[0].getEfectivo()}'
             self.textarq.configure(state='normal')
             self.textarq.delete('1.0', 'end-1c')
             self.textarq.insert(tk.END,self.info_arq)

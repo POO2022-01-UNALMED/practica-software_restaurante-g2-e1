@@ -4,6 +4,10 @@ from gente.cliente import Cliente
 from gente.empleado import Empleado
 from gente.gerente import Gerente
 from restaurante.ingredientes import Ingredientes
+from restaurante.caja import Caja
+from restaurante.orden import Orden
+
+
 
 class Deserializador:
     @classmethod
@@ -33,9 +37,16 @@ class Deserializador:
             Empleado._numero_empleados = pickle.load(pickfile)
             pickfile.close
 
+        elif tipo == "Caja":
+            pickfile = open("Python/gestorAplicacion/baseDatos/temp/Caja.txt","rb")
+            Caja._cajas = pickle.load(pickfile)
+            Caja._cajas[0].arqueo()
+            pickfile.close
+
     def DeserializarTodo():
         Deserializador.deserializar("Cliente")
         Deserializador.deserializar("Empleado")
         Deserializador.deserializar("Gerente")
         Deserializador.deserializar("ingredientes")
         Deserializador.deserializar("NumEmple")
+        Deserializador.deserializar("Caja")

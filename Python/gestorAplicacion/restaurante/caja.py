@@ -20,6 +20,8 @@ class Caja:
 
     def getEgresos(self):
         return self._egresos
+
+    @classmethod
     def getCajas(self):
         return Caja._cajas
     #metodos set
@@ -39,7 +41,7 @@ class Caja:
             return w + ""
         else:
             return "cantidad insuficiente"
-
+    
     def arqueo(self):
         x = 0
         for i in self._ingresos:
