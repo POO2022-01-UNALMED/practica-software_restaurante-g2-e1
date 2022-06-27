@@ -289,7 +289,7 @@ class Ventana_principal_empleado(tk.Tk):
             except:
                 messagebox.showwarning(title="Aviso",message=ExcepcionEnteroString('valor').mensaje_error)
             
-            orden=Orden
+            orden=Orden()
             for i in Platillo._Lista_platillo:
                 orden.anadirPlatillos(i)
             texto=orden.comprobar(valor)

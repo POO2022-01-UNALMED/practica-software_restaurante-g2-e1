@@ -121,8 +121,8 @@ class Orden:
             if Horarios.horario1.value[0] <= int(dt.datetime.now().strftime("%H")) and Horarios.horario1.value[1] >= int(dt.datetime.now().strftime("%H")):
                 if n >= self._precio_total:
                     self._estado_pedido = True
-                    self._caja.setEfectivo(self._precio_total)
-                    self._caja.nuevoIngreso(self._precio_total)
+                    self._caja[0].setEfectivo(self._precio_total)
+                    self._caja[0].nuevoIngreso(self._precio_total)
                     d = n - self._precio_total
                     return f"Pedido confirmado, su devuelta es de {d}"
                 else:
