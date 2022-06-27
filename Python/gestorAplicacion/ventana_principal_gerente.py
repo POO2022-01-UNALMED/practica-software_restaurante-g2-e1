@@ -203,7 +203,7 @@ class Ventana_principal_gerente(tk.Tk):
 
         ##---------------------------------------------------------------------------------------------------------------------------------
         #aqui va la parte de el inventario
-
+        
         #esta funcion ejecuta las opciones del combobox de Archivo
         def opciones_Archivo(event):
             if self.Archivo.get()=="Aplicacion":
