@@ -29,13 +29,13 @@ class Serializador:
         
         elif tipo=="ingredientes":
             pickfile = open("Python/gestorAplicacion/baseDatos/temp/ingredientes.txt", "wb")
-            serializa = Ingredientes.getListaIngredientes
+            serializa = Ingredientes.getListaIngredientes()
             pickle.dump(serializa, pickfile)
             pickfile.close
         
         elif tipo=="NumEmple":
             pickfile = open("Python/gestorAplicacion/baseDatos/temp/NumEmple.txt", "wb")
-            serializa = Empleado.getNumero_empleados
+            serializa = Empleado.getNumero_empleados()
             pickle.dump(serializa, pickfile)
             pickfile.close
     
