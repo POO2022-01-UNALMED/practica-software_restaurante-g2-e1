@@ -12,6 +12,9 @@ from restaurante.ingredientes import Ingredientes
 from restaurante.orden import Orden
 from gente.cliente import Cliente
 
+from excepciones.erroaplicacion import ErrorAplicacion
+from excepciones.errorformato import *
+
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
 
 #ventana principal, donde se ejecuta el programa
@@ -83,9 +86,10 @@ class Ventana_principal_empleado(tk.Tk):
 
             self.descripcion_anadir_socio.place(x=400,y=60,width=700,height=40)
 
-            self.a.place(x=520,y=110,width=500,height=100)
-        
+            self.a.place(x=520,y=150,width=500,height=160)
+
         #esta funcion se ejecuta al seleccionar la opcion tomar orden del combobox de p y c
+
         def tomar_orden():
 
             orden=Orden()
@@ -116,17 +120,48 @@ class Ventana_principal_empleado(tk.Tk):
 
         self.titulo_anadir_socio.place_forget()
 
-        self.descripcion_anadir_socio = tk.Label(self.frame_2,text=" esta funcion se encarga de registrar a los clientes a una lista de socios, los cuales tienen acceso a descuentos ")
+        self.descripcion_anadir_socio = tk.Label(self.frame_2,text=" esta funcion se encarga de registrar a los clientes a una lista de socios, los cuales tienen acceso a beneficios ")
 
         self.descripcion_anadir_socio.place(x=10,y=10,width=100,height=40)
 
         self.descripcion_anadir_socio.place_forget()
 
-        self.a=fieldframe.FieldFrame(self.frame_2,"datos",["nombre","cedula"],"valor")
+        self.a=fieldframe.FieldFrame(self.frame_2,"datos",["cedula","nombre","telefono"],"valor")
 
         self.a.place(x=520,y=100,width=500,height=100)
 
         self.a.place_forget()
+
+        #funcion que sirve para agregar socios
+
+        def agregando(entry):
+            x = self.a.aceptar()
+            if x[0] == '':
+                messagebox.showwarning(title="Aviso",message='No hay cedula, por favor agrege la cedula')
+            try:
+                cedula = int(x[0])
+            except:
+                messagebox.showwarning(title="Aviso",message=ExcepcionEnteroString('Cedula').mensaje_error)
+            if x[1] == '':
+                messagebox.showwarning(title="Aviso",message='No hay nombre, por favor agrege el nombre')
+            else:
+                nombre = x[1]
+            if x[2] == '':
+                messagebox.showwarning(title="Aviso",message='No hay telefono, por favor agrege el telefono')
+            try:
+                telefono = int(x[2])
+            except:
+                messagebox.showwarning(title="Aviso",message=ExcepcionEnteroString('Telefono').mensaje_error)
+            
+            cl=Cliente(cedula, nombre, telefono)
+        
+            Cliente. addSocio(cl)
+
+            messagebox.showinfo(title='Aviso', message="el cliente fue agregado exitosamente a la lista de clientes")
+                 
+        self.a.botonAceptar.bind("<ButtonRelease-1>", agregando)
+            
+        
         
         #botones de tomar orden
 
@@ -224,5 +259,3 @@ class Ventana_principal_empleado(tk.Tk):
     def ventana_inicio(self):
         self.destroy()
         ventana_inicio.Ventana_inicio()
-
-Ventana_principal_empleado()
