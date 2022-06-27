@@ -9,7 +9,7 @@ from gente.gerente import Gerente
 
 #Comprobanmos si existen objetos creados anteriormente
 Vacio=True
-dirtemp = "Python/gestorAplicacion/baseDatos/temp"
+dirtemp = "gestorAplicacion/baseDatos/temp"
 for filename in os.listdir(dirtemp):
     f = os.path.join(dirtemp, filename)
     if os.stat(f).st_size == 0:
