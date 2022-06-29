@@ -86,9 +86,9 @@ class Ventana_inicio(tk.Tk):
 
         #fotos juan david
         self.foto_juan_d1 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
-        self.foto_juan_d2 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
-        self.foto_juan_d3 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
-        self.foto_juan_d4 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
+        self.foto_juan_d2 = tk.PhotoImage(file=path+"\imagenes\papucho.png")
+        self.foto_juan_d3 = tk.PhotoImage(file=path+"\imagenes\papucho2.png")
+        self.foto_juan_d4 = tk.PhotoImage(file=path+"\imagenes\papucho3.png")
 
         #fotos juan sebastian
         self.foto_juan_s1 = tk.PhotoImage(file=path+"\imagenes\juan_sebastian1.png")
@@ -100,7 +100,7 @@ class Ventana_inicio(tk.Tk):
         self.foto_jorge1 = tk.PhotoImage(file=path+"\imagenes\jorge1.png")
         self.foto_jorge2 = tk.PhotoImage(file=path+"\imagenes\jorge2.png")
         self.foto_jorge3 = tk.PhotoImage(file=path+"\imagenes\jorge3.png")
-        self.foto_jorge4 = tk.PhotoImage(file=path+"\imagenes\jorge1.png")
+        self.foto_jorge4 = tk.PhotoImage(file=path+"\imagenes\papucho4.png")
 
 
         #espacio para las fotos que se muestran de un desarrollador en concreto
@@ -116,30 +116,30 @@ class Ventana_inicio(tk.Tk):
         #segunda foto que se muestra del desarrollador
         self.foto2= tk.Label(self.P6)
         self.foto2.grid(row=0,column=1)
-        self.foto2.config(image=self.foto_juan_d1)
+        self.foto2.config(image=self.foto_juan_d2)
 
         #tercera foto que se muestra del desarrollador
         self.foto3= tk.Label(self.P6)
         self.foto3.grid(row=1,column=0)
-        self.foto3.config(image=self.foto_juan_d1)
+        self.foto3.config(image=self.foto_juan_d3)
 
         #cuarta foto que se muestra del desarrollador
         self.foto4= tk.Label(self.P6)
         self.foto4.grid(row=1,column=1)
-        self.foto4.config(image=self.foto_juan_d1)
+        self.foto4.config(image=self.foto_juan_d4)
 
         def visualizacion_foto():
             #global seleccion
             if self.seleccion==1:
                 self.foto1.config(image=self.foto_juan_d1)
-                self.foto2.config(image=self.foto_juan_d1)
-                self.foto3.config(image=self.foto_juan_d1)
-                self.foto4.config(image=self.foto_juan_d1)
+                self.foto2.config(image=self.foto_juan_d2)
+                self.foto3.config(image=self.foto_juan_d3)
+                self.foto4.config(image=self.foto_juan_d4)
             if self.seleccion==2:
                 self.foto1.config(image=self.foto_jorge1)
                 self.foto2.config(image=self.foto_jorge2)
                 self.foto3.config(image=self.foto_jorge3)
-                self.foto4.config(image=self.foto_jorge1)
+                self.foto4.config(image=self.foto_jorge4)
             if self.seleccion==3:
                 self.foto1.config(image=self.foto_juan_s1)
                 self.foto2.config(image=self.foto_juan_s2)
