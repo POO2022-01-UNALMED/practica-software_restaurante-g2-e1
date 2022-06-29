@@ -85,22 +85,22 @@ class Ventana_inicio(tk.Tk):
         #fotos
 
         #fotos juan david
-        self.foto_juan_d1 = tk.PhotoImage(file=path+"\juan_david1.png")
-        self.foto_juan_d2 = tk.PhotoImage(file=path+"\juan_david1.png")
-        self.foto_juan_d3 = tk.PhotoImage(file=path+"\juan_david1.png")
-        self.foto_juan_d4 = tk.PhotoImage(file=path+"\juan_david1.png")
+        self.foto_juan_d1 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
+        self.foto_juan_d2 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
+        self.foto_juan_d3 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
+        self.foto_juan_d4 = tk.PhotoImage(file=path+"\imagenes\juan_david1.png")
 
         #fotos juan sebastian
-        self.foto_juan_s1 = tk.PhotoImage(file=path+"\juan_sebastian1.png")
-        self.foto_juan_s2 = tk.PhotoImage(file=path+"\juan_sebastian2.png")
-        self.foto_juan_s3 = tk.PhotoImage(file=path+"\juan_sebastian3.png")
-        self.foto_juan_s4 = tk.PhotoImage(file=path+"\juan_sebastian4.png")
+        self.foto_juan_s1 = tk.PhotoImage(file=path+"\imagenes\juan_sebastian1.png")
+        self.foto_juan_s2 = tk.PhotoImage(file=path+"\imagenes\juan_sebastian2.png")
+        self.foto_juan_s3 = tk.PhotoImage(file=path+"\imagenes\juan_sebastian3.png")
+        self.foto_juan_s4 = tk.PhotoImage(file=path+"\imagenes\juan_sebastian4.png")
 
         #fotos jorge
-        self.foto_jorge1 = tk.PhotoImage(file=path+"\jorge1.png")
-        self.foto_jorge2 = tk.PhotoImage(file=path+"\jorge2.png")
-        self.foto_jorge3 = tk.PhotoImage(file=path+"\jorge3.png")
-        self.foto_jorge4 = tk.PhotoImage(file=path+"\jorge1.png")
+        self.foto_jorge1 = tk.PhotoImage(file=path+"\imagenes\jorge1.png")
+        self.foto_jorge2 = tk.PhotoImage(file=path+"\imagenes\jorge2.png")
+        self.foto_jorge3 = tk.PhotoImage(file=path+"\imagenes\jorge3.png")
+        self.foto_jorge4 = tk.PhotoImage(file=path+"\imagenes\jorge1.png")
 
 
         #espacio para las fotos que se muestran de un desarrollador en concreto
@@ -170,19 +170,19 @@ class Ventana_inicio(tk.Tk):
         self.P4.pack(side="left",fill="both")
 
         #foto hamburguesa
-        self.foto_hamburguesa = tk.PhotoImage(file=path+"\hamburguesa.png")
+        self.foto_hamburguesa = tk.PhotoImage(file=path+"\imagenes\hamburguesa.png")
 
         #foto papas_fritas
-        self.foto_papas_fritas = tk.PhotoImage(file=path+"\papas_fritas.png")
+        self.foto_papas_fritas = tk.PhotoImage(file=path+"\imagenes\papas_fritas.png")
 
         #foto perro_caliente
-        self.foto_perro_caliente = tk.PhotoImage(file=path+"\perro_caliente.png")
+        self.foto_perro_caliente = tk.PhotoImage(file=path+"\imagenes\perro_caliente.png")
 
         #foto taco
-        self.foto_taco = tk.PhotoImage(file=path+"\Taco.png")
+        self.foto_taco = tk.PhotoImage(file=path+"\imagenes\Taco.png")
 
         #foto burrito
-        self.foto_burrito = tk.PhotoImage(file=path+"\Burrito.png")
+        self.foto_burrito = tk.PhotoImage(file=path+"\imagenes\Burrito.png")
 
         #nos va a servir para ver la foto de muestra de uno de los platillos
         self.numero_foto_platillo=1
