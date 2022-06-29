@@ -9,36 +9,37 @@ from restaurante.orden import Orden
 
 
 
+
 class Deserializador:
     @classmethod
     def deserializar(cls, tipo):
         if tipo == "Cliente":
-            pickfile = open("gestorAplicacion/baseDatos/temp/Cliente.txt", "rb")
+            pickfile = open("baseDatos/temp/Cliente.txt", "rb")
             Cliente._lista_socio = pickle.load(pickfile)
             pickfile.close
 
         elif tipo == "Empleado":
-            pickfile = open( "gestorAplicacion/baseDatos/temp/Empleado.txt", "rb")
+            pickfile = open( "baseDatos/temp/Empleado.txt", "rb")
             Empleado._lista_empleado = pickle.load(pickfile)
             pickfile.close
 
         elif tipo == "Gerente":
-            pickfile = open("gestorAplicacion/baseDatos/temp/Gerente.txt", "rb")
+            pickfile = open("baseDatos/temp/Gerente.txt", "rb")
             Gerente._list_gerente = pickle.load(pickfile)
             pickfile.close
 
         elif tipo == "ingredientes":
-            pickfile = open("gestorAplicacion/baseDatos/temp/ingredientes.txt", "rb")
+            pickfile = open("baseDatos/temp/ingredientes.txt", "rb")
             Ingredientes._listaIngredientes = pickle.load(pickfile)
             pickfile.close
 
         elif tipo == "NumEmple":
-            pickfile = open("gestorAplicacion/baseDatos/temp/NumEmple.txt", "rb")
+            pickfile = open("baseDatos/temp/NumEmple.txt", "rb")
             Empleado._numero_empleados = pickle.load(pickfile)
             pickfile.close
 
         elif tipo == "Caja":
-            pickfile = open("gestorAplicacion/baseDatos/temp/Caja.txt","rb")
+            pickfile = open("baseDatos/temp/Caja.txt","rb")
             Caja._cajas = pickle.load(pickfile)
             Caja._cajas[0].arqueo()
             pickfile.close

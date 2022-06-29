@@ -8,17 +8,19 @@ from gente.cliente import Cliente
 from gente.gerente import Gerente
 from restaurante.orden import Orden
 from restaurante.orden import Caja
+import pathlib
 
 #Comprobanmos si existen objetos creados anteriormente
 Vacio=True
-dirtemp = "gestorAplicacion/baseDatos/temp"
+path = os.path.join(pathlib.Path(__file__).parent.absolute())
+dirtemp = path + "\\baseDatos\\temp"
 for filename in os.listdir(dirtemp):
     f = os.path.join(dirtemp, filename)
     if os.stat(f).st_size == 0:
         Vacio = True
     else:
         Vacio = False
-if Vacio == True: # Si alguna de las carpetas esta vacia
+'''if Vacio == True: # Si alguna de las carpetas esta vacia
     p1 = Empleado(1, "Juan", 123)
     p2 = Empleado (2, "Villa", 456)
     ing1 = Ingredientes(2, 30, 'carne de res')
@@ -36,13 +38,12 @@ if Vacio == True: # Si alguna de las carpetas esta vacia
     or1.nuevoIngreso(3000)
     or1.nuevoIngreso(17000)
     or1.nuevoIngreso(50000)
-    print("Instanciando objetos")
+    print("Instanciando objetos")'''
     
-else:
+
     # Se cargan los objetos guardados
-    Deserializador.DeserializarTodo()
-    Orden.setCaja(Caja.getCajas()[0])
-    print("cargando informacion")
+Deserializador.DeserializarTodo()
+Orden.setCaja(Caja.getCajas()[0])
 
 ventana_inicio.Ventana_inicio()
 Serializador.SerializarTodo()

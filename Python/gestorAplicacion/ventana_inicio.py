@@ -6,7 +6,6 @@ from tkinter import ttk
 import iniciar_sesion
 
 path = os.path.join(pathlib.Path(__file__).parent.absolute())
-
 #ventana de inicio, es la primera ventana que se muestra al iniciar sesion
 class Ventana_inicio(tk.Tk):
     def __init__(self):
